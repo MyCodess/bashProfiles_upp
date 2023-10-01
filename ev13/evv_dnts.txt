@@ -1,0 +1,130 @@
+________________  evEnv-nts: ___________________________________________
+/_221001 :  !! BIG_BIG-switch/consilid from "uue" --> evv !! based on following nts: first reboot in evv !!
+-! for sed replacings, move from uue to evv, see further below!
+
+--- upp-Tree-Generating-LOCALLY and  NO-SymLINKs (so with ./ prefixed to generate relative to the cu-dir):
+	- usage (eg in office in user-dir! /OR just use the following parts of the tree-listing to generate the tree ... !
+	- you could omit the "=" in  grep  DP= below ,to have also xxxDPPhys= vars if needed (not really in LOCAL-ver !), but then have to exclude OLDPWD var !
+	export | grep DP= | sed  -e 's@^.*=" *@".@'  -e 's@  *"  *@"@g'  | sort  >  up1tree2.log ;
+	for ii in $(cat up1tree2.log); do  echo mkdir "$ii"; done ;
+	- if you want SymLinks, then you have to untar upp-tgz-file !!
+
+========== vocabs-EVEnvs / evv :
+---- varName/abstract,Plazhalter :: 	FN/DN/konkret,physical,filesystem ::		[descriptive,notes(but usu. varNames/abstracts are used instead!)] -----:
+	upp 	:: 	up1 	:: 	uppEnv/uppTree/uppPkg (so always varName+Env/Tree/Pkg) !!)
+	evv 	:: 	ev11 	::	evvEnv/evvTree/evvPkg
+	vaaru 	:: 	varu 	::	vaaruEnv/...
+	vaarAu 	:: 	varau 	:: 	vaarAuEnv/...
+	ettcu 	:: 	etcu 	:: 	ettcuEnv/...
+	ettcAu 	:: 	etcau 	:: 	ettcAuEnv/...
+
+--- tech_vocabs:
+	q_  		:  vars-prefix-1evv !! technical id.tag/flag for all evv-vars , so "evv_prefixID" for all replace-able vars,...,  
+	1q_ / _1q 	:  FNs-tag- for evv--systemFiles-modifieds/added/renamed/..., eg in /etc/ modified by evvEnv  : 1q_xxx (or not-prefered:  xxx_1q_xxx
+	1evv 		:  FNs-tag for evv-files-dnts/nts/flagfiles/... : from evv itself generated additional files (nts/flygas/....)
+	--
+	Evv  	:  technical id.Name for whole ev11/-tree-pkg  , used in varsNames , incl. etc + bin ; except in aliasesNames usu. all stuff small-letters, so xx-evv-xxx if all small!
+	Upp 	:  technical id.Name for whole up1/-tree-pkg  , used in varsNames
+	--
+	q_EvvDN 	:  ev11
+	q_EvvDP 	:  /up1/ev11    ##--i-no-link-any-more ; could be also aoutside upTree! changing evEnv by shell-envs and not by filesystem-linkings ! so same as real-path !
+	q_EvvNO  	:  1
+	--
+	q_UppDN 	: up1
+	q_UppDP 	: /up1/
+	q_UppNO  	:  1
+	--
+	q_Usr , q_Hst, q_SshLg
+	q_EvvDPReal :  == q_evvDP  ; no-links-any-more!  /up1/ev11   ##--but basically could be anywhere !
+	--
+	vaarAu, ettcAu, vaaru, ettcu
+
+--- conv-nts fOr all StuFf evvEnv :
+	-!! q_  prefixing:  
+		- all replace-able VARs MUST prefixed with evv_prefixID (now q_ ) !! to be able to unset them as oneliner!
+		- technicaL-id-naMes are used, stellvertrettend, in VAR-names ! and their konkret values in Filesystem/upEnv ! as q_evvDN <--> .../ev11/ , q_uppDN <--> .../up1/
+		-AND they MUST be A bIt different/replaceblle/gerp-able separately, av varru <--> .../varu/ !! 
+		-!! checkit with: cdetc ;  grepi -R -E "^: "  ##--all-vars MUST be prefixed q_xxx !
+	-!! Init1-prefixing :
+		- BUT do NOT prefix the "from-org-env-vars"/"Init1xxx"-vars with q_ (as PATH from org-system,...!). since they may NOT be unset or reset !! eg:  Init1Path1 which is the original-PATH-from-system-as-it-was-pre-evEnv-setttings !! or its PS1, ...
+		- prefix them with "Init1..." (NOT with org/1org/...) so that they will not be reset !!
+
+========== ntsTags_inside-ScriptsComments in evvEnv ...: =========================================
+##--??-	--> review it! is it okay? checkit! : could be more ????
+##--!-  achtung/important!!  or more ##--!!- ....
+##--i-	: info  , bzw. more-infs  ##--I-  or ##--II- ...
+##--obsl 	: obsolete  (prev obl )
+##--2do-	:  2do < 2Do ...
+##--2ReDo- 	:  mach-reuckgaengig wieder !! (prev:  ReDo )
+##--2chk-	:  check-it !  (prev: chk )
+
+========== =========================================================
+
+############## evv-profiles-nts: #################################################################################
+--- eg restting evEnv /testen...:
+	cdwks; evvenset ; export q_UppDP=/up1/ ; export q_Profile2PresetsFP=./ev37/etc/etcd/profile2_${USER}_ps.sh ; export q_Profile2FP=./ev37/etc/etcd/profile2_${USER}.sh ;  source ./ev37/etc/profile.sh
+	cdwks; evvunset ; export q_UppDP=/up1/ ; source ./ev37/etc/profile.sh
+
+
+##======== profile.sh--USAGES1-nts: ======================================================
+	##----- sequences for presets and overwrites by profile-files :
+	##-- 1.-per-User-pre_sets in:        $q_PreSetsFP         : everything-can-be-preset-by-user!
+	##-- 2.-per-Host/OS1-pre_sets in:    $q_HostGlobProfFP    : everything-can-be-preset-per-Host/OS1!
+	##-- 3. evv-profiles
+	##-- 4.-per-User-home-profile:       $q_Profile2FP        : everything-can-be-overwritten-by-user!
+	##--------------------------------------------------------
+	##----- std-options to preset ...:
+	##-- /up1 location/absolutePath (eg in ofc1 was /var/tmp/dbs/up1) : export q_uppDP="<absolute-path-of up1, as /temp/tempu/up1> ;
+	##-- q_Host1full=<any-id /OR hostnem /or ...> : for the host-specific settings, the hostname cmd is used for the filename,
+		but sometimes it is NOT installed on the sstem /OR returns other value-formats. so you can just pre-set it to any ID you like /OR to its host name and then call the evv-profs!
+		eg: export  q_Host1full=raspi1 ; source ....profile.sh ! BUT then the host-specific-profile MUST already exist in etcd/profile_raspi1_pos.sh  , etcd/profile_raspi1.sh !
+		the q_Host1full can be other names than real hostname ! it is used only for the host-specific-profile ! it can be called anything else!
+	##-- currVerboseLevel=<xxxLevel> : the higher currVerboseLevel, the more outputs !! default is currVerboseLevel:-$debugLevel , so log/printouts all!
+	##-- !! basically everything can be presetted, due to setting of vars by bash-syntax of := bzw. :- !!
+	##-- !! ALL var-NAMES which can be overwritten by users MUST start with q_XXXX (so can be unset by unsetevv)! so, ALL var-names of the form ": ${xx:=yy}" /OR "xx=${xx:-yy}" MUST start with q_xxxx 1
+##======== __1END__ USAGES1-nts: =============================================
+
+========== VIMs substitutions for from uue --> evv
+
+---vims:
+	q_  adding:  %s:  *\([^=]*\):  q_\1:
+
+
+
+========== prj-tree/-ev-helpers:
+- prj-Dirs-listings-helpers  for mkdir,... (eg here for py1):
+	expg       DP=\"/up1/prjs/py1
+	echo ${!prj@}  |   tr ' ' '\n' |  grep DP | sort ##--eg:   | xargs -n 1 mkdir
+
+
+
+
+###################################### hists-nts,...: ##########################################
+==========    sed substitutions, from uue -> evv (but NOT all here, most things done manually/ vim!) : ############
+##-- sed -i -e 's:q_psl  *":q_ptl  "=====start  :'   -e 's:q_pel  *":q_ptl  "---end    :'   *sh
+##---
+##-- sed -i  -e 's:usersVar:vaaru:g' $@             ##--big! fenral prefix for many other vars as usersVarTestsDP/-WorksDP/...
+##-- sed -i  -e 's:usersEtcDP:ettcuDP:g' -e 's:usersEtcAllDP:ettcAuDP:g'  -e 's:usersVarDP:vaaruDP:g'  -e 's:usersVarAllDP:vaarAuDP:g'  -e 's:usersOptDP:opptuDP:g'  -e 's:userEtcDP:ettcUser:g'   -e 's:userVarDP:vaarUser:g'   $@
+##-- sed -i  -e  's:^psl:q_&:'  -e 's:^pel:q_&:'  -e 's:^ptl:q_&:'  
+##-- sed -i  -e  's:syysTgDP:q_&:g'
+##-- sed -i  -e 's:usersT:TP:g' $@    ##--as usersT1DP / T2 /...
+-----
+s:psl:q_&:g
+s:pel:q_&:g
+s:ptl:q_&:g
+s:fatalErrorLevel:q_&:g
+s:errorLevel:q_&:g
+s:warningLevel:q_&:g
+s:silentLevel:q_&:g
+s:infoLevel:q_&:g
+s:debugLevel:q_&:g
+s:currVerboseLevel:q_&:g
+s:osTg:q_&:g
+s:osRelTg:q_&:g
+s:diskTg:q_&:g
+s:syysNoTg:q_&:g
+s:syysCatTg:q_&:g
+s:syysTg:q_&:g
+
+#######################################################################################################
+

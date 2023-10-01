@@ -1,0 +1,49 @@
+evv-md1-dnts-format:
+=======================================================
+-------- REFs/nts:
+##--> are here ONLY comments/hints/explanations/comments ! 
+##--> except main-section-tags ALL text have indentation, to be parsed as code !! so no-md-formatting (as __ ** ...)
+---!! REFs see:
+expg  fold1             ##--> so in evvEnv in:  const.sh + vimrc ! for now they are INDEPENDENTLY defined in both const.sh + vimrc, so that vimrc is usable without evvEnv! but the evvEnv-var could be uebernommen in vimrc! see nts there in vimrc! so doppelt defined in vimrc + const.sh !):
+grepi fold1  $vimrcFP   ##--> vi /up1/.cev/etc/vimrc  , in one place there the ENV-vars could NOT be taken (foldmarker does NOT accept regexp/envvars!)! otherwise taken from evvEnv-vars !
+_RF-dnts-file:   decorators_dnts.md  in dnts:   /up1/mnt/T1fs/t1_RF/w1_RF/dc1k/dres/dnts/py_dnts/decorators_dnts.md
+
+
+############################  chapters-sepertor-line :  ##########################################       ##--> :(28# 2space xxx: 2space #to-min-98])
+
+#####  ==========  section-X : ##-->  _RF:  $q_fold1Sm
+					##--> one empty line ! MUST, due to "code-snap"/NOT-formatting!
+	_______:  SUBSection-Xy         ##--> ENV:  q_fold12Sm
+	- item1
+	- item1
+	- item1
+					##--> one empty line for overview in vim!
+	_______:  subsecrion-Xz
+	- item1
+	- item1
+	- item1
+##________________________________________  ___________________________
+
+		##--> TWO-empty-lines (also NOT-spaces/TABs !)
+#####  ==========  section-X : ##-->  _RF:  $q_fold1Em
+
+	_______:  subsecrion-12
+	- item1
+	- item1
+	- item1
+
+	_______:  subsecrion-12
+	- item1
+	- item1
+	- item1
+________________________________________  ___________________________
+
+		##--> TWO-empty-lines between chapters (also NOT-spaces/TABs !)
+##############################  chapter2 :  ######################################################
+#####  ==========  ##--> no-empty-line-isreuired between chapter-seperator and section-start
+##________________________________________  ___________________________
+
+
+....
+
+

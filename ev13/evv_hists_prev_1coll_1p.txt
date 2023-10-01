@@ -1,0 +1,81 @@
+_______________ from prev-versions... just _1coll here if ....! ____________________
+
+========== consts.sh /_131000 :  (prod/devel/test-IDs,...)
+################# ##---> from prev-releases-Evv-etc, but leave there, could be used !? : ===================
+##__  ##===== EnvID=... working-Env-IDs (ist it PROD/TEST):  ---> _1obsol?? NOT -ix but -xi !!  ---> NOT-needed, but ok for now (Erbe von FizIT_Y2008)
+##__  declare -xi prodID=50 # as silent ; warn/errors are ALWAYS printed out, INDEPENDENT of currEnvID or verboseLevel !!
+##__  declare -xi testID=60 # as info
+##__  declare -xi develID=70    # as debug
+##__  ##===== done-Flags for Evv-scripts:
+##__  declare -xi  q_ProfDone=${q_ProfDone:-0}
+##__  declare -xi  q_EnvDone=${q_EnvDone:-0}
+##__  declare -xi  prj0ProfDone=${prj0ProfDone:-0}
+##__  declare -xi  prj0EnvDone=${prj0EnvDone:-0}
+##--!!-in-use:
+declare -xi  q_XWinsProfDone=${q_XWinsProfDone:-0}
+#######_____ __1END__ from prev-releases-Evv-etc ___________________________
+
+
+##========== OS1-pkgs-listings for evv: apt/rpms/... (not needed for arx): /_191000 :=============================
+##----- pathes.sh :  OS, -PKGs-Repos-dirs...:
+##--I- for arx not that relevant, but keep these in case ubt/redhat/...:
+##------ pkgs-profs:  insPkgs + allPkgs  + syysPkgs + locPkgs (installed-system-pkgs  +  local-ablage/nps/-pkgs eg von evv , OS-/system-pkgs-DPs ,  remote-/repos-pkgs  settings ):
+##-- insPkgs  : installed-in current-System-locally-pkgs listings:
+insPkgsListShortFN=insPkgs_list_short.log
+insPkgsListLongsFN=insPkgs_list_longs.log
+insPkgsListInfosFN=insPkgs_list_infos.log
+insPkgsListShortFP=${syysTgLogsDP}/${insPkgsListShortFN}
+insPkgsListLongsFP=${syysTgLogsDP}/${insPkgsListLongsFN}
+insPkgsListInfosFP=${syysTgLogsDP}/${insPkgsListInfosFN}
+##-- allPkgs  : remote-repos-online-pkgs listings:
+allPkgsListShortFN=allPkgs_list_short.log
+allPkgsListLongsFN=allPkgs_list_longs.log
+allPkgsListInfosFN=allPkgs_list_infos.log
+allPkgsListShortFP=${syysTgLogsDP}/${allPkgsListShortFN}
+allPkgsListLongsFP=${syysTgLogsDP}/${allPkgsListLongsFN}
+allPkgsListInfosFP=${syysTgLogsDP}/${allPkgsListInfosFN}
+##---  __1END__ syys + OS-pkgs-Repos DIRs pathes.sh ------------------
+
+##-----.cuue/etc/aliases.sh  pkgs-Arx + allg : ---------------------
+##-I-not relevant for arx, but keep them maybe ubt/...:
+##--!!- i/a/l/spkg == ins/all/local/system-Pkgs  bzw.  installed/All-Repos/Local-packs/System-OS-managed/-packages:
+alias ipkgssg="pacman -Q | grepi" ; ##--prev-also-OK but arch is pretty fast! : "cat ${insPkgsListShortFP}  | grep1  -i" ;
+alias apkgssg="cat ${allPkgsListShortFP}  | grep1  -i" ;
+alias lpkgssg="find $syysLocReposDP       | grep1  -i" ; ##--II-eigentlich these find vrsoins should be as functions, like findin(), but here just all four types of pkgs together, so uebersichtlicher !
+alias spkgssg="find $osPkgsCacheDP  $osPkgsLibsDP  | grep1  -i" ;
+##----- APTs/dpkgs /ubuntu   : -------- pkgs == installed.pkgs ,  apts == all.pkgs ---------
+alias pkgssg="cat  ${syysTgLogsDP}/instPkgs-list-oneLiners---dpkg-query_list.log    |  grep1  -i"
+alias pkgsfg="cat  ${syysTgLogsDP}/instPkgs-filesListings---dpkg-query_L.log        |  grep1  -i"
+##__ alias aptssg="cat  ${syysTgLogsDP}/allPkgs-list-namesOnly---apt-cache_pkgnames.log  |  grep1  -i"  ##--is not containging if it is installed or not! see take the next line!:
+alias aptssg="cat  ${syysTgLogsDP}/allPkgs-list-stat---apt_list.log  |  grep1  -i"
+alias aptsiv="vi1   ${syysTgLogsDP}/allPkgs-infos---apt-cache_show.log"
+##---     __1END__  OS1-syystem1  : aliases.sh   -----------------------------------
+
+##==========================================================================================
+
+
+########## asus14 keybindings : ###### .cuue/etc/xwinsProf.sh /_200100 : #################
+##===== !! ONLY on asus14: keyboard-remapping... , due to PageUp/down  mis-posiitons! take this manually out by other Hosts!!:
+##--II: the Middle/second assignment is for Shift+ !
+a14_hostid="007f0101"    ##--output of the hostid cmd on ausu14-ZenBook--2004arx-usb128  /_200326
+declare -xi a14_keys_done=0 ;
+##--II-run this function lieber manually (once per session is sufficient. Typical /etc/proffile case !), due to delay by opening new terminals.
+##-- for-not-manually, you could call the funciont in:
+##--   [[  $q__cu_hostid == "$a14_hostid" ]]  &&  (( a14_keys_done < 1 )) && { psl "$a14_hostid a14 xwins-prof:" ; a14_keys1 ; }
+a14_keys1(){
+	xmodmap  -e  "clear Lock" ##__?? xmodmap  -e  "remove Lock = Caps_Lock"
+	xmodmap  -e  "keycode 66 ="
+	xmodmap  -e  "keycode 113 = Left Home Left"      ##--Shift+LeftArrow   = Home/Pos1
+	xmodmap  -e  "keycode 114 = Right End Right"     ##--Shift+RightArrow  = End
+	xmodmap  -e  "keycode 111 = Up Prior Up"         ##--Shift+UpArrow     = PageUp/PriorPage-Taste
+	xmodmap  -e  "keycode 116 = Down Next Down"      ##--Shift+DownArrow   = PageDown/NextPage
+	((a14_keys_done++))
+}
+##----------------------------------------------------
+########## __1END__  ausu14 ==========================================####################
+
+
+
+
+
+
