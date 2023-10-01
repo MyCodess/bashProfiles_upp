@@ -20,6 +20,7 @@
 
     [u1@2209arx up1_git]$ git switch -c wk1
     [u1@2209arx up1_git]$ git push -u origin wk1  ##--push my new local-branch to the remoteRepo as a new branch and sync them !
+    [u1@2209arx up1_git]$ gh  pr  create  --title  "nts-more-pullReq--$($cudts2)" --body "$($cudts2) : more-dnts, pl. merge wk1-branch-into-main"
 
 ##________________________________________  ___________________________
 
