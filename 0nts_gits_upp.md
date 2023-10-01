@@ -17,6 +17,9 @@
     [u1@2209arx up1_git]$ git remote add origin git@github.com:MyCodess/bashProfiles_upp.git
     [u1@2209arx up1_git]$ git add .
     [u1@2209arx up1_git]$ git commit -m "initial-commit-evv"
+
+    [u1@2209arx up1_git]$ git switch -c wk1
+    [u1@2209arx up1_git]$ git push -u origin wk1  ##--create my new local-branch on the remoteRepo and sync them !
 ##________________________________________  ___________________________
 
 
