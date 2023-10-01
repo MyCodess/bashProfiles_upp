@@ -19,7 +19,8 @@
     [u1@2209arx up1_git]$ git commit -m "initial-commit-evv"
 
     [u1@2209arx up1_git]$ git switch -c wk1
-    [u1@2209arx up1_git]$ git push -u origin wk1  ##--create my new local-branch on the remoteRepo and sync them !
+    [u1@2209arx up1_git]$ git push -u origin wk1  ##--push my new local-branch to the remoteRepo as a new branch and sync them !
+
 ##________________________________________  ___________________________
 
 
