@@ -45,6 +45,14 @@ alias  terms1col3="xfce4-terminal  $terms1winsParamsAll1  $terms1tabsParams3 --t
 alias  terms1col5="xfce4-terminal  $terms1winsParamsAll1  $terms1tabsParams5 --tab $terms1tabsParams5 --tab $terms1tabsParams5 --tab $terms1tabsParams5 --tab $terms1tabsParams5"
 ##__OK1: alias  terms1col3="xfce4-terminal  --disable-server  --font='Monospace 10' $terms1tabsParams3 --tab $terms1tabsParams3 --tab $terms1tabsParams3 --tab $terms1tabsParams3 --tab $terms1tabsParams3"
 
+##==========  _1GITs-all:
+##--! abbbrev_1evv: gt = GIT
+##----- loc/evv/L1NW/..._1GITs
+gtW1LocReposDN=gits_w1
+gtW1LocReposRTDP="${vaarAuWorksDP}/${gtW1LocReposDN}"
+#- aliases:
+alias  cdgtw1repos="cdlla ${gtW1LocReposRTDP}"
+
 ##______________ 1END_____________________________________________________
 q_ple1  "${BASH_SOURCE[0]##*/}"
 
