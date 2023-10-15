@@ -27,6 +27,12 @@ mkdir -p $(cd Source-DIR  && tree -dif --noreport)  ##--!use also -L /Level if n
 ##________________________________________  ___________________________
 
 
+
+#####  ==========  rsyncx-allg-nts:
+    - ignoring certain properties (sp. after rsync -a ): –no-links –no-perms –no-times –no-group –no-owner –no-devices
+##________________________________________  ___________________________
+
+
 #####  ==========  sizes/du/MB-space/...
 - du -m --max-depth=5 .[[:alnum:]][[:alnum:]]* | sort -n    ;  findin $uueNoBupFlagFN
 - total-sizes of all tree-directories :  tree -n   --du -fi | sed 's/[^[:digit:]]*//'  |  sort -n   ##see man tree ! for --du it MUST read the whole tree! so does NOT work with "-L x" or -d ,...

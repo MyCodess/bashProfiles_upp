@@ -62,7 +62,7 @@ ________________  evEnv-nts: ___________________________________________
 
 ############## evv-profiles-nts: #################################################################################
 --- eg restting evEnv /testen...:
-	cdwks; evvenset ; export q_UppDP=/up1/ ; export q_Profile2PresetsFP=./ev37/etc/etcd/profile2_${USER}_ps.sh ; export q_Profile2FP=./ev37/etc/etcd/profile2_${USER}.sh ;  source ./ev37/etc/profile.sh
+	cdwks; evvunset ; export q_UppDP=/up1/ ; export q_Profile2PresetsFP=./ev37/etc/etcd/profile2_${USER}_ps.sh ; export q_Profile2FP=./ev37/etc/etcd/profile2_${USER}.sh ;  source ./ev37/etc/profile.sh
 	cdwks; evvunset ; export q_UppDP=/up1/ ; source ./ev37/etc/profile.sh
 
 
@@ -92,10 +92,12 @@ ________________  evEnv-nts: ___________________________________________
 
 
 ========== prj-tree/-ev-helpers:
-- prj-Dirs-listings-helpers  for mkdir,... (eg here for py1):
-	expg       DP=\"/up1/prjs/py1
-	echo ${!prj@}  |   tr ' ' '\n' |  grep DP | sort ##--eg:   | xargs -n 1 mkdir
-
+--- prj-tree/Dirs create, based on envVars:
+	- prj1-DIRs/tree creation : cdprj ; mkdir $(export | grep -E  "prj.*DP" | sort | sed -e 's@.*/@@' -e 's@[^[a-z]]*@@g' ) ;
+	- listing prjDirs:   export | grep  DP=\"$prjDP | sort
+	- listing prj-var-names in lines :  echo ${!prj@}  |   tr ' ' '\n' |  grep DP | sort    ##-- for:  xargs -n 1 mkdirA /OR vi modifs with mkdir ...
+--- varau-tree/Dirs create, based on envVars:
+	mkdir  $(export | grep -E  "vaarAu.*DP" | sort | sed -e 's@.*/@@' -e 's@[^[a-z]]*@@g' )
 
 
 

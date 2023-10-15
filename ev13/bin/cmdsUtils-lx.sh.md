@@ -12,7 +12,7 @@ exit 3
 	#- wget-html-site-for-offline-browsing, max 3 levels, no treestructure:  --2do- mozilla? + verbose? :
 	alias wgethtmloff1='wget --output-file=0dw.log --restrict-file-names=windows,nocontrol --no-directories  --html-extension --recursive --level=3 --convert-links --page-requisites --no-parent --relative  --user-agent="Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.3) Gecko/20040922"'
 
-	--- OK mirroring/rsync a http-DIR , so NOT-downloading again the existings locally, and dw ONLY the newer ones,  OK worked (kind os rsync , but still missing --delete ! so kind of quick mirroring of the directory )
+	--- OK mirroring/sync a http-DIR , so NOT-downloading again the existings locally, and dw ONLY the newer ones,  OK worked (kind os rsync , but still missing --delete ! so kind of quick mirroring of the directory )
 	- (try -m instead , if ok !?!? )
 	- first dry/simulation with  --spider
 	cd  /up1/t1/mirror1/core1/os/x86_64

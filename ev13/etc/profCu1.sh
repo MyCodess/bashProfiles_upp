@@ -44,6 +44,9 @@ terms1tabsParams5="--dynamic-title-mode=replace  --color-bg="#FFDD00" --color-te
 alias  terms1col3="xfce4-terminal  $terms1winsParamsAll1  $terms1tabsParams3 --tab $terms1tabsParams3 --tab $terms1tabsParams3 --tab $terms1tabsParams3 --tab $terms1tabsParams3"
 alias  terms1col5="xfce4-terminal  $terms1winsParamsAll1  $terms1tabsParams5 --tab $terms1tabsParams5 --tab $terms1tabsParams5 --tab $terms1tabsParams5 --tab $terms1tabsParams5"
 ##__OK1: alias  terms1col3="xfce4-terminal  --disable-server  --font='Monospace 10' $terms1tabsParams3 --tab $terms1tabsParams3 --tab $terms1tabsParams3 --tab $terms1tabsParams3 --tab $terms1tabsParams3"
+#
+#####  ==========  
+alias  cdnpshdd="cdlla  ${q_Bups1LocMed1RTDP}/T1_Loc/nps"
 
 ##==========  _1GITs-all:
 ##--! abbbrev_1evv: gt = GIT

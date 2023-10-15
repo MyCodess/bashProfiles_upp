@@ -4,14 +4,14 @@ set  -a
 q_pls1  "${BASH_SOURCE[0]##*/}"
 
 #-------- prj-global-IDs/tags of PRJ : -----------------
-prjTag=py  ##--II- name-abbreviated, short-tag
-prjNo=1    ##--II- curren No assigned; no meaning/relation to ver/...; nur fuer eindeutigkeit...
-prjID=${prjTag}${prjNo}  ##--II- MAIN-Prj-ID/Name/Ref.ID/... used in ...
-SW1Name=python      ##--II- very General-Topic-/technical-Name. eher descriptive, not really used !
-SW1Tag=${prjTag^}              ##--I-convert first char to uppercase! see man bash /"Case modification"  /OR  /\^\^   !
-SW1NameID=${SW1Name}${prjNo}   ##--II- NOT-really-used, because APP! is already the global topic of the current project ! redundant? or just descriptive!?
+q_prjTag=py  ##--II- name-abbreviated, short-tag
+q_prjNo=1    ##--II- curren No assigned; no meaning/relation to ver/...; nur fuer eindeutigkeit...
+q_prjID=${q_prjTag}${q_prjNo}  ##--II- MAIN-Prj-ID/Name/Ref.ID/... used in ...
+q_SW1Name=python      ##--II- very General-Topic-/technical-Name. eher descriptive, not really used !
+q_SW1Tag=${q_prjTag^}              ##--I-convert first char to uppercase! see man bash /"Case modification"  /OR  /\^\^   !
+q_SW1NameID=${q_SW1Name}${q_prjNo}   ##--II- NOT-really-used, because APP! is already the global topic of the current project ! redundant? or just descriptive!?
 ##--- L2-vars
-prjID_active1="${prjID}"    ##--II-setting the active prj to this one!
+prjID_active1="${q_prjID}"    ##--II-setting the active prj to this one! var-name MUST withOUT q_ , for switching between prjs and call sus1unset !
 
 #---------- specifices/addiotional-prj-DPs...:
 
