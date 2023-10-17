@@ -3,8 +3,8 @@ exit 3
 
 
 #####  ==========  DIR-tree-mirroring/....: 
-#- dir-structure mirrorong with tree (instead of find): (copy dir-tree only, empty)
-mkdir -p $(cd Source-DIR  && tree -dif --noreport)  ##--!use also -L /Level if not all dir-depth is wanted !
+    - dir-structure mirrorong with tree (instead of find): (copy dir-tree only, empty)
+    mkdir -p $(cd Source-DIR  && tree -dif --noreport)  ##--!use also -L /Level if not all dir-depth is wanted !
 ##________________________________________  ___________________________
 
 

@@ -9,6 +9,7 @@ exit 3
     - first evt. updaets from _CP to _RF non_cu_RF (so -u and no --delete, ONLY-evtl.-updates/changes-on-HP13:  HP13/non_RF --> Lv13/usb_RF) :
         rsync -n -avO  --no-perms -u  /up1/t1/w1_RF/dc1K/  /mnt/t1/w1_RF/dc1K/
     - _RF to _CP sync:  
+
 	_______:  tar-accumulative--w1_RF + updates:
     - incr-w1-bups1: - 2chk! :
     date;  days11=10  srcDP11="${w1DPPhys}/"  destDP11="${vaarAuBups1DP}/bups1w1/"  destFP11=${destDP11}/w1_newer--$($cuds)-${days11}_days.tgz ;  cdlla "${destDP11}" &&  tar -cpzvf   ${destFP11}   $(find  "${srcDP11}"  -mtime -${days11}  -type f) >  ${destFP11}.log  ; date ;
