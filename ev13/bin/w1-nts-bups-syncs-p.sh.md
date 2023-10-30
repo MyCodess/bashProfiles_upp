@@ -5,10 +5,14 @@ exit 3
 #####  ==========  cu1-...:
 
     _______:  samba/cifs rsync (Lv13 (t1_RF-usb) <--> HP13 (t1_CP , evtl. some updates) ...):
-    - mount -t cifs  //192.168.43.15/t1_RF_Lv13   /mnt/t1  -o  username=u1,iocharset=utf8,uid=u1,gid=gu1
-    - first evt. updaets from _CP to _RF non_cu_RF (so -u and no --delete, ONLY-evtl.-updates/changes-on-HP13:  HP13/non_RF --> Lv13/usb_RF) :
-        rsync -n -avO  --no-perms -u  /up1/t1/w1_RF/dc1K/  /mnt/t1/w1_RF/dc1K/
-    - _RF to _CP sync:  
+    1- mount -t cifs  //192.168.43.15/t1_RF_Lv13   /mnt/RFt1  -o  username=u1,iocharset=utf8,uid=u1,gid=gu1
+    2- first evt. updaets from _CP to _RF non_cu_RF (so -u and no --delete, ONLY-evtl.-updates/changes-on-HP13:  HP13/non_RF --> Lv13/usb_RF) :
+        rsync  -n  -v  -rtlHO  --modify-window=5  -u   /up1/t1/w1_RF/dc1K/  /mnt/RFt1/w1_RF/dc1K/   ##--!! NO --delete + -u !  #-bzw:
+        /OR:  rsync  -n  -avO  --no-perms -u  /up1/t1/w1_RF/dc1K/  /mnt/RFt1/w1_RF/dc1K/
+    3- _RF to _CP sync:  
+        dry11=' '   syc_from=/mnt/RFt1/w1_RF/   syc_to=/up1/t1/w1_RF/    w1-sync.sh   ##---bzw.:
+        /OR:  rsync    -n  -v -rtlHO --modify-window=5  --delete      /mnt/RFt1/w1_RF/  /up1/t1/w1_RF/   ##--bzw.:
+        /OR:  rsync    -n  -avO   --modify-window=5  --delete      /mnt/RFt1/w1_RF/  /up1/t1/w1_RF/
 
 	_______:  tar-accumulative--w1_RF + updates:
     - incr-w1-bups1: - 2chk! :

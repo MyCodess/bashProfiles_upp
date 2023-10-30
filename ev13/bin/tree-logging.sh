@@ -32,6 +32,9 @@ tree -d -L 3  $flags2  "$startDir1"
 echo;  echo ============================= tree-4 :
 tree -d -L 4  $flags2  "$startDir1"
 
+echo;  echo "========== long-8 ########### tree-8 :"
+tree -d -L 8  $flags2  "$startDir1"
+
 echo;  echo ============================= commands/script-lines executed were:
 cat $0   | grep  -F -v "echo"
 
