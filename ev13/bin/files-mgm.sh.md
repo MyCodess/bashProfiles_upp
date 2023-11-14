@@ -3,8 +3,8 @@ exit 3
 
 
 #####  ==========  DIR-tree-mirroring/....: 
-#- dir-structure mirrorong with tree (instead of find): (copy dir-tree only, empty)
-mkdir -p $(cd Source-DIR  && tree -dif --noreport)  ##--!use also -L /Level if not all dir-depth is wanted !
+    - dir-structure mirrorong with tree (instead of find): (copy dir-tree only, empty)
+    mkdir -p $(cd Source-DIR  && tree -dif --noreport)  ##--!use also -L /Level if not all dir-depth is wanted !
 ##________________________________________  ___________________________
 
 
@@ -24,6 +24,12 @@ mkdir -p $(cd Source-DIR  && tree -dif --noreport)  ##--!use also -L /Level if n
 	- mv src <same-partition-as-dst due to: cp -l >  ;  cp  -anv -l  src/*   dest/   ##--with -l: only inode-copying into src/ !  then:  rm -rf src/ ; /OR even into new dir: cp  -anv -l  src1/*   src2/*  dest/
 	- rsync  -ax  --link-dest=dir1/   src/  dest/   ##--2chk !
 	- tar OK:    cd $srcDir  ; tar -cf -  .  | tar  -C  $destDir  -xf -
+##________________________________________  ___________________________
+
+
+
+#####  ==========  rsyncx-allg-nts:
+    - ignoring certain properties (sp. after rsync -a ): –no-links –no-perms –no-times –no-group –no-owner –no-devices
 ##________________________________________  ___________________________
 
 

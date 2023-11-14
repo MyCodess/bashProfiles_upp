@@ -10,10 +10,20 @@
 ##________________________________________  ___________________________
 
 
-#####  ==========  samba / mswin-shares,... qcks:
+#####  ==========  samba / mswin-shares+rsyncs,... qcks:
 	- listing-all-MsWIn-shares-on-X13:   smbclient -L \\192.168.43.106  ##- bzw.  \\ X13  ;but foor netbios-hostnames must start winbind.service :
-	- hotnames-of-mswin-PCs /NetBios-names:  systemctl start winbind.service
+	- try with IPs instead hostname! easier!
+    - if using hotnames-of-mswin-PCs /NetBios-names:  systemctl start winbind.service
 	- pathes:  smb://192.168.43.106/x13-t1_loc/  bzw.  smb://X13/x13-t1_loc/
+
+    --- rsync-steps/nts of cifs parts:
+    -! mswin-share can be mounted ONLY with PW set for the mswin-user ! empty-PWs or anonym does NOT work here!
+    - for rsync also the share-permissions MUST be set to full-perms, if want to rsync to it !
+    - the mswin-nw should be as rivate-NW!
+    - if connection-problems, then try disabling mswin-firewall on that NW-connection !?
+    - smbclient -L  192.168.43.15  --user=u1
+    - mount -t cifs  //192.168.43.15/t1_Lv13   /mnt/t1  -o  username=u1,iocharset=utf8,uid=u1,gid=gu1  ##--file_mode/dir_mode/masks have kaum effekt ...! see man !
+    - rsync ... --no-perm  --no-own ...; eg:  rsync -n -avO  --no-perms [-u]  /up1/t1/w1_RF/dc1K/  /mnt/t1/w1_RF/dc1K/
 ##________________________________________  ___________________________
 
 

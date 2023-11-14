@@ -4,7 +4,7 @@ set  -a
 q_pls1  "${BASH_SOURCE[0]##*/}"
 
 #-------- prj-global-IDs/tags of PRJ : -----------------
-q_prjTag=py  ##--II- name-abbreviated, short-tag
+q_prjTag=ofc  ##--II- name-abbreviated, short-tag
 q_prjNo=1    ##--II- curren No assigned; no meaning/relation to ver/...; nur fuer eindeutigkeit...
 q_prjID=${q_prjTag}${q_prjNo}  ##--II- MAIN-Prj-ID/Name/Ref.ID/... used in ...
 q_SW1Name=python      ##--II- very General-Topic-/technical-Name. eher descriptive, not really used !
