@@ -13,11 +13,11 @@ myname11="${0##*/}"
 export dry11="${dry11:-  -n}" ;
 ##-2DO: better way, setting dry11=NO for dry!:   [[ ${dry11^^} = "NO" ]] && dry11=" " || dry11="-n"  ##--/OR: [[ $dry11 == "NO" ]] && dry11="" || dry11="-n" ; export dry11 ;
 export params11="${params11:- }" ;
-export syc_from="${syc_from:-/mnt/RFt1/w1_RF/}"  ;  export syc_to="${syc_to:-${w1DP}/}" ;  ##--mswin-cifs-w1---to-arx-w1
-##__OK1-Lx-to-usbMed:  export syc_from="${syc_from:-${w1DP}/}"  ; export syc_to="${syc_to:-${q_Bups1Med1DP}/bups1w/w1_BP/}" ;
+export syc_from="${syc_from:-${w1DP}/}"  ;
 ##__ to-t1-loc   :  export syc_to="${syc_to:-/up1/t1/w1_BP/}" ;
 ##__ to-MED1     :  export syc_to="${syc_to:-/up1/media/MED1_RF/w1_CP/}" ;
 ##__ to-BUPS1MD1 :    
+export syc_to="${syc_to:-${q_Bups1Med1DP}/bups1w/w1_BP/}" ;
 
 USAGE1="[ dry11=' ' params11='-u -x -y ...' syc_from='xxx'  syc_to='yyy' ]   ${myname11} " ; #see default values for these VARs!, also default is DRY (so NOT doing rsync) otherwise set it to empty with dry11="  " !
 echo  "_____________________________________________________________________"; echo;

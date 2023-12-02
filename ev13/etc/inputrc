@@ -12,3 +12,9 @@ set show-all-if-ambiguous   on
 ##--- Killing and Yanking:
 Control-h: kill-whole-line
 ##--------------
+
+#####  ==========  MsWins/CygWins :
+[[ mswinos1 == 1]] &&  set completion-ignore-case On
+###________________________________________  ___________________________
+
+[[ -a ~/.inputrc ]] &&  $include  ~/.inputrc  ||  echo "##__ not-file:  ~/.inputrc !!"

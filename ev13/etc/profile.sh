@@ -5,7 +5,7 @@ shopt  -s  expand_aliases
 export HISTCONTROL=ignoreboth:erasedups
 
 ##--- tiny internal printline-func for profiles-debugging:
-:  ${q_profsDebug11:=0} ; 
+:  ${q_profsDebug11:=10} ; 
 q_pls1 () { (( $q_profsDebug11 >9 )) &&  echo  "=====  :  $1" ; } ;  ##--start-print-liner
 q_ple1 () { (( $q_profsDebug11 >9 )) &&  echo  "---    :  $1" ; } ;  ##--end-print-liner
 declare -fx q_pls1  q_ple1 ;
@@ -16,9 +16,11 @@ q_pls1  "${BASH_SOURCE[0]##*/}"
 ##--II- Init1-vars may NOT be changed ever, and set ONLY the first time, to the OS-org-values !!
 ##--II- Init1-vars NOT prefix with q_ !! they must be really ReadOnly (declare -xr) and may NOT be chenged! but -xr reports error message if again sus ...! so ok!
 Init1Path1=${Init1Path1:-$PATH} 
-PS1=${PS1:-"[\\u@\\h \\W]\\\$ "}  ##--II- in non-interactive-shells it is not set! so just a default, due to "set -u" above !!
+PS1=${PS1:-"\\W : "}   ##--OK1: with PWD-in-extra-line:  PS1=${PS1:-"\w\n\\W : "} ##--OK1-incl-user@host:  PS1=${PS1:-"[\\u@\\h \\W]\\\$ "}  ##--II- in non-interactive-shells it is not set! so just a default, due to "set -u" above !!
 Init1PS1=${Init1PS1:-$PS1}
 Init1HistFile=${Init1HistFile:-"$HISTFILE"}  ; 
+uname1infs=$(uname -a) ; mswinos1=0  ##--plattform is linux as default
+[[ $uname1infs  =~ CYG  ||   $uname1infs  =~ MING ]] && mswinos1=1  ##--if plattform is mswin with cygwin or git-bash/MINGW64
 ##------------- __1END__ Init1/1orgs/prev-vars (orgs from OS/System) : ---------------------
 
 set  -u  ##--I-must be after Init1-part !!

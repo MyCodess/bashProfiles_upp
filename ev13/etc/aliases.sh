@@ -160,7 +160,7 @@ alias mvfrom2sohere="mv -iv   ${tosoDP}/*  ./ "
 alias pcuds1='echo; echo ===== cuds1:  $($cuds) , $($cuds)- , $($cudts) === yest:  $($cuds --date="-1 day") , $($cuds --date="-1 day")-  =====; echo;'   ##--print-cuds-all-1
 alias pingchecks1='el1d; for ii in  8.8.8.8  www.google.de  pop.mail.yahoo.de  pop3.strato.de ;do echo "=========== $ii :" ; ping -c 3  $ii ; echo;el1 ; done'   ##-- 8.8.8.8  is a Google DNS server 
 alias promptlong="PS1='\u@\h:\w >'"
-alias promptshort="PS1='\u@\h:\W >'"
+alias promptshort="PS1='\W : '"  ##--OK1-incl-user@host:  alias promptshort="PS1='\u@\h:\W >'"
 alias psg='ps -AFcjwwww |  grep1  -v  grep  |  grep -E  --color=auto  -e PPID  -ie'
 alias psu='ps -f -u $q_LOGNAME'
 alias psug='ps -f -u $q_LOGNAME | grep1  -v grep1  | grep1  -i'

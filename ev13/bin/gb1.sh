@@ -7,9 +7,9 @@
 
 
 ##__ set -x
-usag11="USAGE:   $0   <path-to-loc-git-repo/clone>   <local_Branch_Name-to-be-pushed+merged"
+usag11="USAGE:   $0   <path-to-local-repo> <local-branch-name>"
 locRepo11=${1:?"$usag11"}
-brName11=${2:?"$usag11"}
+locBr11=${2:?"$usag11"}
 
 echo; echo "_______status-check: __________________________";
 PS4="________ "
@@ -26,15 +26,15 @@ git status
 $pauseCmd1
 
 echo; echo "_______change+commit:__________________________";
-git  switch ${brName11}
-el1d "${brName11}-mod" >> f1_flg.txt
-git  commit -a -m "${brName11}-commit--for-pr"
-git  push     ##__ [ -v   --set-upstream origin ${brName11} ]
+git  switch ${locBr11}
+el1d "${locBr11}-mod" >> f1_flg.txt
+git  commit -a -m "${locBr11}-commit--for-pr"
+git  push     ##__ [ -v   --set-upstream origin ${locBr11} ]
 $pauseCmd1
 
 echo; echo "_______pull-request-handling: _________________";
-gh  pr  create  --title  "gh_cmd-pr1--$($cudts2)"  --body "$($cudts2) : gh_cmd-pr-created on 2209arx for ${brName11}-merge-into-main"
-gh  pr  merge -m ${brName11}
+gh  pr  create  --title  "gh_cmd-pr1--$($cudts2)"  --body "$($cudts2) : gh_cmd-pr-created on 2209arx for ${locBr11}-merge-into-main"
+gh  pr  merge -m ${locBr11}
 
 ##__  $pauseCmd1
 ##__  echo  "----------- if like: create+delete repoXX : -----------------------"
