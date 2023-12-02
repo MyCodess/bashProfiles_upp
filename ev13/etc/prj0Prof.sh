@@ -15,8 +15,10 @@ q_pls1  "${BASH_SOURCE[0]##*/}"         ##--prev:  export myname11="${BASH_SOURC
 	##- prj <---> SW1 in VAR-names :  eg: prj... is py1-dirs/... ,and its Software/topic/... is SW1...
 	##- whereas eg: py1 is a specific project , but PYTHON is its global.pkg/software
 
-##__py-prj:   
-:  ${prjID_active1:="py1"}    ##--II-set this on-the-terminal-cmdline to your prjID, if wanted in one-terminal to have this prj-env !
+##__py-prj:   :  ${prjID_active1:="py1"}    ##--II-set this on-the-terminal-cmdline to your prjID, if wanted in one-terminal to have this prj-env !
+##__ofc1-prj:   
+:  ${prjID_active1:="ofc1"}    ##--II-set this on-the-terminal-cmdline to your prjID, if wanted in one-terminal to have this prj-env !
+
 ##__
 [[ $prjID_active1 ]] && { 
 :	${q_prjProfFP:="${q_prjsProfDP}/prjProf_${prjID_active1}.sh"} ;
@@ -42,7 +44,7 @@ q_prjTestsDP="${q_prjDP}/tests"
 q_prjTmpDP="${q_prjDP}/tmp"
 q_prjUtilsDP="${q_prjDP}/utils"
 q_prjWksDP="${q_prjDP}/wks"
-q_prjWadsDP="${q_prjDP}/wpads"
+q_prjWadsDP="${q_prjDP}/wpd"
 
 #--------- level.3+: prjX-var-sub-dirs : --------------------------
 q_prjUnpDP="${q_prjVarDP}/unp"
@@ -50,9 +52,9 @@ q_prjPkgsDP="${q_prjVarDP}/pkgs"
 ##__  prjTagsDP="${q_prjEtcDP}/tagsdir"
 
 #--------- prj-w1/t1/dnts/...DIRs global for all prjs : ---------------
-q_SW1dntsDP=${dntsDP}/${q_prjTag}${q_Label1dnts}           ##-I-SW1-dnts
-q_SW1dresDP=${dresCodecsDP}/${q_prjTag}${q_Label1dres}           ##-I-SW1-codecs1_dres_1coll
-q_SW1dres1kkDP=${dresCodecsDP}/${q_prjTag}${q_Label1dres1kk}    ##-I-SW1-codecs1_dres_1coll
+q_SW1dntsDP=${dntsDP}/${q_SW1Tag}${q_Label1dnts}           ##-I-SW1-dnts
+q_SW1dresDP=${dresCodecsDP}/${q_SW1Tag}${q_Label1dres}           ##-I-SW1-codecs1_dres_1coll
+q_SW1dres1kkDP=${dresCodecsDP}/${q_SW1Tag}${q_Label1dres1kk}    ##-I-SW1-codecs1_dres_1coll
 q_SW1DocsDP=${dcItDP}/${q_SW1Tag}_dc     ##-I-SW1-w1_docs
 q_SW1DocsvarDP="${docsvarDP}/${q_SW1Tag}_docsvar"
 q_SW1DWsDP="${dwsvarDP}/${q_SW1Tag}_DWs"        ##-I-APPS1-Downloads/t1_lag/packs_DWs/ISOs/big-PKGs/...
