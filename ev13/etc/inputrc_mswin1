@@ -1,0 +1,3 @@
+############## shit-mswin-settings: #####################################
+##--Not-worked-in-inputrc:  [[ $mswinos1 == 1 ]] &&  set completion-ignore-case On
+set completion-ignore-case On   ##--OR-on-cmdline:   bind "set completion-ignore-case on"
