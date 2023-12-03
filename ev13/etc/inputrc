@@ -1,6 +1,9 @@
+##--??worked??:   [[ -a ~/.inputrc ]] &&  $include  ~/.inputrc  ||  echo "##__ not-file:  ~/.inputrc !!"
+$include  ~/.inputrc
+
 ##---- Readline Initializations evEnv, see man bach --> Readline Initializations  
 set bell-style	            visible
-set completion-query-items	20
+set completion-query-items	22
 set editing-mode            emacs
 #--?- set horizontal-scroll-mode   on
 set keymap                  emacs
@@ -12,9 +15,3 @@ set show-all-if-ambiguous   on
 ##--- Killing and Yanking:
 Control-h: kill-whole-line
 ##--------------
-
-#####  ==========  MsWins/CygWins :
-[[ mswinos1 == 1]] &&  set completion-ignore-case On
-###________________________________________  ___________________________
-
-[[ -a ~/.inputrc ]] &&  $include  ~/.inputrc  ||  echo "##__ not-file:  ~/.inputrc !!"

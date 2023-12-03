@@ -34,6 +34,7 @@ q_Funcs1FN=funcs1.sh         ##--?- q_LogoutFN=logout.sh
 q_Funcs2FN=funcs2.sh         ##--?- q_LogoutFN=logout.sh
 q_ProfCu1FN=profCu1.sh         ##--?- q_LogoutFN=logout.sh
 q_XWinsProfFN=xwinsProf.sh
+q_mswinProfFN=mswinProf.sh
 
 ##----------- profiles_FilesPathes-Evv --------------------------------
 ##-- FPs:  Profiles-FilePathes:
@@ -47,6 +48,7 @@ q_Funcs1FP=${q_EttcDP}/${q_Funcs1FN}
 q_Funcs2FP=${q_EttcDP}/${q_Funcs2FN}    
 q_ProfCu1FP=${q_EttcDP}/${q_ProfCu1FN}
 q_XWinsProfFP=${q_EttcDP}/${q_XWinsProfFN}
+q_mswinProfFP=${q_EttcDP}/${q_mswinProfFN}
 ##--?- q_LogoutFP=${q_EttcDP}/${q_LogoutFN}
 
 
