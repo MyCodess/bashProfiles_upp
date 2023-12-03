@@ -32,19 +32,20 @@ q_prjDP="${q_prj0DP}/${q_prjID}"   ##-I- prj.devel/wks-root ##-??- prjTag instea
 q_prjVarDP="${vaarAuDP}/${q_prjID}var"       ##-I- prj.var.root : could be used for several prj.nos !?
 
 #--------- level.2 : prjX-sub-dirs,  : --------------
-q_prjAppsDP="${q_prjDP}/apps"  ##- as sqls,.pysqls,... : Bez.ok??
+q_prjAppsDP="${q_prjDP}/apps1"  ##- as sqls,.pysqls,... : Bez.ok??
 q_prjBM1DP="${q_prjDP}/bm1_links"
 q_prjBinDP="${q_prjDP}/bin"
-q_prjCasesDP="${q_prjDP}/cases"
-q_prjDocsDP="${q_prjDP}/docs"
+q_prjCasesDP="${q_prjDP}/cases1"
+q_prjDocsDP="${q_prjDP}/docs1"
+q_prjDntsDP="${q_prjDP}/dnts1"
 q_prjEtcDP="${q_prjDP}/etc"
-q_prjFuncsDP="${q_prjBinDP}/funcs"
-q_prjLibsDP="${q_prjDP}/libs"
-q_prjTestsDP="${q_prjDP}/tests"
-q_prjTmpDP="${q_prjDP}/tmp"
-q_prjUtilsDP="${q_prjDP}/utils"
-q_prjWksDP="${q_prjDP}/wks"
-q_prjWadsDP="${q_prjDP}/wpd"
+q_prjFuncsDP="${q_prjBinDP}/funcs1"
+q_prjLibsDP="${q_prjDP}/libs1"
+q_prjTestsDP="${q_prjDP}/tsts1"
+q_prjTmpDP="${q_prjDP}/tmp1"
+q_prjUtilsDP="${q_prjDP}/utils1"
+q_prjWksDP="${q_prjDP}/wks1"
+q_prjWadsDP="${q_prjDP}/wpd1"
 
 #--------- level.3+: prjX-var-sub-dirs : --------------------------
 q_prjUnpDP="${q_prjVarDP}/unp"
@@ -69,11 +70,13 @@ alias cdprj0='cd ${q_prj0DP} && ll && pwd'
 ##----- aliasas-prj-dir: -----------------------------------------
 alias  cdprj='cdlla      ${q_prjDP}'
 alias  cdprjbin='cdlla   ${q_prjBinDP}'
+alias  cdprjdnts='cdlla   ${q_prjDntsDP}'
+alias  cdprjetc='cdlla   ${q_prjEtcDP}'
+alias  cdprjpkg='cdlla   ${q_prjPkgsDP}'
+alias  cdprjvar='cdlla   ${q_prjVarDP}'
 alias  cdprjtests='cdlla ${q_prjTestsDP}'
 alias  cdprjwks='cdlla   ${q_prjWksDP}'
 alias  cdprjwp='cdlla   ${q_prjWadsDP}'
-alias  cdprjvar='cdlla   ${q_prjVarDP}'
-alias  cdprjpkg='cdlla   ${q_prjPkgsDP}'
 
 ##----- aliasas-prj-w1/dnts/docs/t1/... --------------------------
 alias  cdsw1dnts='cdlla  ${q_SW1dntsDP}/'
