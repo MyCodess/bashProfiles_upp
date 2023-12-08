@@ -5,7 +5,7 @@ shopt  -s  expand_aliases
 export HISTCONTROL=ignoreboth:erasedups
 
 ##--- tiny internal printline-func for profiles-debugging:
-:  ${q_profsDebug11:=0} ; 
+:  ${q_profsDebug11:=10} ; 
 q_pls1 () { (( $q_profsDebug11 >9 )) &&  echo  "=====  :  $1" ; } ;  ##--start-print-liner
 q_ple1 () { (( $q_profsDebug11 >9 )) &&  echo  "---    :  $1" ; } ;  ##--end-print-liner
 declare -fx q_pls1  q_ple1 ;
@@ -16,9 +16,11 @@ q_pls1  "${BASH_SOURCE[0]##*/}"
 ##--II- Init1-vars may NOT be changed ever, and set ONLY the first time, to the OS-org-values !!
 ##--II- Init1-vars NOT prefix with q_ !! they must be really ReadOnly (declare -xr) and may NOT be chenged! but -xr reports error message if again sus ...! so ok!
 Init1Path1=${Init1Path1:-$PATH} 
-PS1=${PS1:-"[\\u@\\h \\W]\\\$ "}  ##--II- in non-interactive-shells it is not set! so just a default, due to "set -u" above !!
+PS1=${PS1:-"\\W : "}   ##--OK1: with PWD-in-extra-line:  PS1=${PS1:-"\w\n\\W : "} ##--OK1-incl-user@host:  PS1=${PS1:-"[\\u@\\h \\W]\\\$ "}  ##--II- in non-interactive-shells it is not set! so just a default, due to "set -u" above !!
 Init1PS1=${Init1PS1:-$PS1}
 Init1HistFile=${Init1HistFile:-"$HISTFILE"}  ; 
+uname1infs=$(uname -a) ; mswinos1=0  ##--plattform is linux as default
+[[ $uname1infs  =~ CYG  ||   $uname1infs  =~ MING ]] && q_mswinos1=1  ##--if plattform is mswin with cygwin or git-bash/MINGW64
 ##------------- __1END__ Init1/1orgs/prev-vars (orgs from OS/System) : ---------------------
 
 set  -u  ##--I-must be after Init1-part !!
@@ -47,6 +49,7 @@ q_EvvDPPhys="$(cd  $q_EvvDP && pwd -P)" ##--physical/real-absolute-path of evvDP
 q_BinDP=${q_EvvDP}/bin
 q_LOGNAME="$(id -un 2> /dev/null)"
 INPUTRC="${q_EttcDP}/inputrc"    ##--instead of ~/.inputrc for bash-READLINE  ! see man  bash #goto--  /^READLINE
+INPUTRC_mswin1="${q_EttcDP}/inputrc_mswin1"    ##--instead of ~/.inputrc for bash-READLINE  ! see man  bash #goto--  /^READLINE
 q_ConstantsFN="const.sh"
 q_ConstantsFP="${q_EttcDP}/${q_ConstantsFN}"
 q_EttcD_DP=${q_EttcDP}/etcd    ##--I-more readable with _DP, due to verwechselung mit q_EttcDP ! here is etc.d so all users/hosts/... overwritings/more-configs,....
@@ -71,6 +74,7 @@ q_HostGlobProfPosFN=${q_HostGlobProfPosFP##*/}
 [[ -r  $q_ProfCu1FP          ]]  &&  source  $q_ProfCu1FP         ;
 [[ -r  $q_prj0ProfFP         ]]  &&  source  $q_prj0ProfFP        ;
 [[ -v DESKTOP_SESSION  &&  -r  $q_XWinsProfFP   &&  (( $q_XWinsProfDone < 1 )) ]]  &&  source  $q_XWinsProfFP  ;
+[[  $q_mswinos1 == 1 && -r  $q_mswinProfFP  ]]  &&  source  $q_mswinProfFP  ;
 ##--II-  q_Profile2FP will be at the END executed, so user can OVERwrite everything after the above seq !
 ##====== =====================================================================
 set -a  ##-- in case that was reset.
