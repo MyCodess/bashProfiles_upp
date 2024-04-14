@@ -7,9 +7,11 @@ alias  grep1='grep  --color=auto'
 alias  ls1='ls   -p  --group-directories-first  --time-style=long-iso  --color=never'
 alias  ls1c='ls  -p  --group-directories-first  --time-style=long-iso  --color=auto'
 alias  cpib='cp  -ixv  --preserve --backup=numbered'    ##- you can force copying then with -f ; tha final/last cmdline-option is in effect from multiple "-n -i -f" , see man-page  !
-alias  mvi='mv  -iv   --strip-trailing-slashes'
-alias  mvib='mv  -iv   --strip-trailing-slashes  --backup=numbered'  ##- you can force copying then with -f  OR with -n for never-overwriting a file; If you specify more than one of -i, -f, -n, only the final one takes effect. see man-page !
-alias  vi1='vim'
+alias  mv1='mv  -iv   --strip-trailing-slashes'
+alias  mvi='mv1'
+alias  mvib='mv1  --backup=numbered'  ##- you can force copying then with -f  OR with -n for never-overwriting a file; If you specify more than one of -i, -f, -n, only the final one takes effect. see man-page !
+alias  vim1='vim'
+alias  vi1='vim1'
 ##-------------------------------------------------------------------------------------------------------
 
 
@@ -35,8 +37,8 @@ alias llm='echo  "*[-_.]$(date +%y%m)[0-9][0-9]*"  ;  ll   -Ah  *[-_.]$(date +%y
 alias  cdrepos1="cd ${syysLocReposDP} && lla && pwd";
 alias  cdsyysdnts="cd  $syys_dnts_DP && ls1 -la && pwd ;"
 ##--- syys-stats, syys-syysTg-tree:
-alias vistat1="vim  ${syysTgStats_dntsFP}"
-alias visetup1='vim -o  ${syysTgStatsDP}/setup*_dnts.txt'  ##__1org:  alias visetup1='vim  +  ${syysTgSetupdntsFP}'
+alias vistat1="vim1   ${syysTgStats_dntsFP}"
+alias visetup1='vim1  -o  ${syysTgStatsDP}/setup*_dnts.txt'  ##__1org:  alias visetup1='vim1   +  ${syysTgSetupdntsFP}'
 alias cdsyystg='cdlla  ${q_syysTgDP}'
 
 ##========== OS/XWins/apps/syystem/utils/SWs... misc: =====
@@ -46,7 +48,7 @@ alias vibm1="vi1 -o  $filesBM1_FP  ${ProgsResW1DP}/${USER}*BMs1*"
 #
 ##========== Terminals /terms1 :
 alias  terms1="xfce4-terminal  --disable-server  --tab --tab --tab --tab &";
-alias  teterms1="xfce4-terminal  --disable-server  --working-directory=${vaarAuTestsDP}  --tab  --working-directory=${syys_dnts_DP}  --tab --working-directory=${lxdntsDP}  --tab  --working-directory=${syys_wk_DP}  --tab --working-directory=${syysVarDP}  --tab --working-directory=${q_syysTgDP}  --tab  --working-directory=${vaarAuTestsDP}  --tab  --working-directory=${vaarAuTestsDP} &"  ##--prev:-colored-xfce4-terms:  XDG_CONFIG_HOME=~/.config/00xdg2/  
+alias  teterms1="xfce4-terminal  --disable-server  --working-directory=${vaarAuTestsDP}  --tab  --working-directory=${syys_dnts_DP}  --tab --working-directory=${lxOSsdntsDP}  --tab  --working-directory=${syys_wk_DP}  --tab --working-directory=${syysVarDP}  --tab --working-directory=${q_syysTgDP}  --tab  --working-directory=${vaarAuTestsDP}  --tab  --working-directory=${vaarAuTestsDP} &"  ##--prev:-colored-xfce4-terms:  XDG_CONFIG_HOME=~/.config/00xdg2/  
 alias  wksterms1='xfce4-terminal  --disable-server --geometry  120x62  --default-working-directory=${vaarAuWorksDP}  --tab  --active-tab  --tab  --tab  --tab  --tab  --tab --working-directory=${q_SW1DocsDP}  --tab --working-directory=${SW1dres1kkDP}  --tab --working-directory=${SW1dntsDP}  &'
 alias  mpsterms1="xfce4-terminal  --disable-server  --working-directory=${mpswpDP}  --tab  --working-directory=${mpswpDP}/Listings_Logs_MPs_Curr --tab         --working-directory=${mpsNps1DP}  --tab  --working-directory=${mpsNps1DP}  --tab --working-directory=${mpsG0RTDP}  --tab  --working-directory=${mpsG0RTDP}/dw_MPs  --tab  --working-directory=${mpsG0RTDP}/dw_MPs  --tab  --working-directory=${mpsG0RTDP}/0MPAs_G0s  &"
 alias  wpterms1="xfce4-terminal   --working-directory=${q_BinDP}  --tab --working-directory=${wpDP}  --tab --working-directory=${wpDP}/0cu1-wp  --tab --working-directory=${wpDP}/kg1-wp  --tab --working-directory=${absDP}  --tab --working-directory=${tosoDP}  --tab --working-directory=${tosoDP} &"
@@ -60,7 +62,8 @@ alias vigrubs='vi1 /boot/grub/grub.cfg'  ##--more grubs-files can be added, eg i
 alias vilabs='vi1  -o  $wpDP/1labs*.txt'
 alias vitagh='vi1  -o  $wpDP/tagh*.txt'
 alias vievvetc='cd  ${q_EttcDP} && vi1 *sh'
-alias vividnts='vi1 ${vidntsFP}'
+alias vigitsdnts='vi1 ${gitsdntsFP}'
+alias vividnts='vi1 ${vimsdntsFP}'
 alias vimtit1='vi1  -c "set title"  -c "let  &titlestring=\"GV-$(basename $(pwd)) : \" . statuslinestr" '
 alias gvimtit1='vimtit1   -g -p'
 alias gvimtit1x='vimtit1  -g -p ./*.txt'
@@ -86,6 +89,7 @@ alias cdl1nwbupflags='cdlla  ${l1nwBupsLogsFlagsDP}'
 alias cdmvps='cdlla  ${mvpsDP}'
 alias cdvps='cdlla  ${vpsDP}'
 alias cdmps='cdlla  ${mpsDP}'
+alias cdmps0='cdlla  ${mpsG0RTDP}'
 alias cdmps1='cdlla  ${mps1DP}'
 alias cdmpsa='cdlla  ${mpsADP}'
 alias cdmpswp='cdlla  ${mpswpDP}'
@@ -96,15 +100,12 @@ alias cdupp='cdlla  ${q_UppDP}'
 alias cdevv='cdlla  ${q_EvvDP}'
 alias cdbin='cdlla  ${q_BinDP}'
 alias cdetc='cdlla  ${q_EttcDP}'
+alias cdetcd='cdlla  ${q_EttcD_DP}'
 alias cdetcuser='cdlla  ${ettcUser}'
 alias cdetcau='cdlla  ${ettcAuDP}'
 alias cdvaru='cdlla  ${vaaruDP}'
 alias cdvarau='cdlla  ${vaarAuDP}'
 alias cdvaruser='cdlla  ${vaarUser}'
-alias cddnts='cdlla  ${dntsDP}'
-alias cddres='cdlla  ${dresDP}'
-alias cddrescodecs='cdlla  ${dresCodecsDP}'
-alias cdlxdnts='cdlla  ${lxdntsDP}'
 alias cdnps='cdlla  ${npsDP}'
 alias cdnps2='cdlla  ${nps2DP}'
 alias cdbupsvar1='cdlla  ${vaarAuBups1DP}'
@@ -115,6 +116,22 @@ alias cdte='cdlla  ${vaarAuTestsDP}'
 alias cdwks='cdlla  ${vaarAuWorksDP}'
 alias cdtr='cdlla  $trDP'
 ##----------END-cds------------------------------
+
+##========== devels/ITs/SWs/... : =========================
+#--
+alias cdlxossdnts='cdlla  ${lxOSsdntsDP}'
+#--dres/dnts:
+alias cddnts='cdlla  ${dntsDP}'
+alias cddres='cdlla  ${dresDP}'
+alias cddrescodecs='cdlla  ${dresCodecsDP}'
+#--pyy:
+alias  cdpydnts="cdlla  $q_pyydntsDP"
+alias  cdpydres="cdlla  $q_pyydres1kkDP"
+alias  cdpydocs="cdlla  $q_pyyDocsDP"
+alias  cdpydocsvar="cdlla  $q_pyyDocsVarDP"
+#--mssdnts:
+alias  cdmsdnts="cdlla ${mssdntsDP}/"
+alias  cdmsdntsshells="cdlla ${mssshellsdntsDP}/"
 
 ##========== rest-all : ===================================
 alias ..='cdlla  ..'
@@ -135,7 +152,7 @@ alias eplines='echo -e ${PATH//:/"\n"}'             ##--PATH as lines
 alias envg='(alias ; declare -p ) | grep1  -i'   # grep1  a name in all env, also in EVERYTHING: loc.variables+exports+funcs+funcs.defs+aliases+...  (except pathes which is done by which/type).
 alias expg="export -p   | sort  | grep1  -i"                      ##--prev:- "export -p | sed  -e 's/  */\t/g' | sort | grep1  -i"   # only global vars  ##--offc-
 alias expgn="export -p  | sed -e 's:=.*::' | sort | grep1  -i "   ##--prev:-   "export -p  | sed -e 's/=.*//' -e 's/  */\t/g' | sort | grep1  -i "  ##--??- ?replace in bash??: alias expgn='typeset +x | grep1  -i'  ##--offc-
-alias findinNotEvv1='find .  -depth  -regextype posix-extended    -regex  ".*[^[:alnum:]/_.-].*"  '  ##--find not-evvConform-Filenames
+alias findinNotEvvNamings='find .  -depth  -regextype posix-extended    -regex  ".*[^[:alnum:]/_.-].*"  '  ##--find not-evvConform-Filenames
 alias grepi='grep1  -i'
 alias h='history'
 alias hg='fc -l -10000 | grep1  -i' #--i- not with history, so without timestamp, if activated.
@@ -175,7 +192,7 @@ alias sus1unset='v11=${q_ProfileFP} ; unset ${!q_@}  ${!syys@} ; source ${v11}'
 alias 3sync='sync;sync;sync'
 
 ##========== addies in arx1-ub64--1912Arx : ===============
-alias  view="vim -R"
+alias  view="vim1  -R"
 
 ##========================================================
 q_ple1  "${BASH_SOURCE[0]##*/}"

@@ -1,0 +1,39 @@
+" ================== gui/gvim-options:
+"
+"====== good fonts kde:
+"set guifont=Source\ Code\ Pro\ 10   " La12_DELL-ok-by-xfce4_appearance_no_custom_dpi, i.e. just 100%
+"set guifont=Source\ Code\ Pro\ 8    " asus11-rosa-ok
+set guifont=Source\ Code\ Pro\ 9     " HP13 + Lv13-ok-by-xfce4_appearance_no_custom_dpi, i.e. just 100%
+"set guifont=Droid\ Sans\ Mono\ 9
+"set guifont=Liberation\ Mono\ 9     "OK--x13--suse111-kde--last , also/or set size=8
+"set guifont=Monospace\ 11           "OK--ku4+x13
+"set guifont=Monospace\ 8           "OK--offc- ##--offc-
+"---- second-font-alternatives:
+"set guifont=DejaVu\ Sans\ Mono\ 10          "OK2--vo17-suse113-kde
+"set guifont=Lucida\ Sans\ Typewriter\ 9     "x13 , or set size=8
+"set guifont=Nimbus\ Mono\ L\ 8
+"set guifont=Misc\ Fixed\ 9  "in82+vo17
+
+behave xterm	" mouse behaving like unix xterms ; !!changes other guioptions too, so the sequence IS relevant !!
+set guioptions-=T	" no toolbar/icons. otherwise see 'toolbar' or gui-toolbar
+set guioptions+=b	" Bottom horizontal scrollbar is present
+set guioptions+=a   " !!!vim becomes the owner of copy/paste buffer with mouse : so in WIN like in xterm, if behave xterm
+set guioptions+=g   " Grey menu items: Make menu items that are not active grey.
+set guioptions+=R	" Right-hand scrollbar is present when there is a vertically split window.
+set guioptions+=i	" Use a Vim icon
+
+"====== tab-pages/windows:
+set guitablabel=%t	" only fileName, withouth path, shown in tab-lables
+let &titlestring='GV: ' . statuslinestr  "ONLY to see if it is a console-vim or GVim-window.
+
+"============================= Gui-Window-Position,Size,... (somme only for MsWin):
+"winsize 140 50  "is obsolete, see help winsize
+set lines=50 columns=180 "window-size
+"autocmd GUIEnter * winpos 250 250	" vi-window-position at startup
+"set guifont=Lucida_Console:h9:cANSI
+"set background=dark
+"colorscheme default  "pablo_uu1
+"hi Normal guifg=white ctermfg=white
+"set textwidth=522      " --offc-
+"setlocal textwidth=522      " --offc-
+

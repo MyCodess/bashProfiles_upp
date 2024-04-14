@@ -33,8 +33,8 @@ vaarAuBups2DP="${vaarAuBups1_P}/bupsvar2"
 
 #============= /t1-main-subDirs, 1.levels
 t1varDP="${TP1DP}/t1var"
-docsvarDP="${t1varDP}/docs_var"
-dwsvarDP="${t1varDP}/DWs_var"
+docsvarDP="${t1varDP}/docsvar"
+dwsvarDP="${t1varDP}/DWsvar"
 ##--obsl, replace by t1var :  lagDP="${TP1DP}/lag"
 npsDP="${TP1DP}/nps"
 packsDP="${TP1DP}/packs"
@@ -44,6 +44,7 @@ trDP="${TP1DP}/tr"
 ##============= /t1: subDirs 2/3-levels:
 tosoDP="${npsDP}/2So"     ##-II- 2soDP does NOT work, due to bash-naming-rules for env.vars! var-name can NOT begin with num!
 nps2DP="${npsDP}/0nps2"
+npshddDP="${q_Bups1LocMed1RTDP}/T1_Loc/nps"
 
 ##============= vaarAu-dirs; all.users.VAR-dirs for curr works: ALL-Users / Share-Vars : ===============
 #-- evv.vars/spoolings (here using vaarAuDP, but could be HOME/..):
@@ -51,7 +52,7 @@ vaarAuAppsDP="${vaarAuDP}/appsvar"  ##--ofc-
 vaarAuLogDP="${vaarAuDP}/log"
 vaarAuOldsDP="${vaarAuDP}/olds"
 vaarAuSyysDP="${vaarAuDP}/syysvar"            # for syys stuff as rpmlists,...
-vaarAuTestsDP="${vaarAuDP}/tests"
+vaarAuTestsDP="${vaarAuDP}/tsts"
 vaarAuSpoolDP="${vaarAuDP}/spool"
 vaarAuTmpDP="${vaarAuDP}/tmp"
 vaarAuUnpDP="${vaarAuDP}/unp"
@@ -90,9 +91,24 @@ ProgsResW1DP="${dc1kDP}/ProgsRes_CP"
 dresDP="${dc1kDP}/dres"
 dresCodecsDP="${dresDP}/codecs1${q_Label1dres}"
 dntsDP="${dresDP}/dnts"
-lxdntsDP="${dntsDP}/lxOSs_dnts"
+#-
+lxCmdsdntsDP="${dntsDP}/lxCmds_dnts"
+lxOSsdntsDP="${dntsDP}/lxOSs_dnts"
+lxSHsdntsDP="${dntsDP}/lxSHs_dnts"
 lxOSDocsDP="${dcItDP}/LxOSs_dc"
-vidntsFP="${dntsDP}/lxCmds_dnts/vims_dnts.md"
+#-
+gitsdntsFP="${lxCmdsdntsDP}/gits_dnts.txt"
+vimsdntsFP="${lxCmdsdntsDP}/vims_dnts.txt"
+#- mss
+mssdntsDP="${dntsDP}/msw_dnts"
+mssshellsdntsDP="${mssdntsDP}/ps1_wt_dnts"
+#- q_pyy/pythons-w1-pathes (for pyy-runtime/exe/py-home/libs/... see the prj-profs !):
+q_pyyName=python ; q_pyyTag=py ; q_pyyTagC="${q_pyyTag^}"
+q_pyydntsDP="${dntsDP}/${q_pyyTag}${q_Label1dnts}"
+q_pyydresDP="${dresCodecsDP}/${q_pyyTag}${q_Label1dres}"
+q_pyydres1kkDP="${dresCodecsDP}/${q_pyyTag}${q_Label1dres1kk}"
+q_pyyDocsDP="${dcItDP}/${q_pyyTagC}_dc"
+q_pyyDocsVarDP="${docsvarDP}/${q_pyyTagC}_docsvar"
 #----- w1-WPads : ----------------------
 wpsRTDP="${dc1kDP}/WPads_All"
 wpDP="${wpsRTDP}/WPad"
@@ -114,7 +130,7 @@ syysVarDP="${vaarAuDP}/${q_osTg}var"       ##-I- could be set to ${q_syysTg}var 
 syysVarUnpDP="${syysVarDP}/unp"
 syysLocReposDP="${syysVarDP}/repos1"  ##--could be also in syysPacksDP in t1 but on arx could not be on exfat, but on ext4! so here!
 #------ q_syysTg-docs/dnts/... in w1/t1 ...:
-syys_dnts_DP="${lxdntsDP}/${q_osTg}${q_Label1dnts}"
+syys_dnts_DP="${lxOSsdntsDP}/${q_osTg}${q_Label1dnts}"
 syys_nps_DN="${q_osTg}_nps"
 syys_wk_DP="${vaarAuWorksDP}/${q_osTg}_wk1"
 syys_dc_DP="${lxOSDocsDP}/${q_osTg}_dc/"
@@ -149,7 +165,7 @@ mps1DP="${mpsDP}/MPs1"
 mpsADP="${mps1DP}/MPAs"
 mpswpDP="${wpsRTDP}/MPs_wk"
 mpsNps1DP="${nps2DP}/MPs_nps1"  ##--2do?: parentDir as envvar?? due to fat-part no links possible! otherwise:  ${npsDP}/MPs_nps1
-mpsG0RTDP="${mpsDP}/MPAs_G0_All"
+mpsG0RTDP="${npshddDP}/MPAs_G0_All"   ##--II-moved-from here to HP13-HDD, was on:   "${mpsDP}/MPAs_G0_All"
 
 ##======== usbs, medias, extHDs, misc,...:
 

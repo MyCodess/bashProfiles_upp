@@ -55,6 +55,7 @@ gtW1LocReposDN=gits_w1
 gtW1LocReposRTDP="${vaarAuWorksDP}/${gtW1LocReposDN}"
 #- aliases:
 alias  cdgtw1repos="cdlla ${gtW1LocReposRTDP}"
+alias  ghterms1="xfce4-terminal  --disable-server  --working-directory=${gtW1LocReposRTDP}/dres_gt  --tab  --working-directory=${gtW1LocReposRTDP}/evv_gt  --tab --working-directory=${gtW1LocReposRTDP}/repo1  --tab --working-directory=${gtW1LocReposRTDP}/syncFolders1  &"  ##--gh-github-loc-repos-gits_w1
 
 ##______________ 1END_____________________________________________________
 q_ple1  "${BASH_SOURCE[0]##*/}"

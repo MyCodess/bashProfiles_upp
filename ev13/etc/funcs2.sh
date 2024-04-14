@@ -43,7 +43,8 @@ cdwinpath(){
 
 ##--- finds-evv :
 #- mtime-sorted-find ; sort/find files recursively based on their mtime:
-finddatesort(){ find ${1:-.}  -type f -printf "%TY%Tm%Td  %p\n" | sort -n ; }
+finddatesort(){ find ${1:-.}   -type f -printf "%Ty%Tm%Td-%TH:%TM  %p\n" | sort -n ; }
+finds(){ find ${1:-.}  | sort ; }  ##--was:  findsort1
 #- find files -iname *$1* :
 findin(){
 	local USAGE1="USAGE: ... <start-Dir> <file-name-part> [xxx-more-params]";  local path1="$1" ;  local namePart1="${2:?$USAGE1}"  ; shift; shift;  ##--II-shifts due to more arbitrary params!
