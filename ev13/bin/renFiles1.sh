@@ -8,7 +8,8 @@
 ##-if-wanted-parameterizing with search-and-replacement-strings-without-sed/..., then:  searchStr1="$2" ; replaceStr1="$3" ; ##...
 
 fn1="${1:?USAGE: $0 <filename> [serchWord] [replacement]}" ;
-##__  echo  mv  -inv  "$fn1"  "${fn1//_ab1/_1ab}"
+##__  echo  
+mv  -inv  "$fn1"  "${fn1//.md/.txt}"
 
 exit 0
 

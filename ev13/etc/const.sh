@@ -18,8 +18,8 @@ declare -xi q_EvvNO=${q_EvvNO:-${q_EvvDPPhys: -2}} ;   #curr env-ID resp. dir-su
 ##--- assemblying fix-syys-vars, as defaults in case that not done in hostglob-prole, based on setting in  $q_HostGlobProfFP :
 : ${q_hostTg:=${q_Hostname}_${q_diskTg}}
 : ${q_syysTg=${q_syysNoTg}${q_osTg}}                     #--!- final Evv-syysTagIdentifier-short-version--default: identifying current os+host-tags ! curr-syys-host-identifier-tag !
-: ${q_syysTgL1=${q_syysNoTg}${q_osTg}_${q_Hostname}}    #--!- final Evv-syysTagIdentifier-long1-version--hostName: identifying current os+host-tags ! curr-syys-host-identifier-tag !
-: ${q_syysTgL2=${q_syysNoTg}${q_osTg}_${q_hostTg}}         #--!- final Evv-syysTagIdentifier-long1-version--hostTg: identifying current os+host-tags ! curr-syys-host-identifier-tag !
+: ${q_syysTgL1=${q_syysTg}_${q_Hostname}}    #--!- final Evv-syysTagIdentifier-long1-version--hostName: identifying current os+host-tags ! curr-syys-host-identifier-tag !
+: ${q_syysTgL2=${q_syysTg}_${q_hostTg}}         #--!- final Evv-syysTagIdentifier-long1-version--hostTg: identifying current os+host-tags ! curr-syys-host-identifier-tag !
 
 
 ##=========== profiles-FileNames + profiles_FilesPathes-Evv (but use ONLY FilePathes, not FNs): ========================

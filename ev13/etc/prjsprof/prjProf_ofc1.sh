@@ -8,7 +8,8 @@ q_prjTag=ofc  ##--II- name-abbreviated, short-tag
 q_prjNo=1    ##--II- curren No assigned; no meaning/relation to ver/...; nur fuer eindeutigkeit...
 q_prjID=${q_prjTag}${q_prjNo}  ##--II- MAIN-Prj-ID/Name/Ref.ID/... used in ...
 q_SW1Name=python      ##--II- very General-Topic-/technical-Name. eher descriptive, not really used !
-q_SW1Tag=py           ##--I-convert first char to uppercase! see man bash /"Case modification"  /OR  /\^\^   !
+q_SW1Tag=py           ##--I-small-letters (for py_dnts, py_dres,...)
+q_SW1TagC=${q_SW1Tag^}          ##--I-convert first char to uppercase! see man bash /"Case modification"  /OR  /\^\^   !
 q_SW1NameID=${q_SW1Name}${q_prjNo}   ##--II- NOT-really-used, because APP! is already the global topic of the current project ! redundant? or just descriptive!?
 ##--- L2-vars
 prjID_active1="${q_prjID}"    ##--II-setting the active prj to this one! var-name MUST withOUT q_ , for switching between prjs and call sus1unset !

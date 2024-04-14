@@ -5,7 +5,7 @@ shopt  -s  expand_aliases
 export HISTCONTROL=ignoreboth:erasedups
 
 ##--- tiny internal printline-func for profiles-debugging:
-:  ${q_profsDebug11:=10} ; 
+:  ${q_profsDebug11:=0} ; 
 q_pls1 () { (( $q_profsDebug11 >9 )) &&  echo  "=====  :  $1" ; } ;  ##--start-print-liner
 q_ple1 () { (( $q_profsDebug11 >9 )) &&  echo  "---    :  $1" ; } ;  ##--end-print-liner
 declare -fx q_pls1  q_ple1 ;
@@ -16,14 +16,12 @@ q_pls1  "${BASH_SOURCE[0]##*/}"
 ##--II- Init1-vars may NOT be changed ever, and set ONLY the first time, to the OS-org-values !!
 ##--II- Init1-vars NOT prefix with q_ !! they must be really ReadOnly (declare -xr) and may NOT be chenged! but -xr reports error message if again sus ...! so ok!
 Init1Path1=${Init1Path1:-$PATH} 
-PS1=${PS1:-"\\W : "}   ##--OK1: with PWD-in-extra-line:  PS1=${PS1:-"\w\n\\W : "} ##--OK1-incl-user@host:  PS1=${PS1:-"[\\u@\\h \\W]\\\$ "}  ##--II- in non-interactive-shells it is not set! so just a default, due to "set -u" above !!
 Init1PS1=${Init1PS1:-$PS1}
 Init1HistFile=${Init1HistFile:-"$HISTFILE"}  ; 
-uname1infs=$(uname -a) ; mswinos1=0  ##--plattform is linux as default
-[[ $uname1infs  =~ CYG  ||   $uname1infs  =~ MING ]] && q_mswinos1=1  ##--if plattform is mswin with cygwin or git-bash/MINGW64
 ##------------- __1END__ Init1/1orgs/prev-vars (orgs from OS/System) : ---------------------
 
 set  -u  ##--I-must be after Init1-part !!
+#
 ##--- myName/myPath/...:
 myname11="${BASH_SOURCE[0]##*/}" ;
 q_OrgCallParam="${BASH_SOURCE[0]}"       ##-I-  org-call-parameter, as this script was called by the user, eg ./up1/etc/profile.sh ; could be relative/absolute-path !
@@ -38,9 +36,9 @@ q_Profile2PresetsFN=${q_Profile2PresetsFP##*/}
 [[ -r  $q_Profile2PresetsFP        ]]  &&  source   $q_Profile2PresetsFP       ; ##--user-preset-prof
 
 ##--- pathes-basics0 : evv, upp, const.sh, hostGlob, ...:
-##--OK-if-hostnamectl-there:   q_Host1full="${q_Host1full:=$(hostnamectl  hostname)}" ;  ##--II-if hostnamectl not there, just set q_Host1full to anything you like or to hostname and then call evv1-profs !
-q_Host1full="${q_Host1full:=$(hostname)}" ;  ##--II-if hostnamectl bzw. hostnamectl not in System/OS, just set q_Host1full to anything you like or to hostname, then rename the host-profile appropriately, and then  and then call evv1-profs !
-: ${q_Hostname:=${q_Host1full%%.*}}     ##-II-for HOSTNAME-var-in-evv use ONLY this! no cmds/other-vars/...!! also this can be preset before calling evv-profiles ...!
+##--OK-if-hostnamectl-there:   Host1full="${Host1full:=$(hostnamectl  hostname)}" ;  ##--II-if hostnamectl not there, just set Host1full to anything you like or to hostname and then call evv1-profs !
+: ${Host1full:=$(hostname)} ;  ##--II-if hostnamectl bzw. hostnamectl not in System/OS, just set Host1full to anything you like or to hostname, then rename the host-profile appropriately, and then  and then call evv1-profs !
+: ${q_Hostname:=${Host1full%%.*}}     ##-II-for HOSTNAME-var-in-evv use ONLY this! no cmds/other-vars/...!! also this can be preset before calling evv-profiles ...!
 q_EttcDP="${q_OrgCallAbsoluteDP}"
 q_EvvDP="${q_EttcDP%/*}"                 ##-- eg: /up1/ev11
 q_EvvDN="${q_EvvDP##*/}"
@@ -55,11 +53,24 @@ q_ConstantsFP="${q_EttcDP}/${q_ConstantsFN}"
 q_EttcD_DP=${q_EttcDP}/etcd    ##--I-more readable with _DP, due to verwechselung mit q_EttcDP ! here is etc.d so all users/hosts/... overwritings/more-configs,....
 q_HostGlobEtcDP=${q_EttcD_DP}         ##--host-profs-global-file , now same as for users, but can be reset.
 
+##-- gitPrompt: --------------
+setGitPrompt1(){ q_gitPromptFP="${q_gitPromptFP:-${q_EttcD_DP}/git-prompt_arx1.sh}" ; export GIT_PS1_SHOWCONFLICTSTATE="yes" ; source  $q_gitPromptFP ; PS1='\[\033[33m\]\w\[\033[36m\] :`__git_ps1`:\[\033[0m\]\n$ ' ; }
+##-- read notes in git-prompt_arx1.sh ! git-prompt.sh must be executed before setting PS1 in your env or evv-profiles ! it overwrites the your/evv-PS1 otherwise !
+##--OR-without-coloring:  PS1='\w :`__git_ps1`:\n$' ; /OR (from arx1-git): export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ ' ;
+#PS1 is slower with gitPS1, so if foo slow or no use, then go back to old PS1 without git-PS1 :
+##____________________________
+
 ##--- syys-/hostGlob-presets-profiles:
 : ${q_HostGlobProfFP:=${q_HostGlobEtcDP}/profile_${q_Hostname}.sh}    ##--can pre-set in users-presets to any other absolute-path!
 q_HostGlobProfFN=${q_HostGlobProfFP##*/}                   ##--can pre-set in users-presets to any other path!
 : ${q_HostGlobProfPosFP:=${q_HostGlobEtcDP}/profile_${q_Hostname}_pos.sh}    ##--can pre-set in users-presets to any other path!
 q_HostGlobProfPosFN=${q_HostGlobProfPosFP##*/}
+
+##--- basics0:
+##--OK1-PS1_without_gitPS1--default_evv-onlyCuDir
+PS1=${PS1:-"\\W : "}   ##--PWD-in-extra-line:  PS1=${PS1:-"\w\n\\W : "} ##--incl-user@host:  PS1=${PS1:-"[\\u@\\h \\W]\\\$ "}  ##--II- in non-interactive-shells PS1 is NOT set! so just  due to "set -u" above set a default here !! 
+q_uname1infs=$(uname -a) ; q_uname1infs=${q_uname1infs^^} ; q_mswinos1=0  ##--plattform is linux as default ; q_uname1infs all capital-letters !
+[[ $q_uname1infs  =~ "MSYS"|"CYG"|"MING"|"MICROSOFT" ]] && q_mswinos1=1  ##--if plattform is mswin with cygwin or git-bash/MINGW64
 ##----
 
 ##====== evv-profs: ==========================================================
@@ -72,9 +83,9 @@ q_HostGlobProfPosFN=${q_HostGlobProfPosFP##*/}
 [[ -r  $q_Funcs1FP           ]]  &&  source  $q_Funcs1FP          ;
 [[ -r  $q_Funcs2FP           ]]  &&  source  $q_Funcs2FP          ;
 [[ -r  $q_ProfCu1FP          ]]  &&  source  $q_ProfCu1FP         ;
+[[  $q_mswinos1 == 1 && -r  $q_mswinProfFP  ]]  &&  source  $q_mswinProfFP  ;
 [[ -r  $q_prj0ProfFP         ]]  &&  source  $q_prj0ProfFP        ;
 [[ -v DESKTOP_SESSION  &&  -r  $q_XWinsProfFP   &&  (( $q_XWinsProfDone < 1 )) ]]  &&  source  $q_XWinsProfFP  ;
-[[  $q_mswinos1 == 1 && -r  $q_mswinProfFP  ]]  &&  source  $q_mswinProfFP  ;
 ##--II-  q_Profile2FP will be at the END executed, so user can OVERwrite everything after the above seq !
 ##====== =====================================================================
 set -a  ##-- in case that was reset.
@@ -94,6 +105,7 @@ set -a  ##-- in case that was reset.
 pathaddend  "${q_BinDP}"
 pathaddend  "${opptuDP}/bin"
 pathaddend  "${HOME}/.local/bin"
+PATH="${PATH//::/:}"  ##--removing redundant ::
 q_Path1="$PATH"    ##--II- the final-evv-path after first full evvEnv-run. can be used in sub-scripty (prj0,...) as iniitial-evv-path!!
 ##---------------
 
