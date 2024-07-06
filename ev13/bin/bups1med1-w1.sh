@@ -37,14 +37,26 @@ syncFlagUpdate    "${bupsvar1_src}/"        "${bupsvar1_dest}/";
 bupsFlagUpdate    "${bupsvar1_dest}/"       "${bupsvar1_bupsFlagFN}"  "on-Bups1Med1"   "on-Bups1Med1-done1";
 $pauseCmd1
 
-echo "====================== w1 rsync :      ========================"
-w1_src="${w1DP}"
-w1_dest="${q_Bups1Med1DP}/bups1w/w1_BP"
-w1_bupsFlagFN=w1_bups.flg
-dry11=' '  syc_to=${q_Bups1Med1DP}/bups1w/w1_BP/    w1-sync.sh ;   ##--/OR BUT it resyncs latest DIRs-attribs again!:  : ${rsyncCmd1}  --delete    "${w1DP}/"     "${w1_dest}/" ;
-syncFlagUpdate   "${w1DP}/"     "${w1_dest}/" ;
-bupsFlagUpdate   "${w1_dest}/"  "${w1_bupsFlagFN}"   "on-Bups1Med1"   "on-Bups1Med1-done1";
-$pauseCmd1
+##__   echo "====================== w1 rsync full/NON-incremental : ========"
+##__   w1_src="${w1DP}"
+##__   w1_dest="${q_Bups1Med1DP}/bups1w/w1_BP"
+##__   w1_bupsFlagFN=w1_bups.flg
+##__   dry11=' '  syc_to="${w1_dest}/"    w1-sync.sh ;   ##--/OR BUT it resyncs latest DIRs-attribs again!:  : ${rsyncCmd1}  --delete    "${w1DP}/"     "${w1_dest}/" ;
+##__   syncFlagUpdate   "${w1DP}/"     "${w1_dest}/" ;
+##__   bupsFlagUpdate   "${w1_dest}/"  "${w1_bupsFlagFN}"   "on-Bups1Med1"   "on-Bups1Med1-done1";
+##__   $pauseCmd1
+
+
+echo "====================== w1 rsync incremental/tar : ==========="
+w1_dest="${q_Bups1Med1DP}/bups1w"
+w1_dest_full_prefix="${w1_dest}/w1_RF-full1-"
+w1_dest_full_FP="${w1_dest_full_prefix}-$($cuds).tgz"
+w1_dest_full_log_FP="${w1_dest_full_FP}.log"
+##--DO: once-the-first-full-tar (5-min auf HP13-USB3):
+#-:  date;  tar --one-file-system  -cpzvf  ${w1_dest_full_FP}   ${w1DPPhys} > ${w1_dest_full_log_FP} ; date;  ##--bzw:
+#-:  cdlla  /up1/mnt/T1fs/t1_RF/ ; date; tar --one-file-system  -cpzvf "{w1_dest}/w1_RF-full1--$($cuds).tgz" "./w1_RF/" > "/up1/media/BUPS1MD1/bups1w/w1_RF-full1--$($cuds).tgz.log"; date;
+##---increms:
+echo "####### DO/2chk-manually:  tar --one-file-system  -cpzvf ${w1_dest}/w1-inc--$($cuds).tgz $(find  ${w1DPPhys} -newer ${w1_dest_full_prefix}*.tgz  -type f ) > ${w1_dest}/w1-inc--$($cuds).tgz.log ########"
 
 
 echo "===== bupsFlags and syncFlags for the whole/root of bups1med1 ${q_Bups1Med1DP}: =====" ;

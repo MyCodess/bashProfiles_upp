@@ -6,15 +6,14 @@ exit 3
 
     _______:  samba/cifs rsync (Lv13 (t1_RF-usb) <--> HP13 (t1_CP , evtl. some updates) ...):
     1- mount -t cifs  //192.168.43.15/t1_RF_Lv13   /mnt/t1  -o  username=u1,iocharset=utf8,uid=u1,gid=gu1
-    2- first evt. updaets from _CP to _RF non_cu_RF (so -u and no --delete, ONLY-evtl.-updates/changes-on-HP13:  HP13/non_RF --> Lv13/usb_RF) :
-        rsync  -n  -v  -rtlHO  --modify-window=5  -u   /up1/t1/w1_RF/dc1K/  /mnt/t1/w1_RF/dc1K/   ##--!! NO --delete + -u !  #-bzw:
-        /OR:  rsync  -n  -avO  --no-perms -u  /up1/t1/w1_RF/dc1K/  /mnt/t1/w1_RF/dc1K/
+    2- first from-MEs-PC:  sync fully w1_RF/dc1K (dc1k RF is on MEs-PC! so full-sync! not only updates!):
+        rsync  -n  -v  -rtlHO  --modify-window=5  --delete  /up1/t1/w1_RF/dc1K/  /mnt/t1/w1_RF/dc1K/
+        - old---only-update-sync!:  rsync  -n  -v  -rtlHO  --modify-window=5  -u   /up1/t1/w1_RF/dc1K/  /mnt/t1/w1_RF/dc1K/   ##--!! NO --delete + -u !  #--/OR:  rsync  -n  -avO  --no-perms -u ...
     3- _RF to _CP sync:  
         dry11=' '   syc_from=/mnt/t1/w1_RF/   syc_to=/up1/t1/w1_RF/    w1-sync.sh   ##---bzw.:
-        /OR:  rsync    -n  -v -rtlHO --modify-window=5  --delete      /mnt/t1/w1_RF/  /up1/t1/w1_RF/   ##--bzw.:
-        /OR:  rsync    -n  -avO   --modify-window=5  --delete      /mnt/t1/w1_RF/  /up1/t1/w1_RF/
+        /OR:  rsync    -n  -v -rtlHO --modify-window=5  --delete      /mnt/t1/w1_RF/  /up1/t1/w1_RF/   ##--/OR: rsync    -n  -avO   --modify-window=5  --delete ...
 
-	_______:  tar-accumulative--w1_RF + updates:
+	_______:  tar-incremental/-accumulative--w1_RF + updates:
     - incr-w1-bups1: - 2chk! :
     date;  days11=10  srcDP11="${w1DPPhys}/"  destDP11="${vaarAuBups1DP}/bups1w1/"  destFP11=${destDP11}/w1_newer--$($cuds)-${days11}_days.tgz ;  cdlla "${destDP11}" &&  tar -cpzvf   ${destFP11}   $(find  "${srcDP11}"  -mtime -${days11}  -type f) >  ${destFP11}.log  ; date ;
     - full-w1-bups1:  
