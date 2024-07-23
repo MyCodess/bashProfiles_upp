@@ -33,6 +33,7 @@ sizeNewer(){ find . -newer $1 -ls | awk ' { sum_B += $7 ; print } END{ OFMT="%.2
 cdll()   { cd  "$*"  && ll  -lF     && pwd ; }
 cdlla()  { cd  "$*"  && ll  -laF    && pwd ; }
 cdllt()  { cd  "$*"  && ll  -laFrt  && pwd ; }
+alias  cdl='cdlla'
 
 ##--- MS-Windows-path cd , replacein / with \ and ... :
 cdwinpath(){
@@ -64,8 +65,8 @@ llinpath() { for ii in ${PATH//:/  } ; do ls1 -l ${ii}/*${1}*  2>/dev/null ; don
 lsinpath() { for ii in ${PATH//:/  } ; do ls1    ${ii}/*${1}*  2>/dev/null ; done ; }
 
 ##--UX-core-utils-funcs:
-manv(){ man "$@" | ul -i | vim -R - ; }  ##--man-pages in vim-view
-mman(){ vi ${prj1DocDir}/mans/${1}.man ; }
+manv(){ man "$@" | ul -i | view1 - ; }  ##--man-pages in vim-view
+mman(){ vi1 ${prj1DocDir}/mans/${1}.man ; }
 mkdircd() { p1=${1:?"USAGE: ... <dir-name-for-mkdir-cd>"} ; mkdir -p "$p1" && cd "$p1" && ls && pwd ; }
 
 ##--- 2So-cp/mv:
@@ -159,6 +160,17 @@ vidte-org() { cpdte "$@" ""  ${q_Label1org} ; read -p "___ editing ok??  Enter o
 ##--- more-stamped-mv/cp-funcs:
 ##--not-needed-any-more--cp_cmd_hat_it_now-with  cp --parents ... ;  cppath(){ USAGE11="Usage:  copies-including-source-PATH <source-path> <target-Dir>"; ${2:?"$USAGE11"} ; tar -cp "$1" | tar -xpv -C "$2"  ; }
 ############ __1END__ ### DateTimeStamped-mv/-cp : #############################################################
+
+##== gitPrompt: =========================================
+setGitPrompt(){ 
+	export q_gitPromptFP="${q_gitPromptFP:-${q_EttcD_DP}/git-prompt_arx1.sh}" ; export GIT_PS1_SHOWCONFLICTSTATE="yes" ;
+	source  $q_gitPromptFP ;      ##--OK1-undefined-vars:  set +u ; source  $q_gitPromptFP ; set -u ;
+	source  $q_gitPromptFP ;  PS1='\[\033[33m\]\w\[\033[36m\] :`__git_ps1`:\[\033[0m\]\n$ ' ;
+}
+##-- read notes in git-prompt_arx1.sh ! git-prompt.sh must be executed before setting PS1 in your env or evv-profiles ! it overwrites the your/evv-PS1 otherwise !
+##--OR-without-coloring:  PS1='\w :`__git_ps1`:\n$' ; /OR (from arx1-git): export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ ' ;
+#PS1 is slower with gitPS1, so if foo slow or no use, then go back to old PS1 without git-PS1 :
+##____________________________
 
 q_ple1  "${BASH_SOURCE[0]##*/}"
 

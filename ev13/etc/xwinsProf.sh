@@ -14,6 +14,6 @@ xhost  +local:""  >/dev/null  2>&1  ;    ##--OR-open-for-all:     xhost +    >/d
 xset -b ; ##--no-beeps in X11
 ##________________________________________
 
-q_XWinsProfDone=1
+#-if-dones-flags-still-needed!?:   q_XWinsProfDone=1
 ##__ q_ple1  "${myname11}---${syysNoTg}${osTg}_${q_Hostname}_${diskTg}---${osRelTg}"
 q_ple1  "${myname11}" ;

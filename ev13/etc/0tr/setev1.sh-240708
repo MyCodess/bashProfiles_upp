@@ -1,0 +1,28 @@
+#!/bin/bash
+set -a
+
+
+#####  ==========  append follwoing lines UNcommented in cyg/msys to your .bashrc:
+##__UnComment:   source  "${USERPROFILE}/ofc1/bin/setev1.sh"  ; bind -f  "$INPUTRC"
+###________________________________________  ___________________________
+
+
+#####  ==========  my-name/-path/-call (setevv.sh) msw-version: ========
+##__1debug:  echo  "msw:  ${BASH_SOURCE[0]##*\\}  , Lx:  ${BASH_SOURCE[0]}"   ##--II-for mswin must "\\" instead "/"
+#export  setevv1_mswin_FP="${BASH_SOURCE[0]##*/}" ;
+export  setevv1_mswin_FP="${BASH_SOURCE[0]}" ;
+export  setevv1_FP="$(cygpath ${setevv1_mswin_FP})"  ##--Lx:  export  setevv1_FP="${BASH_SOURCE[0]}" ;
+export  setevv1_FN="${setevv1_FP[0]##*/}" ;  ##--!!-in-msw have to take the cyg-converted-version and NOT the org BASH_SOURCE[0] , due to filtering here on "/" !
+export  setevv1_DP="${setevv1_FP[0]%/*}" ;
+alias   setevv1='source  ${setevv1_FP}'
+alias   setevv1unset='unset ${!q_@}  ${!syys@} ; source  ${setevv1_FP}'
+alias   visetevv1="vi1  ${setevv1_FP}"
+###________________________________________  ___________________________
+
+
+#####  ==========  call evv-profiles : =================================
+##__ export  q_profsDebug11=10 ; 
+export  Host1full="2310msw"  ##--I-will-not-work-with-sus1unset if only:  export  q_Hostname='2310msw' #-:it will be unset also !
+source  "${USERPROFILE}"/up1/.ev13/etc/profile.sh    ##--did-not-work:  "C:\Users\DKX8H1N\up1\.ev13\etc\profile.sh"
+###________________________________________  ___________________________
+

@@ -1,0 +1,31 @@
+source   $q_EttcDP/vimrc
+" OK1:     source   /var/tmp/tmpu/up1/.ev13/etc/vimrc
+" OK1:     source C:\var\tmp\tmpu\up1\.ev13\etc\vimrc
+" OK1-Hm:  source  ~\up1\.ev13\etc\vimrc
+" OK1:     source  C:\Users\DKX8H1N\up1\.ev13\etc\vimrc
+" not-worked: path1 will be the current-file-loaded-path! : let path1 = expand('%:p:h') ;  exec 'source' path1 . '/msw_vimrc'
+
+" ###########################################################################
+" lang-problem on wins :
+language en_US
+set langmenu=en_US.UTF-8 
+
+"#####  ==========  cu1-2chks/cu-cp-options;  is good? : ====================
+set scrolloff=0     " --I-due to mouse-irritations, near to windows-borders, it jumps ....
+"________________________________________  ___________________________
+"
+"##### ============= ofc1 231000 : ==============================================
+set  pythonthreehome=C:\Progs2\Py3
+set  pythonthreedll=C:\Progs2\Py3\python311.dll
+set backupdir=$USERPROFILE\\tmp
+set directory=$USERPROFILE\\tmp
+"
+"  middle-mouse-click-paste_Lx in mswin:  middle-mouse-signal on mswins mapped to insert-paste as in Lx in both normal+insert-modes :
+nnoremap  <C-S-F22>    i<c-r>+
+inoremap  <C-S-F22>    <c-r>+
+"
+"  --- hists-ofc1:
+" if wanted hist:  set viminfofile=/temp/hs1_viminf1    " to disable hist-file: set viminfofile= ; for msw MUST be /temp/ and not /tmp/ ! this vim-pkg converts all to win-pathes! does not take/understand MSYS-pathes! is fot vim-x64-msw-version! msys-integrated vim understantds /tmp/ !
+" ##____________________ __1END__ ofc1-addies ___________________________
+
+execute pathogen#infect()

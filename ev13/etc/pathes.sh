@@ -91,29 +91,27 @@ ProgsResW1DP="${dc1kDP}/ProgsRes_CP"
 dresDP="${dc1kDP}/dres"
 dresCodecsDP="${dresDP}/codecs1${q_Label1dres}"
 dntsDP="${dresDP}/dnts"
+
 #-
 lxCmdsdntsDP="${dntsDP}/lxCmds_dnts"
 lxOSsdntsDP="${dntsDP}/lxOSs_dnts"
 lxSHsdntsDP="${dntsDP}/lxSHs_dnts"
 lxOSDocsDP="${dcItDP}/LxOSs_dc"
+
 #-
 gitsdntsFP="${lxCmdsdntsDP}/gits_dnts.txt"
 vimsdntsFP="${lxCmdsdntsDP}/vims_dnts.txt"
+
 #- mss
 mssdntsDP="${dntsDP}/msw_dnts"
 mssshellsdntsDP="${mssdntsDP}/ps1_wt_dnts"
-#- q_pyy/pythons-w1-pathes (for pyy-runtime/exe/py-home/libs/... see the prj-profs !):
-q_pyyName=python ; q_pyyTag=py ; q_pyyTagC="${q_pyyTag^}"
-q_pyydntsDP="${dntsDP}/${q_pyyTag}${q_Label1dnts}"
-q_pyydresDP="${dresCodecsDP}/${q_pyyTag}${q_Label1dres}"
-q_pyydres1kkDP="${dresCodecsDP}/${q_pyyTag}${q_Label1dres1kk}"
-q_pyyDocsDP="${dcItDP}/${q_pyyTagC}_dc"
-q_pyyDocsVarDP="${docsvarDP}/${q_pyyTagC}_docsvar"
+
 #----- w1-WPads : ----------------------
 wpsRTDP="${dc1kDP}/WPads_All"
 wpDP="${wpsRTDP}/WPad"
 wpFP="${wpDP}/wpad.txt"
 caps1FP="${wpDP}/caps1.txt"
+
 #----- w1-L1NWs: -----------------------
 l1nwdntsDP="${dc1kDP}/L1NWs"
 l1nwStatsDP="${l1nwdntsDP}/l1nw_stats_confs_1nts"
@@ -175,5 +173,9 @@ absDP="${wpDP}/ab1_1kk_1pub_RF"
 absFP="${absDP}/peops1_1ab_1kk.txt"
 ##-- absCP_DP="${wp_mesCP_DP}/abs_CP"
 
+
+#####  ==========  SWs-main-pathes: =============================================================
+###________________________________________  ___________________________
+#
 q_ple1  "${BASH_SOURCE[0]##*/}"    ##- $q_PathesFN
 

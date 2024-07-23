@@ -1,0 +1,19 @@
+source   $q_EttcDP/gvimrc
+" OK1:  see eg in  msw_vimrc file here !
+"
+"====== mouse/... of gui: ===============================
+" --- mouse-right-click problem in mswin (see also :h mousemodel ) :
+" if wanted mouse-right-click do popup-menu (and NOT the default extend-selection), then have to first activate the mouse with: set mouse=a ; set mousemodel=popup 
+" --!- so setting to popup works ONLY if mouse is active at all! so if eg mouse=a ! otherwise has NO effect ! 
+" so the least solution for riright-click-paste in insert-mode is: set mouse=i ; set mousemodel=popup
+"
+" --- mouse-middle-click to paste:  again here/doppel if middle-mouse-click always work??:
+" middle-mouse-click-paste_Lx in mswin:  middle-mouse-signal on mswins mapped to insert-paste as in Lx in both normal+insert-modes :
+nnoremap  <C-S-F22>    i<c-r>+
+inoremap  <C-S-F22>    <c-r>+
+" ------
+"
+"============================= Gui-Window-Position,Size,... (somme only for MsWin):
+set  guifont=Consolas:h10
+set  lines=50 columns=180 "window-size
+"

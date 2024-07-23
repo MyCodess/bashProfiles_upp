@@ -1,0 +1,221 @@
+
+" ================ cu-2chks/cu-cp-options;  is good? :
+set scrolloff=0     " --I-due to mouse-irritations, near to windows-borders, it jumps ....
+
+" ================ lets, defining varialbles,...:
+let statuslinestr="%t\ %m%h%w%r[b%n]%<[%Y]\ %f%=\ %(%l/%L,%c%V%)\ %P"
+let maplocalleader=","
+let mapleader=","
+"
+" ================= set general
+set backspace=2		" bs, allow backspacing over everything in insert mode
+set breakat-=-      " by wrapping, no linebreak on "-", due to cmd-params!
+set nocompatible	" Use Vim defaults (much better!)
+set cpoptions+=n	" by wrapping lines, show wrapped lines between the line numbers.
+let g:explVertical=1	" Split File Explorer vertically
+let g:explSplitBelow=0    " Put new window above explorer window, if horizontally splitted.
+let g:explSplitRight=1    " Put new window to the right of the existing explorer window, if vertically splitted.
+let g:explStartBelow=1    " Put new explorer window below the current window
+let g:explStartRight=0    " Put new explorer window to the left of the current window
+let g:explWinSize=30	" explorer cols/rows
+let g:explUseSeparators=1    " Use separator lines for file types/suffixes
+set fileformat=unix		" OR fileformat=unix,dos ? ; defines <EOL> of the current buffer for read/write if CR><NL> or only <NL> . converts dos to unix either.
+set encoding=utf-8
+set fileencoding=utf-8
+set foldenable
+set foldmethod=marker	" kind of folding
+" set foldmarker=#####\ \ ,______________________________  " for mdCM/mdGfm/GutHub-MarkDown-files, now also for evv-dnts ! but the follwoing is obv. compatible with both dnts-foldings-formats preMD-and-mdCm :
+set foldmarker=======\ ,______________________________________________________________________________    " for mdCM/mdGfm/GutHub-MarkDown-files, now also for evv-dnts !
+" set foldmarker=======\ ,_{78}   " for mdCM/mdGfm/GutHub-MarkDown-files, now also for evv-dnts !
+set foldminlines=0      " Minimum number of screen lines for a fold to be displayed closed
+set hidden		    " do not unload buffer when it is abandoned. buffer becomes hidden.
+set history=100		" number of cmdLines and search-patterns to keep in history/viminfo, only if viminfo not null!
+set hlsearch		" hls, highlighting the search results
+set ignorecase smartcase  " ignore case, unless at least one uppercase character is in search word/pattern
+set incsearch		" incremental serach during entering the search keyword
+set laststatus=2	" status line always on; see statusline
+set linebreak		" breaking lines at an appropriate place by wrapping.  check also breakat and  showbreak values/options!!
+set listchars=eol:$,tab:^_,trail:+,extends:>,precedes:<,nbsp:.       " Strings to use in 'list' mode ##--offc-
+set mouse=""		" ???
+set modeline		" for root must be of!! security! read first/last-line of file as vim-cmds!
+set pastetoggle=,p		" a kind of key mapping for toggling between autoindent and paste (like :set paste for no indentation)
+set sessionoptions+=unix,slash		" for compatible sesseions between Win and Unix
+set ruler			" show the cursor position all the time
+set shiftwidth=4	" number of spaces to use for (auto)indent step. use the same as tabstop !!
+set showcmd			"  Show (partial) command in status line, eg [count] ... .
+set showmatch		" jump short to the match
+set showmode		" message on status line to show current mode
+set smartcase		" scs,  no ignore case when pattern has uppercase. Override the 'ignorecase' option if the search pattern contains upper.
+set smartindent		" is like 'autoindent' but also recognizes some C syntax to increase/reduce the indent. if disturbing, disable it in text mode
+let &statusline=statuslinestr		" entries for statusline
+set tabstop=4		"by pressing TAB-key, Number of spaces that a <Tab> in the file counts for. should be the same as shiftwidth, which is for indents
+set textwidth=521		"auto-linebreaks at column nn; 0 deactivates it.
+let &titlestring=statuslinestr  " or to add/concat something: &titlestring="TEST- " . statuslinestr /OR from cmdLine:  vi -g -c "let &titlestring=\"TEST- \" . statuslinestr" *.txt
+set visualbell
+set nowrap			" no wrapped lines
+set wildmenu        " On pressing wildchar/TAB in command-line to invoke completion, the possible matches are shown just above the command line.
+set wrapscan		" ws, Searches wrap around the end of the file.
+
+"====== mapping global keys:
+" edit alternative file:
+nmap <leader>#     :e#<CR>
+" Disable highlight when <leader><cr> is pressed (org was silent:  map <silent> <leader><cr> :noh<cr> ):
+nmap  <leader><cr> :noh<cr>
+" 1ox= insert: (here without <ESC> at the end! so stay in insert-mode!):
+" markers-for-evv_dnts, start/end-of-dnts-sections :
+nmap  <leader>==              I<CR>==========<Space>
+nmap  <leader>__              I<CR>##_________________________________________________________<CR>
+" foldmarkers-evv-md--mdCm--GitHubs-MarkDown--GFM:
+"  evv-mdCm-marks-1-ok:  nmap  <leader>mak1              I<CR>#####<Space><Space>==========<Space><Space><CR>______________________________________________________________________________<CR><ESC>kkA
+nmap  <leader>mak1              I<CR>#####<Space><Space>==========<Space><Space><CR><C-R>=repeat('_', 78)<CR><CR><ESC>kkA
+" folding-re-marking-md--mdCm--GitHubs-MarkDown--GFM:: converting {{==-sections-markers into new--md--mdCm--GitHubs-MarkDown--GFM-markers, for start+end:
+nmap  <leader>remak1s     :%s/^{{{ ========*/#####<Space><Space>==========<Space><Space>/<CR>
+nmap  <leader>remak1e     :%s/^##____________*/______________________________________________________________________________/<CR>
+" folding-re-marking-md--mdCm--GitHubs-MarkDown--GFM:: converting dnts-std-pre-github-md of =======-sections-markers into new--md--mdCm--GitHubs-MarkDown--GFM-markers:
+nmap  <leader>remak2      :%s/^$\n\+======*<Space>*/______________________________________________________________________________\r\r#####<Space><Space>==========<Space><Space>/c<CR>
+" foldmarkers-evv-1-dnts (also WITHOUT vim-default-folding-markers would work, but so more conformed to vim-defaults ! and does NOT require extra setting of foldmarker ! ):
+nmap  <leader>mak3              I<CR>{{{ ==========<Space><CR>##_________________________________________________________ }}}<CR><ESC>kkA
+" folding-re-marking: converting old-section-markers into new-markers with {{{ ! BUT MUST manually delete the very first sec-END in the file !:
+nmap  <leader>remak3     :%s/\n^=====*/##_________________________________________________________ }}}\r\r{{{ ==========/<CR>
+"autochdir to the dir of the current file , Carefull!!!: some plugins may NOT work !!! :
+nmap <leader>acd           :set autochdir!<CR>
+" comments-visibility:  more-visible,darker/less-visible,lighter  : lower-No==less-visible , see also :h cterm-colors ,and :h highlight :
+nmap <leader>cm0  :hi Comment cterm=none  guifg=white       ctermfg=white<CR>
+nmap <leader>cm1  :hi Comment cterm=none  guifg=lightgray   ctermfg=lightgray<CR>
+nmap <leader>cm2  :hi Comment cterm=none  guifg=lightblue   ctermfg=lightblue<CR>
+nmap <leader>cm3  :hi Comment cterm=none  guifg=darkcyan   ctermfg=darkcyan<CR>
+nmap <leader>cm4  :hi Comment cterm=none  guifg=blue        ctermfg=blue<CR>
+nmap <leader>cm5  :hi Comment cterm=none  guifg=brown      ctermfg=brown<CR>
+" date time insert: see man 3 strftime for formats ... : %F == %Y-%m-%d (the ISO 8601 date format) ; /OR at end <Esc>
+" <C-R>=  is the Register = , which keeps the return-value of the funciont strftime and here inserts it there by <C-R>= , see :h \"=
+nmap <leader>da1            a<C-R>=strftime('/_%y%m%d  :  ')<CR>
+nmap <leader>da2            a<C-R>=strftime('%y%m%d')<CR>
+nmap <leader>daf            a<C-R>=strftime("%c")<CR>
+nmap <leader>daF            a<C-R>=strftime('%F')<CR>
+nmap <leader>da=            I<CR>==========<Space><C-R>=strftime('/_%y%m%d :')<CR><Space><Space>
+" -II- show diffs between current-changed-buffer and the current-saved-file-version in vimdiff:
+nmap <leader>diff1         :set noautowrite<CR>:!cp -i %  %.org1<CR>:vertical diffsplit %.org1<CR>:!echo : ____ Do NOT forget, manually deleting %:p file ____<CR>:set autowrite&<CR>
+" how diffs between current-changed-buffer and the current-saved-file-version, BUT with external-shell-diff-cmd:
+nmap <leader>diff3         :set noautowrite<CR>:%w  !diff % - <CR>:set autowrite&<CR>
+" delete-previous.lne-paste-and-Join-two lines: mainly for PDF-copy.paste-lines
+nmap <leader>dp1  kddpkgJh 
+nmap <leader>li            :set list!<CR>
+nmap <leader>ln            :set number!<CR>
+"Man-Pages runtime;  use eg: :Man ls
+nmap <leader>manrun        :runtime! ftplugin/man.vim<CR>
+nmap <leader>mou           :set mouse=a<CR>
+nmap <leader>moun          :set mouse=<CR>
+" wrap with showbreak-symbols. NOT for copy/paste actions:
+nmap <leader>wr            :set wrap!<CR>
+" wrap withOUT any break-symbols, for copy/paste actions, so  WraP-with-Space.handling:
+nmap <leader>wps           :set showbreak==#-><CR>:set wrap!<CR>
+" copy upto the endofline, so now Y is analagous to C and D (see also :h Y):
+nmap  Y             y$
+nnoremap <leader><TAB>     :bnext<CR>
+nnoremap <leader><S-Tab>   :bprevious<CR>
+" join-all-marked-lines and replace \n with Separator, BUT first must mark the lines and then ESC /OR save with y !! :
+nnoremap <leader>j1        :'<,'>s@\n@ , @<CR>
+" delete blank/empty lines in the selected area: BUT first must mark the lines and then ESC /OR save with y !! :
+nnoremap <leader>de1       :'<,'>g@^\s*$@d<CR>
+" delete blank/empty lines in the selected area and join lines with Separator (in vimrc \| does not work, see :help map_bar ) : BUT first must mark the lines and then ESC /OR save with "y" !! :
+" __was_halb_worked!?:   nnoremap <leader>dj1       :exe "'<,'>g@^\s*$@d" <BAR> '<,'>g/^/s@\n@ , @<CR>
+nnoremap <leader>dj1       :'<,'>g@^\s*$@d<CR><BAR> :'<,'>s@\n@ , @<CR><Space>
+" 4-times-join-4-lines (for saved-emails-headers)
+nnoremap <leader>4j       JjJjJjJj
+"fold-auto-open/close on entrance/leave:
+nmap <leader>za            :set foldopen=all<CR>:set foldclose=all<CR>
+"fold-auto-open/close on entrance/leave set back to defaults:
+nmap <leader>zb            :set foldopen&<CR>:set foldclose&<CR>
+"nmap <leader>fc  :set foldcolumn&<CR>
+nmap <leader>zc            :set foldcolumn=
+"
+"
+"
+"
+"======= check-test-maps:
+
+"======= tmp/check:
+
+" ================== plugins/commands/without-set:
+" --- gen. plugins:
+"if &t_Co > 1 | syntax on | endif 	" Switch syntax highlighting on, when the terminal has colors
+syntax on   "see above line, if terminal has no colors!!
+" loading plugin must be at the end, after all settings:
+filetype plugin indent on
+			" 1-filetype: Vim will try to recognize the type of file by loading automaticly
+			" 2-plugin: when a file is edited its plugin file is also loaded, if there is one for the detected filetype.
+			" 3-indent: when a file is edited its indent file is loaded, if there is one for the detected filetype
+" --- colorSchemes:
+"colorscheme delek
+hi  Comment  cterm=none  guifg=lightgray  ctermfg=lightgray
+hi  Search  term=reverse ctermfg=0 ctermbg=lightgray guibg=Yellow
+
+"========== pythons / jedi-vim :
+let  g:jedi#show_call_signatures=2  "showing arguments-listings in the command line instead of a popup window!  disabling-fully with =0 !
+let  g:jedi#use_tabs_not_buffers=1  "make jedi-vim open a new tab if you use the go to, ... commands.
+
+
+
+
+" ########################### arc/prev/1coll/...: ############################################################
+"let &t_Co=8     "set this, it color-terminal is not recognized properpy; OR set TERM appropriately to xterc or xterm-color,...
+"=========== set general arc:
+" set autoindent		" always set autoindenting on. if commented out, see smartindent
+" set autochdir		" -!- if on, some plugins may NOT work??: always switch the vim-working-dir to the current-file-dir
+" set autowrite		" buffer-auto-saving if modified, on each :next, :rewind, :last, :first, :previous, :stop, :suspend, :tag,
+" set backupdir=%USER_ROOT%\var\vims		" list of directories for the backup file
+" set backup			" keep a backup file
+" set cmdheight=2		" hight of comandline window
+" set directory=%USER_ROOT%\var\vims		"'dir' list of directory names for the swap fil
+" set errorbells		"eb Ring the bell (beep or screen flash) for error messages. otherwise see visualbell
+"  earlier-encoding-till-101225 : set fileencoding=latin1	" set to latin1 (==iso-8859-1) by reading an writing, if different!! so conversion will happen!!
+"  --- foldings:
+" fold-auto: automatically openning/closing folds by entering/leaving:
+" set foldclose=all		" auto-closing of folds by exiting the fold
+" set foldopen=all		" auto-opening of folds by entering the fold
+" set foldcolumn=8		" show the fold-marks on the left.margin.of.8.chars
+" set foldlevel=0			"default folding level. 0==fold-all
+" set foldmethod=syntax
+" set foldminlines=0  " show closed all subfolds, even if only one line!  ##--offc
+" set foldlevelstart=99	"Sets 'foldlevel' when starting to edit another buffer ##--offc-
+" ---
+" set highlight+=sr	" reverse video for statusLine. further down is again set to yellow...??  info: +=si is obsolete and now means italic!!
+" set list		" show tabs and eol
+" set nomodeline		" for root must be of!! security! no individual views for each file, also sould be a security hole if on. see suse.10.3-vimrc
+" set paste		" set it if no indentation at all is required ;eg by simple pasting of code snippets
+" set showbreak=#->	" string to use at the start of wrapped lines
+" --offc- :  set showbreak=\ \ 	" string to use at the start of wrapped lines! spaces must be escaped, as here!! if empty, then there would be no spaces between words by copy-paste!! ##--offc-
+"  set spell  spelllang=en  "if wanted spell-checking/showing be activated as default!  spelllang=de ....
+" set title
+" set number         --show line numbers on left side, so numbered lines as in IDEs
+" see last line for viminfo; older:  set viminfo='20,\"50	" read/write a .viminfo file, don't store more than 50 lines of registers
+" set statusline=%f\ %m%h%w%r[b%n]\ %<%F%=%-14.(%l/%L,%c%V%)\ %P		" entries for statusline
+
+"====== mapping global keys:
+" __1.ver-ok:  nmap <leader>da=            a========== <C-R>=strftime('/_%y%m%d :')<CR><CR>
+"
+"============================ ofc1:
+"set viminfo+=f0  " !! set to null, if no vimfile needed , or set its path with n ! see :h viminfo OR viminfo-file-marks
+"set viminfo=       "so no vimfile
+"--- ofc1-addies: autocommands-finals-ofc1: (also problems with textwidth): Ofc1!! for Hm not needed !?!?
+" set viminfo='0,<0,@0,f0,h,s0,n/tmp/.vinf_$USER        " --I-user-specific-file-OK: (must be last param in viminfo!):    n/tmp/vinf_$USER
+" autocmd  BufRead,BufNewFile *.txt    set filetype=text textwidth=0
+" autocmd  BufRead,BufNewFile *        set textwidth=0
+"autocmd  FileType text set textwidth=0
+
+" ========== spell-checkings with eternal cmds (now doing with internal vimfiles/splell stuff !)
+"nmap <leader>sp  :w!<CR>:!spell %<CR>:e! %<CR>
+" nmap <leader>spd  :w!<CR>:!aspell -l de_de -c %<CR>:e! %<CR>   #--> de_de is " old+new-DE
+"  ??:   nmap <leader>spd           :w!<CR>:!aspell -l de_20 -c %<CR>:e! %<CR>
+" nmap <leader>spd           :w!<CR>:!aspell -l de_de -c %<CR>:e! %<CR>
+" nmap <leader>spe           :w!<CR>:!aspell -l en_us -c %<CR>:e! %<CR>
+" ========== 
+"
+"
+" ================== plugins/commands/without-set:
+" --- showpairs/matching brackets plugin:
+"set updatetime=2000  " millisec. time take to show the matching brackets  ??? if vi too slow go gigher!
+"hi ShowPairsHL		cterm=bold ctermbg=3 ctermfg=black gui=bold guibg=yellow  guifg=black
+"hi ShowPairsHLPair	cterm=bold ctermbg=3 ctermfg=black gui=bold guibg=yellow  guifg=black  "hi-colors if cursor exactly on bracket!
+" --- misc-plugins:
+"runtime! ftplugin/man.vim  " man pages plugin (:Man ...); if vi slow, take it out !!?
