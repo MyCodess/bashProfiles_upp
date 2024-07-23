@@ -1,0 +1,34 @@
+#!/bin/bash
+
+##-------- append follwoing lines UNcommented in cyg/msys to your .bashrc:
+################# 1evv-addies in  cyg/mswins : ####################################
+##__UnComment:   source  "${USERPROFILE}/ofc1/bin/setevv1.sh"
+###### __1END__ # 1evv-addies in  cyg/mswins : ####################################
+
+
+############################# 1evv-mswin-ofc1-preSets: ####################################
+set -a
+
+##--- my-path:
+##__1debug:  echo  "${BASH_SOURCE[0]##*\\}"    "${BASH_SOURCE[0]}"   ##--II-for mswin must "\\" insteat "/"
+my11_mswin_FP="${BASH_SOURCE[0]##*/}" ;
+my11_FP="$(cygpath ${my11_mswin_FP})"
+myname11="${BASH_SOURCE[0]##*/}" ;
+export setevv_FP="$my11_FP"
+alias  setevv11="source  ${setevv_FP}"
+##-----
+
+##--- HOME + USER + ... basics-OS (pre calling any profs! the rest in ms-prof !):
+#_ export  q_Host1full=$(hostname)
+export  Host1full="2310msw"   ##--prev: devvdi1 , now same-as its syystg !  ##2310-ofc1-host1--Dev_VDI_1
+export  USER=${USERNAME:-"userXX"}
+export  HOMEW=${USERPROFILE}     ##--OK1-in-msw-format:  export HOME="${HOMEDRIVE}/${HOMEPATH}"
+export  HOMEW_cyg="$(cygpath $USERPROFILE )"
+export  HOME="${HOMEW_cyg}"
+alias sethome1='export   HOME=${USERPROFILE}'
+##__ if-liked-set-also-prjid-here:   export  prjID_active1=ofc1
+##-----.....
+
+############################# call evv-profiles : #########################################
+##__ export  q_profsDebug11=10 ; 
+source  "${USERPROFILE}"/up1/.ev13/etc/profile.sh    ##--did-not-work:  "C:\Users\DKX8H1N\up1\.ev13\etc\profile.sh"

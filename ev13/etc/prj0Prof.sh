@@ -33,13 +33,14 @@ q_prjDP="$( cd ${q_prj0DP}/${q_prjID} && pwd -P )"   ##-I-??-ok? take now the re
 
 #--------- level.2 : prjX-sub-dirs,  : --------------
 q_prjAppsDP="${q_prjDP}/apps1"  ##- as sqls,.pysqls,... : Bez.ok??
-q_prjBM1DP="${q_prjDP}/bm1_links"
-q_prjBinDP="${q_prjDP}/bin"
+q_prjBM1DP="${q_prjDP}/bms1"
+q_prjBinDP="${q_prjDP}/bin1"
 q_prjCasesDP="${q_prjDP}/cases1"
 q_prjCode1DP="${q_prjDP}/cod1"
 q_prjDocsDP="${q_prjDP}/docs1"
+q_prjDocsvarDP="${q_prjDP}/docsvar1"
 q_prjDntsDP="${q_prjDP}/dnts1"
-q_prjEtcDP="${q_prjDP}/etc"
+q_prjEtcDP="${q_prjDP}/etc1"
 q_prjFuncsDP="${q_prjBinDP}/funcs1"
 q_prjLibsDP="${q_prjDP}/libs1"
 q_prjTestsDP="${q_prjDP}/tsts1"
@@ -74,13 +75,15 @@ alias  cdprj='cdlla      ${q_prjDP}'
 alias  cdprjbin='cdlla   ${q_prjBinDP}'
 alias  cdprjcode1='cdlla   ${q_prjCode1DP}'
 alias  cdprjdnts='cdlla   ${q_prjDntsDP}'
+alias  cdprjdocs='cdlla   ${q_prjDocsDP}'
+alias  cdprjdocsvar='cdlla   ${q_prjDocsvarDP}'
 alias  cdprjetc='cdlla   ${q_prjEtcDP}'
 alias  cdprjpkg='cdlla   ${q_prjPkgsDP}'
 alias  cdprjsprof='cdlla   ${q_prjsProfDP}'
 alias  cdprjvar='cdlla   ${q_prjVarDP}'
 alias  cdprjtests='cdlla ${q_prjTestsDP}'
 alias  cdprjwks='cdlla   ${q_prjWksDP}'
-alias  cdprjwp='cdlla   ${q_prjWadsDP}'
+alias  cdprjwp='cdlla   ${q_prjWpadsDP}'
 
 ##----- aliasas-prj-w1/dnts/docs/t1/... --------------------------
 alias  cdsw1dnts='cdlla  ${q_SW1dntsDP}/'
@@ -88,7 +91,7 @@ alias  cdsw1dres1kk='cdlla  ${q_SW1dres1kkDP}'
 alias  cdsw1docs='cdlla  ${q_SW1DocsDP}'
 alias  cdsw1docsvar='cdlla  ${q_SW1DocsvarDP}'
 alias  visw1dnts='cd  ${q_SW1dntsDP}/  && gvim -c "set titlestring=${prjTag}" *.md *.txt'
-alias  viprjprofs="vi1  $q_prjProfPosFP  $q_prjProfFP"
+alias  viprjprofs='vi1  $q_prjProfPosFP'     ##__  $q_prjProfFP'
 ##-- alias viprjcases='cd  ${prjCasesDP}     &&  gvim -c "set titlestring=cases-dnts" *'
 ##-- alias viprjdnts='cd  ${prjdntsDP}         &&  gvim -c "set titlestring=${prjID}-dnts" *.txt'
 

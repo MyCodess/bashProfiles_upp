@@ -1,22 +1,3 @@
-" lang-problem on wins :
-"_ language en_US
-"_ set langmenu=en_US.UTF-8 
-
-"#####  ==========  cu1-2chks/cu-cp-options;  is good? : ====================
-set scrolloff=0     " --I-due to mouse-irritations, near to windows-borders, it jumps ....
-"________________________________________  ___________________________
-"
-"##### ============= ofc1 231000 : ==============================================
-set  pythonthreehome=C:\Progs2\Py3
-set  pythonthreedll=C:\Progs2\Py3\python311.dll
-"set backupdir=$USERPROFILE\\tmp
-"set directory=$USERPROFILE\\tmp
-"  middle-mouse-click-paste_Lx in mswin:  middle-mouse-signal on mswins mapped to insert-paste as in Lx in both normal+insert-modes :
-nnoremap  <C-S-F22>    i<c-r>+
-inoremap  <C-S-F22>    <c-r>+
-" ##____________________ __1END__ ofc1-addies ___________________________
-
-
 "#####  ==========  vimrs_up1 from arx ca. : ##############################################################
 "
 "#####  ==========  lets, defining varialbles, Allg-...: ===========================
@@ -25,8 +6,8 @@ let maplocalleader=","
 let mapleader=","
 " ---
 " --!!-if mouse/ttymouse disabled, then all other mouse/behave/mouseMappings-options have NO effects! so with mouse= all other mouse-settings here are ignored!
-set ttymouse=   "disabling mouse in terminal
-set mouse=    "disabling mouse in gvim : BUT then problem inmswin: rightclick extends the selction as default! so i gvimrc reset!
+set ttymouse=   "disabling mouse in vim in terminal
+set mouse=      "disabling mouse in gvim : BUT then problem in mswin: rightclick extends the selction as default! but otherwise have to set mouse=i... in msw_gvimrc BUT then mouse will be active !?
 "________________________________________  ___________________________
 "
 "
@@ -115,6 +96,7 @@ nmap <leader>diff1         :set noautowrite<CR>:!cp -i %  %.org1<CR>:vertical di
 nmap <leader>diff3         :set noautowrite<CR>:%w  !diff % - <CR>:set autowrite&<CR>
 " delete-previous.lne-paste-and-Join-two lines: mainly for PDF-copy.paste-lines
 nmap <leader>dp1  kddpkgJh 
+nmap <leader>exp           :15Lexplore<CR>
 nmap <leader>li            :set list!<CR>
 nmap <leader>ln            :set number!<CR>
 "Man-Pages runtime;  use eg: :Man ls
@@ -125,7 +107,7 @@ nmap <leader>moun          :set mouse=<CR>
 "insert-clipboard-(NO-paste-mode)  ##--1OK-without-toggle-back:  nnoremap  <leader>ic   i<c-r>+
 nnoremap  <leader>ic   i<c-r>+
 "insert-clipboard-(paste-mode)   ##--1OK-without-toggle-back:  nnoremap  <leader>ip   :set paste<cr>i<c-r>+
-nnoremap  <leader>ip   :set paste<cr>i<c-r>+<ESC>:set nopaste<cr>
+nnoremap  <leader>ip   :set paste<cr>i<c-r>+<cr><ESC>:set nopaste<cr>
 " jumpto-under-curor-tag (instead ctrl+] which make problems, and not-working-on-mswins ...):
 nnoremap  <leader>tg   :tag  <c-r><c-w><cr>
 " paste toggle:  instead vim-option togglepaste, here with evv-key:
@@ -175,7 +157,8 @@ set foldminlines=0      " Minimum number of screen lines for a fold to be displa
 " ok1:  let fold1Sm=$q_fold1Sm    " so could be set the evv-ENV-var and is better + works fine! but here just keep the vimrc independent of evvEnv so that globally usable for vim, also outside evvEnv ! 
 let fold1Sm=repeat('#', 5).repeat(' ', 2).repeat('=', 10).repeat(' ', 2)    " evv-fold1-Start-Marker : md-title-5 (<h5>) + evv-start-marker-of-10=  : 17-chars
 let fold1Em=repeat('#', 2).repeat('_', 40).repeat(' ', 2).repeat('_', 27)   " evv-fold1-End-Marker : md-horizontal-line (<hr/>)  + evv-end-makrker-of ____... : 69-chars
-let fold12Sm=repeat('	', 1).repeat('_', 7).':'.repeat(' ', 2)    " evv-fold12-Start-Marker : subsections,  TAB+19char
+let fold12SmNoTab=repeat('_', 7).':'.repeat(' ', 2)    " evv-fold12-Start-Marker : subsections,  TAB+19char
+let fold12Sm=repeat('	', 1).fold12SmNoTab
 "	_______:  keymaps-insert/handle-markers :
 " insert-foldStartMarker-level1-evv :
 nmap  <leader>==             I<C-R>=fold1Sm<CR>
@@ -183,7 +166,7 @@ nmap  <leader>=D             I<CR><C-R>=fold1Sm<CR><C-R>=strftime('/:%y%m%d :')<
 " insert-foldENDMarker---level1-evv :
 nmap  <leader>__              I<C-R>=fold1Em<CR><NL><ESC>
 " insert-foldStartMarker-level2-evv :
-nmap  <leader>_:              O<CR><C-R>=fold12Sm<CR>
+nmap  <leader>_:              o<C-R>=fold12SmNoTab<CR>
 " set-foldmethod-as-marker--evv :
 nmap  <leader>fmm             : set foldmethod=marker<CR>
 nmap  <leader>fmi             : set foldmethod=indent<CR>
@@ -216,3 +199,6 @@ hi statusline      ctermbg=yellow    ctermfg=blue   " Active-/Current-window-sta
 hi statuslineNC    ctermbg=darkgray    ctermfg=blue  " Not_Active/Not_Current-windw-statusline-color
 " set highlight+=sr	  " reverse video for statusLine.   info: +=si is obsolete and now means italic!!
 " ##############################################################################################
+
+set viminfofile=/tmp/hs1_viminf1     "enabling with: set viminfofile=/tmp/hs1_viminf1  (on msw /temp/ or ....)  " to disable hist-file: set viminfofile=  ; msw-ok: c:\temp\hs1_viminf1 /OR mkdir /c/tmp/ and =/tmp/hs1_viminf1   
+set viminfo='0,<0,@0,f0,"0,/10,:10  " diable-all-inf-storings by setting to None: viminfo=  ! see :h 'viminfo'

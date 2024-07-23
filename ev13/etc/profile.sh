@@ -5,9 +5,9 @@ shopt  -s  expand_aliases
 export HISTCONTROL=ignoreboth:erasedups
 
 ##--- tiny internal printline-func for profiles-debugging:
-:  ${q_profsDebug11:=0} ; 
-q_pls1 () { (( $q_profsDebug11 >9 )) &&  echo  "=====  :  $1" ; } ;  ##--start-print-liner
-q_ple1 () { (( $q_profsDebug11 >9 )) &&  echo  "---    :  $1" ; } ;  ##--end-print-liner
+:  ${q_profsDebug11:=0} ;  pl_indent="";
+q_pls1 () { (( $q_profsDebug11 >9 )) &&  { echo  "${pl_indent}=====  :  $1" ; pl_indent="${pl_indent}-    "; } } ;  ##--start-print-liner
+q_ple1 () { (( $q_profsDebug11 >9 )) &&  { pl_indent="${pl_indent%-*}"; echo  "${pl_indent}-----  :  $1";    } } ;  ##--end-print-liner
 declare -fx q_pls1  q_ple1 ;
 q_pls1  "${BASH_SOURCE[0]##*/}"
 
@@ -22,7 +22,7 @@ Init1HistFile=${Init1HistFile:-"$HISTFILE"}  ;
 
 set  -u  ##--I-must be after Init1-part !!
 #
-##--- myName/myPath/...:
+##--- myCallOrg/myName/myPath/...:
 myname11="${BASH_SOURCE[0]##*/}" ;
 q_OrgCallParam="${BASH_SOURCE[0]}"       ##-I-  org-call-parameter, as this script was called by the user, eg ./up1/etc/profile.sh ; could be relative/absolute-path !
 q_OrgCallParamDP="${q_OrgCallParam%/*}"       ##-I-  org-call-DIR  of this script by caller/user as it was called! it could be relative OR absolute! , as ./evXX/etc /OR /evXX/etc 
@@ -30,15 +30,15 @@ q_OrgCallAbsolutePhysDP="$(cd  -P  $q_OrgCallParamDP && pwd -P)"   ##-I-  org-ca
 q_OrgCallAbsoluteDP="$(cd   $q_OrgCallParamDP    && pwd -L)"   ##-I-MAIN-path-used !!  org-call-DIR-full-absolte-path  of this script by caller/user, as /tmp/tempu/up1/etc : ONLY-this/absolutepath will be uses for the rest of evEnv-vars!
 q_OrgCallAbsoluteFP="${q_OrgCallAbsoluteDP}/${myname11}"         ##-I-NOT really used, but just for infos,..., abolute-FilePath of callein this profile
 
-##--- user-presets-profile, if any,  before anything in const.sh:
-: ${q_Profile2PresetsFP:="${HOME}/.profile2_ps.sh"} ;   ##--can be overwritten and located anywhere! even outside evv-tree,...
+##--- user-presets-profile, if any,  before anything in const.sh:  #--> this user-preset is now basically the setevv.sh of each system ! but leave it here, ok!
+: ${q_Profile2PresetsFP:="${HOME}/.profile2.sh"} ;   ##--can be overwritten and located anywhere! even outside evv-tree,...
 q_Profile2PresetsFN=${q_Profile2PresetsFP##*/}
 [[ -r  $q_Profile2PresetsFP        ]]  &&  source   $q_Profile2PresetsFP       ; ##--user-preset-prof
 
 ##--- pathes-basics0 : evv, upp, const.sh, hostGlob, ...:
 ##--OK-if-hostnamectl-there:   Host1full="${Host1full:=$(hostnamectl  hostname)}" ;  ##--II-if hostnamectl not there, just set Host1full to anything you like or to hostname and then call evv1-profs !
 : ${Host1full:=$(hostname)} ;  ##--II-if hostnamectl bzw. hostnamectl not in System/OS, just set Host1full to anything you like or to hostname, then rename the host-profile appropriately, and then  and then call evv1-profs !
-: ${q_Hostname:=${Host1full%%.*}}     ##-II-for HOSTNAME-var-in-evv use ONLY this! no cmds/other-vars/...!! also this can be preset before calling evv-profiles ...!
+: ${q_Hostname:=${Host1full%%.*}}     ##-II-REF-HOSTNAME-envvar-in-evv ! use ONLY this in evv! no cmds/other-vars/...!! also this can be preset before calling evv-profiles ...!
 q_EttcDP="${q_OrgCallAbsoluteDP}"
 q_EvvDP="${q_EttcDP%/*}"                 ##-- eg: /up1/ev11
 q_EvvDN="${q_EvvDP##*/}"
@@ -47,18 +47,11 @@ q_EvvDPPhys="$(cd  $q_EvvDP && pwd -P)" ##--physical/real-absolute-path of evvDP
 q_BinDP=${q_EvvDP}/bin
 q_LOGNAME="$(id -un 2> /dev/null)"
 INPUTRC="${q_EttcDP}/inputrc"    ##--instead of ~/.inputrc for bash-READLINE  ! see man  bash #goto--  /^READLINE
-INPUTRC_mswin1="${q_EttcDP}/inputrc_mswin1"    ##--instead of ~/.inputrc for bash-READLINE  ! see man  bash #goto--  /^READLINE
+INPUTRC_mswin1="${q_EttcDP}/mswInputrc"    ##--instead of ~/.inputrc for bash-READLINE  ! see man  bash #goto--  /^READLINE
 q_ConstantsFN="const.sh"
 q_ConstantsFP="${q_EttcDP}/${q_ConstantsFN}"
 q_EttcD_DP=${q_EttcDP}/etcd    ##--I-more readable with _DP, due to verwechselung mit q_EttcDP ! here is etc.d so all users/hosts/... overwritings/more-configs,....
 q_HostGlobEtcDP=${q_EttcD_DP}         ##--host-profs-global-file , now same as for users, but can be reset.
-
-##-- gitPrompt: --------------
-setGitPrompt1(){ q_gitPromptFP="${q_gitPromptFP:-${q_EttcD_DP}/git-prompt_arx1.sh}" ; export GIT_PS1_SHOWCONFLICTSTATE="yes" ; source  $q_gitPromptFP ; PS1='\[\033[33m\]\w\[\033[36m\] :`__git_ps1`:\[\033[0m\]\n$ ' ; }
-##-- read notes in git-prompt_arx1.sh ! git-prompt.sh must be executed before setting PS1 in your env or evv-profiles ! it overwrites the your/evv-PS1 otherwise !
-##--OR-without-coloring:  PS1='\w :`__git_ps1`:\n$' ; /OR (from arx1-git): export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ ' ;
-#PS1 is slower with gitPS1, so if foo slow or no use, then go back to old PS1 without git-PS1 :
-##____________________________
 
 ##--- syys-/hostGlob-presets-profiles:
 : ${q_HostGlobProfFP:=${q_HostGlobEtcDP}/profile_${q_Hostname}.sh}    ##--can pre-set in users-presets to any other absolute-path!
@@ -67,8 +60,6 @@ q_HostGlobProfFN=${q_HostGlobProfFP##*/}                   ##--can pre-set in us
 q_HostGlobProfPosFN=${q_HostGlobProfPosFP##*/}
 
 ##--- basics0:
-##--OK1-PS1_without_gitPS1--default_evv-onlyCuDir
-PS1=${PS1:-"\\W : "}   ##--PWD-in-extra-line:  PS1=${PS1:-"\w\n\\W : "} ##--incl-user@host:  PS1=${PS1:-"[\\u@\\h \\W]\\\$ "}  ##--II- in non-interactive-shells PS1 is NOT set! so just  due to "set -u" above set a default here !! 
 q_uname1infs=$(uname -a) ; q_uname1infs=${q_uname1infs^^} ; q_mswinos1=0  ##--plattform is linux as default ; q_uname1infs all capital-letters !
 [[ $q_uname1infs  =~ "MSYS"|"CYG"|"MING"|"MICROSOFT" ]] && q_mswinos1=1  ##--if plattform is mswin with cygwin or git-bash/MINGW64
 ##----
@@ -82,11 +73,12 @@ q_uname1infs=$(uname -a) ; q_uname1infs=${q_uname1infs^^} ; q_mswinos1=0  ##--pl
 [[ -r  $q_AliasesFP          ]]  &&  source  $q_AliasesFP         ;
 [[ -r  $q_Funcs1FP           ]]  &&  source  $q_Funcs1FP          ;
 [[ -r  $q_Funcs2FP           ]]  &&  source  $q_Funcs2FP          ;
-[[ -r  $q_ProfCu1FP          ]]  &&  source  $q_ProfCu1FP         ;
 [[  $q_mswinos1 == 1 && -r  $q_mswinProfFP  ]]  &&  source  $q_mswinProfFP  ;
+[[ -r  $q_ProfCu1FP          ]]  &&  source  $q_ProfCu1FP         ;
 [[ -r  $q_prj0ProfFP         ]]  &&  source  $q_prj0ProfFP        ;
-[[ -v DESKTOP_SESSION  &&  -r  $q_XWinsProfFP   &&  (( $q_XWinsProfDone < 1 )) ]]  &&  source  $q_XWinsProfFP  ;
-##--II-  q_Profile2FP will be at the END executed, so user can OVERwrite everything after the above seq !
+[[ -r  $q_pyProfFP           ]]  &&  source  $q_pyProfFP          ;
+[[ -v DESKTOP_SESSION  &&  -r  $q_XWinsProfFP ]]  &&  source  $q_XWinsProfFP  ;  ##-done-flag-i-needed!?:  &&  (( $q_XWinsProfDone < 1 )) 
+##--II-  q_Profile2PosFP will be at the END executed, so user can OVERwrite everything after the above seq !
 ##====== =====================================================================
 set -a  ##-- in case that was reset.
 
@@ -115,7 +107,11 @@ export GLOBIGNORE='.:..:'  ##-II- it also enables dotglob , see man bash !!
 HISTFILE=${ettcUser}/hs1 ; HISTSIZE=10000 ; HISTTIMEFORMAT="     ${dateTimeForm1}   " ;
 ##-- very END, shopts has relevance for all ux-cmds as ls/find/....!! :
 shopt -s  dotglob cmdhist  expand_aliases  extglob  histreedit  histverify interactive_comments  lithist  mailwarn  no_empty_cmd_completion  promptvars  shift_verbose
-[[ -r  ${q_Profile2FP}   ]]  &&  source  ${q_Profile2FP}  ##--currUser-Profs: overwrites everything if needed; if presets are required, set them BEFORE invoking this profile.sh !!!
+[[ -r  ${q_Profile2PosFP}   ]]  &&  source  ${q_Profile2PosFP}  ##--currUser-Profs: overwrites everything if needed; if presets are required, set them BEFORE invoking this profile.sh !!!
+
+##--OK1-PS1_without_gitPS1--default_evv-onlyCuDir
+PS1="\\W : "   ##__OK1: PS1=${PS1:-"\\W : "}   ##--PWD-in-extra-line:  PS1=${PS1:-"\w\n\\W : "} ##--incl-user@host:  PS1=${PS1:-"[\\u@\\h \\W]\\\$ "}  ##--II- in non-interactive-shells PS1 is NOT set! so just  due to "set -u" above set a default here !! 
+[[ -d ./.git/ ]] &&  setGitPrompt
 
 q_ple1  "${BASH_SOURCE[0]##*/}"
 set +u -hBC -o errtrace  -o emacs  -o functrace  -o histexpand  ;  ##--!!- ONLY at the very end: set -o history  +a +e

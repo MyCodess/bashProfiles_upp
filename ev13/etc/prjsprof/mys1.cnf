@@ -1,0 +1,40 @@
+# USAGE:
+#	mysql  --defaults-file=<my-path>          #-read this file INSTEAD default/global conf-files! MUST be the very FIRST argument!
+#	mysql  --defaults-extra-file=<my-path>    #-Read this file AFTER the global files are read:
+
+
+#####  ==========  all clients:  mysql/mariadb, mysqlshow, mysqldump,...
+[client]
+host=127.0.0.1
+port=3306
+user=u11
+password="wwee"
+##________________________________________  ___________________________
+
+
+#####  ==========  cmdlineClient  mysql/mariadb :
+[mysql]  ##or [mariadb-client]   ##--I-for mycli comment this line out, so that the next lines are in client-section! but then problems with mysqlshow/mysqldump/...!
+database=db1
+prompt="\u.\d.\h\_sql>\_"
+auto-rehash=TRUE
+column-names
+progress-reports
+#_  pager=less
+#_? auto-vertical-output=TRUE
+##________________________________________  ___________________________
+
+
+#####  ==========  notes:
+##-----  config-file-sections:
+#-  mysql   mariadb-client  client client-server client-mariadb #-:mysql-cmdlineClient
+#-  mysqlshow mariadb-show  client client-server client-mariadb #-:mysqlshow
+#-  mysqldump mariadb-dump  client client-server client-mariadb #-:mysqldump
+
+##----- descp(manual, https://mariadb.com/kb/en/mariadb-command-line-client/#option-files):
+#-  [mysql]  Options read by mysql, which includes both MariaDB Server and MySQL Server.
+#-  [mariadb-client]    Options read by mariadb. Available starting with MariaDB 10.4.6.
+#-  [client]     Options read by all MariaDB and MySQL client programs, which includes both MariaDB and MySQL clients. For example, mysqldump.
+#-  [client-server] Options read by all MariaDB clients + Server; useful for options common between server + clients, as host/port/socket ...
+#-  [client-mariadb]    Options read by all MariaDB client programs.
+###________________________________________  ___________________________
+

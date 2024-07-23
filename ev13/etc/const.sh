@@ -26,7 +26,7 @@ declare -xi q_EvvNO=${q_EvvNO:-${q_EvvDPPhys: -2}} ;   #curr env-ID resp. dir-su
 ##-- FNs:  Profiles-FileNames:
 q_ConstantsFN=const.sh
 q_ProfileFN=profile.sh
-q_Profile2FN=.profile2.sh
+q_Profile2PosFN=.profile2_pos.sh
 q_PathesFN=pathes.sh
 q_prj0ProfFN=prj0Prof.sh
 q_AliasesFN=aliases.sh
@@ -34,13 +34,14 @@ q_Funcs1FN=funcs1.sh         ##--?- q_LogoutFN=logout.sh
 q_Funcs2FN=funcs2.sh         ##--?- q_LogoutFN=logout.sh
 q_ProfCu1FN=profCu1.sh         ##--?- q_LogoutFN=logout.sh
 q_XWinsProfFN=xwinsProf.sh
-q_mswinProfFN=mswinProf.sh
+q_mswinProfFN=mswProf.sh
+q_pyProfFN=pyProf1.sh
 
 ##----------- profiles_FilesPathes-Evv --------------------------------
 ##-- FPs:  Profiles-FilePathes:
 q_ConstantsFP=${q_EvvDP}/${q_ConstantsFN}  #--only config file in the root; the rest in etc.
 q_ProfileFP=${q_EttcDP}/${q_ProfileFN}         ##--?- q_FuncsProfFP=${q_EttcDP}/${q_FuncsProfFN}    ##--???-neede in bsh??
-: ${q_Profile2FP:=${HOME}/${q_Profile2FN}}
+: ${q_Profile2PosFP:=${HOME}/${q_Profile2PosFN}}
 q_PathesFP=${q_EttcDP}/${q_PathesFN}
 q_prj0ProfFP=${q_EttcDP}/${q_prj0ProfFN}
 q_AliasesFP=${q_EttcDP}/${q_AliasesFN}
@@ -49,6 +50,7 @@ q_Funcs2FP=${q_EttcDP}/${q_Funcs2FN}
 q_ProfCu1FP=${q_EttcDP}/${q_ProfCu1FN}
 q_XWinsProfFP=${q_EttcDP}/${q_XWinsProfFN}
 q_mswinProfFP=${q_EttcDP}/${q_mswinProfFN}
+q_pyProfFP=${q_EttcDP}/${q_pyProfFN}
 ##--?- q_LogoutFP=${q_EttcDP}/${q_LogoutFN}
 
 
@@ -167,11 +169,11 @@ q_logTagsA1["$q_warnLevel"]="$q_warnTag"
 q_logTagsA1["$q_infoLevel"]="$q_infoTag"
 q_logTagsA1["$q_debugLevel"]="$q_debugTag"
 ##__  echo "${q_logTagsA1[@]}"
+# =========== __1END__ Lables ==========================================================
 
-# =========== __1END__ =================================================================
-#
-##-- done-flags-if-still-needed:
-##__  declare -xi  
-: ${q_XWinsProfDone:=0}
+#####  ==========  misc envvars,...:
+###________________________________________  ___________________________
 
+
+##-- done-flags-if-still-needed: declare -xi  q_XWinsProfDone:=0
 q_ple1  "${BASH_SOURCE[0]##*/}"   ##- "$q_ConstantsFN"

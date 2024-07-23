@@ -1,0 +1,22 @@
+" lang-problem on wins :
+language en_US
+set langmenu=en_US.UTF-8 
+
+"#####  ==========  cu1-2chks/cu-cp-options;  is good? : ====================
+set scrolloff=0     " --I-due to mouse-irritations, near to windows-borders, it jumps ....
+"________________________________________  ___________________________
+"
+"##### ============= ofc1 231000 : ==============================================
+set  pythonthreehome=C:\Progs2\Py3
+set  pythonthreedll=C:\Progs2\Py3\python311.dll
+set backupdir=$USERPROFILE\\tmp
+set directory=$USERPROFILE\\tmp
+"  middle-mouse-click-paste_Lx in mswin:  middle-mouse-signal on mswins mapped to insert-paste as in Lx in both normal+insert-modes :
+nnoremap  <C-S-F22>    i<c-r>+
+inoremap  <C-S-F22>    <c-r>+
+" ##____________________ __1END__ ofc1-addies ___________________________
+
+" OK1: source  C:\Users\DKX8H1N\up1\.ev13\etc\vimrc
+source  ~\up1\.ev13\etc\vimrc
+
+execute pathogen#infect()

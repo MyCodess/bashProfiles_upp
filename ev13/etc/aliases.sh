@@ -10,8 +10,11 @@ alias  cpib='cp  -ixv  --preserve --backup=numbered'    ##- you can force copyin
 alias  mv1='mv  -iv   --strip-trailing-slashes'
 alias  mvi='mv1'
 alias  mvib='mv1  --backup=numbered'  ##- you can force copying then with -f  OR with -n for never-overwriting a file; If you specify more than one of -i, -f, -n, only the final one takes effect. see man-page !
-alias  vim1='vim'
-alias  vi1='vim1'
+alias  vi1='vim'  ##--REF-for-vim-calls!!
+alias  gvi1='gvim'  ##--REF-for-gvim-calls!!
+alias  view1='vim -R'  ##--REF-for-view-calls!!
+alias  vi=vi1
+##__ alias  vim1='vi1'
 ##-------------------------------------------------------------------------------------------------------
 
 
@@ -32,13 +35,13 @@ alias lld='ll   -Ah  *$($cuds)*'
 alias llm='echo  "*[-_.]$(date +%y%m)[0-9][0-9]*"  ;  ll   -Ah  *[-_.]$(date +%y%m)[0-9][0-9]*'
 
 
-##========== syys/syysTg/-stuf, basically hostglob-pos-profile: ===========
+##========== syys/syysTg/-stuf ... ========================================
 ##---- syysTg-stuff generall-part:
 alias  cdrepos1="cd ${syysLocReposDP} && lla && pwd";
 alias  cdsyysdnts="cd  $syys_dnts_DP && ls1 -la && pwd ;"
 ##--- syys-stats, syys-syysTg-tree:
-alias vistat1="vim1   ${syysTgStats_dntsFP}"
-alias visetup1='vim1  -o  ${syysTgStatsDP}/setup*_dnts.txt'  ##__1org:  alias visetup1='vim1   +  ${syysTgSetupdntsFP}'
+alias vistat1="vi1   ${syysTgStats_dntsFP}"
+alias visetup1='vi1  -o  ${syysTgStatsDP}/setup*_dnts.txt'  ##__1org:  alias visetup1='vi1   +  ${syysTgSetupdntsFP}'
 alias cdsyystg='cdlla  ${q_syysTgDP}'
 
 ##========== OS/XWins/apps/syystem/utils/SWs... misc: =====
@@ -62,12 +65,15 @@ alias vigrubs='vi1 /boot/grub/grub.cfg'  ##--more grubs-files can be added, eg i
 alias vilabs='vi1  -o  $wpDP/1labs*.txt'
 alias vitagh='vi1  -o  $wpDP/tagh*.txt'
 alias vievvetc='cd  ${q_EttcDP} && vi1 *sh'
+alias vihostprofs="vi1  $q_HostGlobProfPosFP  $q_HostGlobProfFP"
 alias vigitsdnts='vi1 ${gitsdntsFP}'
 alias vividnts='vi1 ${vimsdntsFP}'
 alias vimtit1='vi1  -c "set title"  -c "let  &titlestring=\"GV-$(basename $(pwd)) : \" . statuslinestr" '
-alias gvimtit1='vimtit1   -g -p'
-alias gvimtit1x='vimtit1  -g -p ./*.txt'
-alias gvimtit1xx='vimtit1 -g -p  $(ls  *.txt  *.log  *.csv  *.tsv *sh *.out)'  ##--I-if no ls but just eg *.txt, then *.xx will be shown in a tab, if no file there!
+alias gvimtit1='gvi1  -c "set title"  -c "let  &titlestring=\"GV-$(basename $(pwd)) : \" . statuslinestr" '
+alias gvimtit1a='gvimtit1   -g -p'  ##-a==all
+alias gvimtit1x='gvimtit1  -g -p ./*.txt'  ##--x==tXt
+alias gvimtit1xx='gvimtit1 -g -p  $(ls  *.txt  *.log  *.csv  *.tsv *sh *.out)'  ##--I-if no ls but just eg *.txt, then *.xx will be shown in a tab, if no file there!
+alias gvimexp='gvi1  -c ":15Lexplore"'
 
 ##========== w1-/w1_m-tree: ===============================
 ##---------- w1-docsm_1kk :
@@ -85,6 +91,8 @@ alias cdl1nwstat='cdlla ${l1nwStatsDP}'
 alias cdl1nwbupflags='cdlla  ${l1nwBupsLogsFlagsDP}'
 ##================= __1END__ w1-tree: ---------------------
 
+##========== T1s/T1vars/...: ==============================
+alias cddocsvar='cdlla ${docsvarDP}'
 ##========== MPs/MVPs: ====================================
 alias cdmvps='cdlla  ${mvpsDP}'
 alias cdvps='cdlla  ${vpsDP}'
@@ -124,14 +132,9 @@ alias cdlxossdnts='cdlla  ${lxOSsdntsDP}'
 alias cddnts='cdlla  ${dntsDP}'
 alias cddres='cdlla  ${dresDP}'
 alias cddrescodecs='cdlla  ${dresCodecsDP}'
-#--pyy:
-alias  cdpydnts="cdlla  $q_pyydntsDP"
-alias  cdpydres="cdlla  $q_pyydres1kkDP"
-alias  cdpydocs="cdlla  $q_pyyDocsDP"
-alias  cdpydocsvar="cdlla  $q_pyyDocsVarDP"
 #--mssdnts:
-alias  cdmsdnts="cdlla ${mssdntsDP}/"
-alias  cdmsdntsshells="cdlla ${mssshellsdntsDP}/"
+alias  cdmsdnts='cdlla ${mssdntsDP}/'
+alias  cdmsdntsshells='cdlla ${mssshellsdntsDP}/'
 
 ##========== rest-all : ===================================
 alias ..='cdlla  ..'
@@ -154,8 +157,9 @@ alias expg="export -p   | sort  | grep1  -i"                      ##--prev:- "ex
 alias expgn="export -p  | sed -e 's:=.*::' | sort | grep1  -i "   ##--prev:-   "export -p  | sed -e 's/=.*//' -e 's/  */\t/g' | sort | grep1  -i "  ##--??- ?replace in bash??: alias expgn='typeset +x | grep1  -i'  ##--offc-
 alias findinNotEvvNamings='find .  -depth  -regextype posix-extended    -regex  ".*[^[:alnum:]/_.-].*"  '  ##--find not-evvConform-Filenames
 alias grepi='grep1  -i'
-alias h='history'
-alias hg='fc -l -10000 | grep1  -i' #--i- not with history, so without timestamp, if activated.
+alias hs='history'
+alias hsg='fc -l -10000 | grep1  -i' #--i- not with history, so without timestamp, if activated.
+alias hsrma='rm -iv $histfilePrev $HISTFILE $HOME/.*hist*  $HOME/.hs_* ; unset HISTFILE' ##--U-: -v -history-rm-...
 alias hsnofile="unset HISTFILE"  #--I-notsaving--but-do-hss-in-cu-shell!
 alias hsnono="unset HISTFILE; set +o history"  #--I-not-hss-at-all-in-cu-shell!
 alias infovi='info --vi-keys'
@@ -191,9 +195,10 @@ alias unsus1='unset ${!q_@}  ${!syys@}'   ##--unset all vars starting with evv !
 alias sus1='source  $q_ProfileFP ;'
 alias sus1unset='v11=${q_ProfileFP} ; unset ${!q_@}  ${!syys@} ; source ${v11}'
 alias 3sync='sync;sync;sync'
+alias 3cl='clear;clear;clear'
 
 ##========== addies in arx1-ub64--1912Arx : ===============
-alias  view="vim1  -R"
+alias  view="vi1  -R"
 
 ##========================================================
 q_ple1  "${BASH_SOURCE[0]##*/}"

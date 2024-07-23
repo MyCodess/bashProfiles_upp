@@ -1,0 +1,51 @@
+set -a
+q_pls1  "${BASH_SOURCE[0]##*/}"
+
+
+#	_______:  Pythons_Allg:
+q_pyyVar1_DP="${vaarAuDP}/py1var/"
+PYTHONPYCACHEPREFIX="${q_pyyVar1_DP}/0pycs/"   ##--II- woks?? as target-dir for ALL pyc-files instead local-source-dir! same as -X -X pycache_prefix=PATH: ... BUT NOT-documented in man python !! works??
+PAGER=less   ##--for pydoc
+# __if_req:  q_prjSTARTUP=${q_prjEtcDP}/pystartup1.py  ##--python-startup-script
+
+#	_______:  funcs-prj-specifics / py: 
+path2pymod() { echo $1 | sed -e 's@^[~./]*@@' -e 's@.py$@@' -e 's@/@.@g' ; }  ##--converts filepath-to-python-module-pkg-path !
+
+#	_______:  aliases-prj-specifics / py:
+#-q_pyy-/pythons-aliases:
+alias  pydoc1="PAGER=less  $q_pyyexe  -m pydoc"
+alias  pypath='echo "PYTHONPATH  is:  ${PYTHONPATH}" ; echo "---PYTHONPATH-lines (ignore emptylines):" ; echo -e ${PYTHONPATH//:/"\n"}'  ##--search-pathes for modules/packages/...; the beginning-and-ending/redundant ":" can be also deleted with: echo -e "${PYTHONPATH/#:/}"  bzw. echo -e "${PYTHONPATH/%:/}" , but so ok! ignore the emptylines !
+alias  pysyspath='python -c "import sys; [print(ii) for ii in  sys.path ];"'
+alias  rmpycaches='find . -name "__pycache__" -type d -exec rm -rf {} \;'
+alias  rmpytestcaches='find . -name "pytest_cache" -type d -exec rm -rf {} \;'
+
+# _______:  djangos_Allg:
+#---dj-docs/-dnts/...:
+dj1dntsDP="${q_pyydntsDP}/djangos_dnts_py"
+dj1DocsRTDP="${dcItDP}/dj_dc"
+dj1DocsTxtDP="${dj1DocsRTDP}/django-docs/_sources"
+dj1SrcDP="${q_pyyHome1_DP}/lib/site-packages/django"
+grdj1docs() { grepi -r "$1"  ${dj1DocsTxtDP} ; }
+alias  cddj1dnts="cdlla ${dj1dntsDP}"
+alias  cddj1docs="cdlla ${dj1DocsRTDP}"
+alias  cddj1docstxt="cdlla ${dj1DocsTxtDP}"
+alias  cddj1src="cdlla ${dj1SrcDP}"
+alias  pydocdj='python  -c "import django, django.conf, pydoc ; django.conf.settings.configure() ; django.setup() ; pydoc.cli()"'
+#-pydocdj so not-worked-on-nsv-pc:  alias  pydocdj='DJANGO_SETTINGS_MODULE=django.conf.global_settings  python  -c "import django, pydoc ; django.setup() ; pydoc.cli()"'  ##--django-pydoc-call
+
+
+
+#####  ==========  MySqls/MariaDBs:
+q_mysUser1=${mysUser1:-"u11"}
+q_mysPW1=${mysPW1:-"u11"}   #-!-no-space after -p !
+q_mysHost1=${q_mysHost1:-"127.0.0.1"}
+q_mysDB1=${mysDB1:-"db1"}
+q_mysPrompt1=${mysPrompt1:-'\u@\d\_sql:\_'}
+q_mysParams1='--auto-rehash  --progress-reports  --table'
+alias  mysql1='mysql -u "$q_mysUser1" -p"$q_mysPW1" -h "$q_mysHost1" -D "$q_mysDB1"  --prompt "$q_mysPrompt1"  $q_mysParams1'
+alias  mycli1='mycli -u "$q_mysUser1" -p"$q_mysPW1" -h "$q_mysHost1" -D "$q_mysDB1"  --prompt "$q_mysPrompt1"'  #  $q_mysParams1'
+###________________________________________  ___________________________
+
+
+q_ple1  "${BASH_SOURCE[0]##*/}"
+##################################################################################################
