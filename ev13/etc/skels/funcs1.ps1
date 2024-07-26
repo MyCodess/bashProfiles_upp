@@ -3,8 +3,8 @@
 ##############################  Lx-cmds-PS1 : ################################
 ##--!! check also the defaul-ps-aliases for many Lx-cmds !
 
-##----- Kund-ofc1-vw-settings-NW ...:
-function setproxys() { $env:HTTPS_PROXY='zscaler-prod.fs01.vwf.vwfs-ad:8080' ; $env:HTTP_PROXY='zscaler-prod.fs01.vwf.vwfs-ad:8080' }
+##----- Kund-ofc1-ofc1-settings-NW ...:
+function setproxys() { $env:HTTPS_PROXY='z......:8080' ; $env:HTTP_PROXY='z.......:8080' }
 
 ##----- afg, ... :
 function afg ([parameter(mandatory, HelpMessage="search-word-in-aliases+funcs-names+definitions")]  [string]$p1 )  { Get-Command  -ListImported  -CommandType  Alias,Function  |  Out-String -stream | Select-String  "$p1" }

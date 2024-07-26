@@ -60,7 +60,7 @@ w1DP=${q_UppDP}/w1         #--w1_RF     ##--2do-!! Maybe using the the  := defau
 w1DPPhys=$(cd $w1DP && pwd -P)  ##--physica-path-of-w1 for tars,.... !
 ettcuDP=${q_UppDP}/etcu     #- var-root for all users, also individual users
 vaaruDP=${q_UppDP}/varu     #- var-root for all users, also individual users
-opptuDP=${q_UppDP}/optu     #--?- needed?
+opptuDP=${q_UppDP}/optu     #- evv-opt-added, in msw praktisch /c/Progs2/
 TP1DP=${q_UppDP}/t1              #- T1-Partition
 TP2DP=${q_UppDP}/t2              #- T2-Partition
 TP3DP=${q_UppDP}/t3              #- T3-Partition
