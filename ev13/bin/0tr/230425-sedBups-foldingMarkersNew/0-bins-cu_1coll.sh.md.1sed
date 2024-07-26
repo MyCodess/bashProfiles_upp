@@ -1,0 +1,38 @@
+__________________  bins-coll-tr-uue.sh.txt : ________________________________
+exit 3
+________________________________________  ___________________________
+
+
+#####  ==========  xfce4
+
+	_______:  m1/t1-launches:
+dbus-launch    --exit-with-session    xfce4-settings-manager
+dbus-launch    --exit-with-session    thunar
+________________________________________  ___________________________
+
+
+#####  ==========  gnome-terminal problem as another-user /_190413 ubt-18.04.2 :
+
+	_______:  must set DISPLAY for dbus (eg DISPLAY=:0 )! 
+dbus-update-activation-environment --verbose --systemd DISPLAY
+/OR?:  dbus-update-activation-environment  DISPLAY=:0
+________________________________________  ___________________________
+
+
+#####  ==========  finds in /up1/ ,...:
+- BKs-IT-find:
+find  /up1/w/BKs1_RF/BKs1_ITs/  /up1/w2/BKs2_RF/BKs2_ITs/  -iname "*ant*"
+- BKs-All-find:
+find  /up1/w/BKs1_RF/  /up1/t2/w2_loc_RF/BKs2_RF/  -iname "*xxx*"
+________________________________________  ___________________________
+
+
+#####  ==========  PRJs:
+- devnts/X_wp files:   mkdircd  /0devNts/javas/j_wp ; ls /up1/w/docs_m/dres/0devNts/pl/pl_wp | sed -e 's/pl_/j_/g' | xargs touch 
+________________________________________  ___________________________
+
+
+#####  ==========  file-types ...:
+- is the file a text/plain one??:      [[  "text/plain" != $(file -b --mime-type $1 ) ]]  && echo "$1  :  __NO_Plain_TXT__ " ;
+________________________________________  ___________________________
+

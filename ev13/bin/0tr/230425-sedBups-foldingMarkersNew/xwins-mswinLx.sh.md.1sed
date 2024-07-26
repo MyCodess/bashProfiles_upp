@@ -1,0 +1,34 @@
+__________________  xwin-mswin.sh.txt : ______________________________________
+exit 3
+--######################## XWins : ###########################################
+________________________________________  ___________________________
+
+
+#####  ==========  xfce4-qcks...:
+	/usr/bin/startxfce4    
+	- starting NEW/parallel  X-session (eg. parallel to u1 in other vconsole for m1) :   startx  /usr/bin/xfce4-session
+	-!! NB1 -> NB2 fonts-config ,so replacing fonts for xfce4:   sed -i_bp1  -e 's@Sans 9@Sans 8@'   -e 's@Source Code Pro 9@Source Code Pro 8@'   <confid-files in ~/.config/xfce4/ >
+________________________________________  ___________________________
+
+
+#####  ==========  xwin-bins:
+	-! xdg-open : open a file with user-mimeType-app , eg: xdg-open t1.tx /OR t1.htm ....
+	   openning files with their associated win-apps from cmdline:   xdg-open  <my-file> #eg:  xdg-open  aa.pdf
+	-! .dektop files opening from cmdline:
+		-! worked-ubt1804  :  gtk-launch    firefox  #--OR- firefox.dektop  , see man gtk-launch  /_181000--ubt1804
+		  xdg-open  opend it in mimetype-associated, also with gvim !!
+		  Both xdg-open and gnome-open open the desktop file for editing instead of executing.
+		  nts: Packages: (Exact name will differ betweem distros) (this is based on CentOS 7) : gtk3 for gtk-launch , xdg-utils for xdg-open , kde-runtime for kde-open , libgnome for gnome-open , 
+--######################## MsWin-Lx : ########################################
+________________________________________  ___________________________
+
+
+#####  ==========  mtools:
+	minfo -i /dev/sda1 ::             ##shows lot of infos about the part !!
+	mlabel -i /dev/sdb1 -s ::         ##shows label (without using config file for interfaces)
+	mlabel -i /dev/sda3 ::T1_Loc_RF   ##sets label (without using config file for interfaces)
+	--- utils in arx1:
+	catdoc	: A convertor for Microsoft Word, Excel, PowerPoint and RTF Files to text ;
+	pacman -Syu  catdoc ; /usr/bin/catdoc ,  /usr/bin/catppt , /usr/bin/wordview , /usr/bin/xls2csv
+________________________________________  ___________________________
+

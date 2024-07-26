@@ -1,0 +1,99 @@
+#!/bin/bash -i
+exit 3 ;
+echo "$fatalErrorTag  :  Must-Not have reached here!!! "  ; exit 3 ;
+############# cu-wks/dos/... : ##############################################
+##----- cu-qcky-terms:
+export fmsWP_DP="${wpDP}/fms-wp" ;  xfce4-terminal  --tab --working-directory=${tosoDP}  --tab --working-directory=${fmsWP_DP}  --tab  --working-directory=${fmsWP_DP}/FMs_2205_1kk  --tab --working-directory=${fmsWP_DP}/FMs2_2205_no1kk_Anil  --tab --working-directory=${fmsWP_DP}/Samples_1p_1coll_tr
+________________________________________  ___________________________
+
+
+#####  ==========  configs-nts-terminals:
+-!! gnome-terminal uses USER-dconf/gsettings-DB configs  <-->  xfce4-terminal  uses USER-xfconf/-xfconf-query-DB configs ()
+- they uses as default obv. the monospace-system-fonts of xfce4-session bzw. gnome-desktop
+- system-fonts setting for gnome (gnome-terminal) per cmdline (eg for m1 , from u1-login):    gsettings  set   org.gnome.desktop.interface monospace-font-name 'Source Code Pro 9'
+
+	_______:  uue-nts--terms-configs:
+-  cu-terms-namings-uue :  _RF-names in const.sh ! listing with : expg  uueTN 
+	- /OR for gnome-terminal, manaully querying-gnome-dconf-DB:    dconf dump / | grepi 0t-  | sort | sed -e 's/.*=//'    ##--bzw. ...  -e  "s/'/\"/g"
+	- xfce-terminal has go NO profiles ! unfortunately !
+	- /_200413:   declare -x   uueTN_ma="0t-ma" uueTN_mb="0t-mb" uueTN_ra="0t-ra" uueTN_ua="0t-ua" uueTN_ub="0t-ub" uueTN_uc="0t-uc" uueTN_ud="0t-ud"
+
+	_______:  colors-RGB (eg for  xfce4-terms):
+	- see https://www.rapidtables.com/web/color/RGB_Color.html
+	-!! RGB : the color-system/Digits is Red-Green-Blue , so #RRGGBB  !
+	- eg-RGBs:  light yellow #FFFFE0 (255,255,224)
+	 xfce4-terminal  --color-bg="#EDFAE0"   ##--green-gray , 0t-ub   bzw:  #F0FFF0
+	 xfce4-terminal  --color-bg="#E8F8F8"   ##--blue--gray , 0t-uc
+	 xfce4-terminal  --color-bg="#F6F3AD"   ##--yellow--gray , 0t-ma
+#############-- vim/nts/wpads/txts:
+cd ${uueBinDP}  &&  gvimtit1   ./terms1.*sh* ./0*txt  ./dirs-pathes*.txt
+cd ${lxNtsDP}   &&  gvimtit1   ./*.txt
+#_  cd $syysTgStatsDP  &&  gvim  -p  *.txt
+############# defaults-xfce4: #####################################################
+xfce4-terminal  --disable-server  --tab --tab --tab --tab &
+############# defaults-gnome: #####################################################
+gnome-terminal --profile=$uueTN_ua   -t   wp1      --tab --working-directory=${uueBinDP}  --tab --working-directory=${wpDP}  --tab --working-directory=${wpDP}/0curr-wp  --tab --working-directory=${wpDP}/kg1-abs-wp  --tab --working-directory=${wpDP}/abs-coll/DRs-gesd-ABs-coll  --tab --working-directory=${tosoDP}  ;   ##-  $(grepi wp1  terms1.txt.sh )
+gnome-terminal --profile=$uueTN_ua   -t  syysTg1    --tab --working-directory=${syysTgStatsDP}  --tab --working-directory=${syysTgDP}  --tab --working-directory=${syysTgLogsDP} --tab --working-directory=${syysTgLogsDP}  ;
+gnome-terminal --profile=$uueTN_ua   -t  up1-uue   --tab --working-directory=${uueBinDP}  --tab --working-directory=${uueEtcDP}  --tab --working-directory=${npsDP}  --tab --working-directory=${tosoDP}  --tab --working-directory=${uueUppDP}  --tab --working-directory=${uueUppDP}
+gnome-terminal --profile=$uueTN_ub   -t  w1-m      --tab --working-directory=${dc1k}  --tab --working-directory=${wpDP}  --tab  --working-directory=${l1nwNtsDP}  --tab --working-directory=${devNtsDP}  --tab --working-directory=${devNtsDP}
+gnome-terminal --profile=$uueTN_ub   -t  te1-wk    --tab  --working-directory=${vaarAuWorksDP}  --tab  --working-directory=${vaarAuWorksDP}  --tab  --working-directory=${vaarAuTestsDP} --tab  --working-directory=${vaarAuTestsDP}
+echo "================ quickies-echos-cu: =================================="
+#echo  'su -l -c "gnome-terminal --profile=rt-cons-ue  --tab --tab --tab  --tab"  - '  ##-needs interactive-PW,so only echo for easier retyping! as background/& line does not work!
+cat <<outtxt1
+	gnome-terminal --profile=$uueTN_ua  --tab --tab --tab  --tab
+	gnome-terminal --profile=$uueTN_ua --tab --tab --tab --tab
+	m:  nemo& ;  midori& ; firefox  -no-remote -new-instance --safe-mode --private-window & ; thunderbird -no-remote --safe-mode -ProfileManager &
+	vi   ~/.config/gtk-3.0/bookmarks
+outtxt1
+##--------------------END
+exit 0
+################ more: #########################################################################
+________________________________________  ___________________________
+
+
+#####  ==========  1kk/uue more:
+##---DUs: (!! "--profile=xxx" works ONLY per TAB !! so if want all tabs in profileXX then enter this per TAB parameter !!)
+gnome-terminal  -t DUs    --tab --working-directory=${wpDP_du}  --profile=$uueTN_ub  --tab --working-directory=${wpmDP_du}   --tab --working-directory=${absDP_du}  --tab  --working-directory=${absDP_du}/abs-du-2010/ --tab --working-directory=/up1/w1_AR/DU_cu/  --tab --working-directory=${wpDP} --profile=$uueTN_ub
+##---MPs-Work, new MPs-1901 , ...:
+gnome-terminal  --profile=$uueTN_uc  -t  MPs1  --tab --working-directory=${uueBinDP}  --tab --working-directory=${mpswpDP}  --tab --working-directory="${mpswpDP}/Listings_Logs_MPs_Curr"  --tab --working-directory="${mpsNpsDP}"  --tab --working-directory="${mpsNpsDP}/2So_MPs "  --tab --working-directory="${mpsNpsDP}/AMPs-1901"  --tab --working-directory="${mpsNpsDP}/AMPs-2001" ;
+________________________________________  ___________________________
+
+
+#####  ==========  prj1s/wks/ITs more:
+#--arx1:  see/source   /up1/w/docs_m/dres/devnts/lxOSs/arx-dnts/0-env2-arx.sh ; ... ; eg:
+gnome-terminal --profile=$uueTN_ub   -t  cu1-arx1  --tab --working-directory=${uueBinDP}  --tab --working-directory=${lxNtsDP}  --tab --working-directory=${lxNtsDP}/arx-dnts/  --tab --working-directory=/up1/t1/lag/nps-done-tx_RF/190310-nps-cpd-to-tx_RF/ArchLinux-dw-190314/  --tab --working-directory=${vaarAuWorksDP}/arx-wk1/  --tab --working-directory=${vaarAuWorksDP}/arx-wk1/  ;
+################ prev dnts + cmds : #########################################################################
+________________________________________  ___________________________
+
+
+#####  ==========  vims:
+cd ${uueBinDP}  &&  gvim  -p  -c "let &titlestring=\"GV-bins- \" . statuslinestr"   ./terms1.sh ./0*txt  ./dirs-pathes-cu.txt
+cd ${lxNtsDP}   &&  gvim  -p  -c "let &titlestring=\"GV-LxNts- \" . statuslinestr"   ./xwins-distros-lx/*
+________________________________________  ___________________________
+
+
+#####  ==========  XDG / starmenu: =============================================
+##-- openning terminal-tabs for all XDG-Startmenu-Dirs:
+#- XDG-System-Dirs:
+gnome-terminal --title=XDG-System-dirs  --tab --working-directory=/etc/xdg/menus  --tab --working-directory=/usr/share/desktop-directories  --tab  --working-directory=/usr/share/applications  --tab  --working-directory=/usr/share/applications
+#- XDG-User-Dirs:    
+gnome-terminal --title=XDG-User-dirs --tab --working-directory=${HOME}/.config/menus/  --tab --working-directory=${HOME}/.local/share/desktop-directories/  --tab  --working-directory=${HOME}/.local/share/applications/  --tab --working-directory=${HOME}/.local/share/applications/
+#- xdg-user-vim:
+cd /up1/.cuue/etc/apps/menu1-uue  &&  gvim -p $(find . -type f )
+#-now in system-dirs:  gvim -p /etc/xdg/menus/ue-menu1-applications.menu  /usr/share/desktop-directories/ue-menu1.directory  ~/.local/share/applications/item* ~/.local/share/applications/d1-apps/item*
+##==END========= XDG / starmenu: =============================================
+________________________________________  ___________________________
+
+
+#####  ==========  terminal/gnome-terminal:
+- rt: 	sudo  -i     gnome-terminal --working-directory=${vaarAuBups1DP}  --tab --tab --tab --tab
+- m1: 	sudo  -u m1  gnome-terminal --working-directory=${absDP}  --tab --tab  --tab --working-directory="$wpmDP"  --tab  --working-directory="$wpmDP"  --tab  --working-directory="$wpDP" --tab  --working-directory="$HOME"  --tab --working-directory="$tosoDP"
+- ab ubt-15.04 only working this:   gnome-terminal --tab --profile=$uueTN_ma --tab --profile=$uueTN_ma  --> so pro TAB you can set the profile, with specifying its progile AFTER --tab param !!
+- gnome-terminal-profiles-names-listing of user:   grep -iR -A 2  visible_name   ~/.gconf/apps/gnome-terminal/
+- gnome-terminal --profile=$uueTN_ma --tab --tab --tab --tab &
+________________________________________  ___________________________
+
+
+#####  ==========  
+________________________________________  ___________________________
+
