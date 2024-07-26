@@ -23,8 +23,7 @@ alias   visetevv='vi1  ${setevv_FP}'
 alias   cdsetevv='cdl  ${setevv_DP}'
 
 ##--- call-evv-profs:
-##__ 
-export  q_profsDebug11=10 ; 
+export  q_profsDebug11=0 ;   (( $q_profsDebug11 >9 )) && { echo "=====  :  ${setevv_FN}" ; }  ##--set to 10 to see debugs !
 export  Host1full="2310msw"  ##--I-will-not-work-with-sus1unset if only:  export  q_Hostname='2310msw' #-:it will be unset also !
 source  "${setevv_DP}"/up1/.ev13/etc/profile.sh    ##--did-not-work:  "C:\Users\DKX8H1N\up1\.ev13\etc\profile.sh"
 ##--old-HOME-dir-up1:  source  "${USERPROFILE}"/up1/.ev13/etc/profile.sh    ##--did-not-work:  "C:\Users\DKX8H1N\up1\.ev13\etc\profile.sh"
@@ -36,4 +35,6 @@ source  "${setevv_DP}"/up1/.ev13/etc/profile.sh    ##--did-not-work:  "C:\Users\
 set -au
 set +au
 ##________________________________________  ___________________________
-#
+
+q_ple1  "${BASH_SOURCE[0]##*/}"
+

@@ -9,7 +9,7 @@ q_pls1  "${BASH_SOURCE[0]##*/}"
 alias  setdjsettingdev="export DJANGO_SETTINGS_MODULE=netservices.settings.dev"
 alias  setdjsettingtest="export DJANGO_SETTINGS_MODULE=netservices.settings.test"
 alias  setdjsettingsrv="export DJANGO_SETTINGS_MODULE=netservices.settings.server"
-alias  setpypath1='export PYTHONPATH="${q_prjCodeDjix1DP}/:${q_prjCodeDjix1DP}/lib/:${q_prjCodeDjix1DP}/netservices/" ; echo "PYTHONPATH set to: $PYTHONPATH"'
+alias  setpypath1='export PYTHONPATH="${q_prjCodeDjix1DP}/:${q_prjCodeDjix1DP}/lib/:${q_prjCodeDjix1DP}/netservices/" ; pypath ;' ##__ echo "PYTHONPATH set to: $PYTHONPATH"'
 ###________________________________________  ___________________________
 
 

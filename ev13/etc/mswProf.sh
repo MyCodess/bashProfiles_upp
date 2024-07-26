@@ -11,8 +11,22 @@ q_Cmp="/c"  ##-- C:-mountpoint in msys/cyg/... ; in WLS was /mnt/c but changed i
 ##________________________________________  ___________________________
 
 
+#####  ==========  HOME/USER-msw:
+##----- HOME + USER + ... basics-OS (pre calling any profs! the rest in ms-prof !):
+export  USER=${USERNAME:-"userXX"}
+export  HOMEW=${USERPROFILE}     ##--prev: OK1-in-msw-format:  export HOME="${HOMEDRIVE}/${HOMEPATH}"
+export  HOMEW_cyg="$(cygpath $USERPROFILE )"
+##--??:  export  HOME="${HOMEW_cyg}"
+alias sethomew='export   HOME=$HOMEW'   ##== ${USERPROFILE}'
+alias sethomewcyg='export   HOME=$HOMEW_cyg'
+alias cdhw='cdlla   ${HOMEW_cyg}'  ##--cd-home-msw / $USERPROFILE
+##__ if-liked-set-also-prjid-here:   export  prjID_active1=ofc1
+###________________________________________  ___________________________
+
+
 #####  ==========  main-/root-pathes-msw-defaults
 progs2_DP="${q_Cmp}/Progs2"
+opptuDP="${progs2_DP}"   ##--II-basically it is sufficient/better that /up1/optu -> .../Progs2 , but so in this way could work also without the link! for now BOTH: here env and link there!
 ptb0_DP="${progs2_DP}/0ptb"
 ###________________________________________  ___________________________
 
@@ -27,11 +41,11 @@ wt_DP="${ptb0_DP}/wt" ; wt_FP="${wt_DP}/wt.exe"
 vscode_DP="${progs2_DP}/VSCode/"
  
 ##---  SWs-path-addies:
-pathaddend  "${wt_DP}/"
-pathaddend  "${ptb0_DP}/Graphviz/bin/"
 pathaddvor  "${vimruntimeMSsDP}/"   ##--??-ok??  really not needed, but just to avoid calling MSYS/cygwin-own-vim !
 pathaddvor  "${q_pyyHome1_DP}/" ;
 pathaddvor  "${q_pyyHome1Scripts_DP}/" ;
+pathaddend  "${wt_DP}/"
+##--?-if-req.:   pathaddend  "${ptb0_DP}/Graphviz/bin/"
 
 ##---  MariaDB/MySql-devvdi1-msw (on mswin-devvdi1):
 mariadb_RP="${progs2_DP}/mariadb"

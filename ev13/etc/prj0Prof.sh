@@ -99,8 +99,10 @@ alias  viprjprofs='vi1  $q_prjProfPosFP'     ##__  $q_prjProfFP'
 ##__  alias  prjterms1="XDG_CONFIG_HOME=~/.config/00xdg2/  xfce4-terminal  --disable-server  --default-working-directory=${prjTestsDP}  --tab --working-directory=${SW1dntsDP}  --tab --working-directory=${prjWksDP}  --tab --working-directory=${prjWksDP}  --tab --working-directory=${prjTestsDP}  --tab --working-directory=${prjTestsDP}  --tab --working-directory=${prjTestsDP}"
 alias  prjterms1="xfce4-terminal  --disable-server --geometry  120x62  --default-working-directory=${q_prjWksDP}  --tab  --active-tab  --tab  --tab  --tab --working-directory=${q_prjDP}  --tab --working-directory=${q_prjWksDP}  --tab --working-directory=${q_SW1DocsDP}  --tab --working-directory=${q_SW1dres1kkDP}  --tab --working-directory=${q_SW1dntsDP}  &"
 
-##========== prjXProfPos (after all prj-global-settings in  in prj0prof):
+##========== prjProfPos (after all prj-global-settings in  in prj0prof):
+: 	${q_prjProfPos2FP:="${q_prjEtcDP}/prjProf2_${prjID_active1}_pos.sh"} ;
 [[ $prjID_active1  &&  -r ${q_prjProfPosFP} ]]  &&  source ${q_prjProfPosFP} ;
+[[ $prjID_active1  &&  -r ${q_prjProfPos2FP} ]]  &&  source ${q_prjProfPos2FP} ;
 
 ##__}
 

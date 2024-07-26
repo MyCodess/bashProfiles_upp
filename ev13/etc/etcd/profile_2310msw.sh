@@ -15,17 +15,6 @@ export  q_syysTg=${q_syysNoTg}${q_osTg}       #--UNIQUE-ID of a syys !! usu. YYM
 ###________________________________________  ___________________________
 
 
-#####  ==========  host1-specific-addies:
-##----- HOME + USER + ... basics-OS (pre calling any profs! the rest in ms-prof !):
-export  USER=${USERNAME:-"userXX"}
-export  HOMEW=${USERPROFILE}     ##--OK1-in-msw-format:  export HOME="${HOMEDRIVE}/${HOMEPATH}"
-export  HOMEW_cyg="$(cygpath $USERPROFILE )"
-export  HOME="${HOMEW_cyg}"
-alias sethome1='export   HOME=${USERPROFILE}'
-##__ if-liked-set-also-prjid-here:   export  prjID_active1=ofc1
-###________________________________________  ___________________________
-
-
 ##__ q_ple1  "${myname11}---${q_syysNoTg}${q_osTg}_${q_Hostname}_${q_diskTg}---${q_osRelTg}"
 q_ple1  "${myname11}" ;
 

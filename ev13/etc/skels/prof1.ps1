@@ -16,7 +16,7 @@ $env:q_home1="$env:USERPROFILE"
 
 
 #####  ==========  Env-evv/upp: #######################################################
-##----- ENVs_Kund_vwfs_devpc1...:
+##----- ENVs_oc1_devpc1...:
 
 ##----- ENVs_upp:
 $env:q_UPP_DN="up1"
