@@ -1,0 +1,68 @@
+set -a
+q_pls1  "${BASH_SOURCE[0]##*/}"
+
+#####  ==========  PRJ-specifics-apps-VARs/aliases/funcs/addies (not in prj0-files):
+#	_______:  djangoPrj:
+##__  export  q_djangoSettingsDev="netservices.settings.dev"
+##__  export  DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE:-netservices.settings.dev}   ##--as default
+alias  setdjsettingdev="export DJANGO_SETTINGS_MODULE=netservices.settings.dev"
+alias  setdjsettingtest="export DJANGO_SETTINGS_MODULE=netservices.settings.test"
+alias  setdjsettingsrv="export DJANGO_SETTINGS_MODULE=netservices.settings.server"
+alias  setpypath1djix1='export PYTHONPATH="${q_prjCodeDjix1DP}/:${q_prjCodeDjix1DP}/lib/:${q_prjCodeDjix1DP}/netservices/" ; pypath ;' ##__ echo "PYTHONPATH set to: $PYTHONPATH"'
+alias  setpypath1ck1='export PYTHONPATH="${q_prjCodeCk1DP}/:${q_prjCodeCk1DP}/lib/:${q_prjCodeCk1DP}/netservices/" ; pypath ;' ##__ echo "PYTHONPATH set to: $PYTHONPATH"'
+###________________________________________  ___________________________
+
+
+#####  ==========  prj-specifics/devls-prj VARs/funcs/alias/...:
+alias   setsmoke='declare -ix  SMOKE_TESTS=10;  declare -p SMOKE_TESTS'
+alias   unsetsmoke='unset SMOKE_TESTS'
+###________________________________________  ___________________________
+
+
+#####  ==========  terms1s with wt /prj: ==========================================
+##--- basics-terms1s:
+#--II- MSYS2-abbrev-evv == "mys"  , wt-profile: "myst1" , wt-start-cmd:  C:\msys64\msys2_shell.cmd  -defterm  -here  -no-start  -ucrt64
+te11_myswt() { usage11="USAGE: ... <start-DIR> [title/winID /OR wt_tit11=my-title]   ##--starts a MSYS2-bash-shell in wt-term and cd to start-DIR" ;
+	local dir11="${1:?$usage11}" ; local tit11="${2:-$wt_tit11}" ; shift 2 ; wt -w "$tit11" nt -p myst1 --title "$tit11" -d $dir11 "$@" ; }
+
+#----- terms1-VARs:
+q_prjCode2DN="ck1"     ; q_prjCode2DP="${q_prjCode1DP}/${q_prjCode2DN}//netservices" ; q_prjCode2Title=P_${q_prjCode2DN} ; q_prjCodeCk1DP="${q_prjCode2DP}"
+q_prjCode3DN="djix1"    ; q_prjCode3DP="${q_prjCode1DP}/${q_prjCode3DN}/netservices"  ; q_prjCode3Title=P_${q_prjCode3DN} ; q_prjCodeDjix1DP="${q_prjCode3DP}"
+q_prjCode4DN="lint1"    ; q_prjCode4DP="${q_prjCode1DP}/${q_prjCode4DN}/netservices"  ; q_prjCode4Title=P_${q_prjCode4DN} ;
+q_prjCodeWk1DN="works1" ; q_prjCodeWk1DP="${q_prjCode1DP}/${q_prjCodeWk1DN}"    ; q_prjCodeWk1Title=P_${q_prjCodeWk1DN} ;
+##__/OR: works in codX-dir:  q_prjCodeWk1DN="works1" ; q_prjCodeWk1DP="${q_prjCode3DP}/tests/${q_prjCodeWk1DN}"    ; q_prjCodeWk1Title=P_${q_prjCodeWk1DN} ;
+
+#---prjsCodes-aliases:
+alias  cdprjcode2='cdlla   ${q_prjCode2DP}' ; alias  cdprjcodeck1=cdprjcode2   ;
+alias  cdprjcode3='cdlla   ${q_prjCode3DP}' ; alias  cdprjcodedjix1='cdlla   ${q_prjCodeDjix1DP}'
+alias  cdprjcode4='cdlla   ${q_prjCode4DP}' ; alias  cdprjcodelint1=cdprjcode4 ;
+alias  cdprjcodewk1='cdlla   ${q_prjCodeWk1DP}'
+
+#---prjcodes-DIRs-for-terms1:
+dresdir11="${dresDP}/  ${dntsDP}/  ${mssdntsDP}  ${q_SW1dntsDP}/  ${q_SW1dres1kkDP}/"  ##--more: ${dresCodecsDP}/  
+#__OK1_full:  prjntsdir11="${q_prjDP}/  ${q_prjBinDP}/  ${q_prjEtcDP}/  ${q_prjDntsDP}/  ${q_prjWpadsDP}/  ${q_BinDP}/  ${q_EttcDP}/  ${q_prjsProfDP}/"  ##--prj-dnts-wpad-terms + evv
+prjntsdir11="${q_prjDP}/  ${q_prjDntsDP}/  ${q_prjDntsDP}/  ${q_prjCode1DP}/  ${q_EttcDP}/  ${q_EttcDP}/"  ##--prj-dnts-wpad-terms + evv
+prjcode2dir11="${q_prjCode2DP}/  ${q_prjCode2DP}/  ${q_prjCode2DP}/"
+prjcode3dir11="${q_prjCode3DP}/  ${q_prjCode3DP}/  ${q_prjCode3DP}/  ${q_prjCode3DP}/  ${q_prjCode3DP}/"
+prjcode4dir11="${q_prjCode4DP}/  ${q_prjCode4DP}/  ${q_prjCode4DP}/"
+prjcodewk1dir11="${q_prjCodeWk1DP}/  ${q_prjCodeWk1DP}/  ${q_prjCodeWk1DP}/"
+wksdirs11="${vaarAuTestsDP}/  ${vaarAuWorksDP}/  ${q_prjWksDP}/  ${q_prjCodeWk1DP}/  ${q_prjCodeWk1DP}/"
+
+#---call-terms1-prjcodes, ....:
+te1_dres()      { for ii in $dresdir11; do te11_myswt $ii dres_t1; done ; }
+te1_prjnts()    { for ii in $prjntsdir11; do te11_myswt $ii P_Nts; done ; }
+te1_prjcode2()  { for ii in $prjcode2dir11; do te11_myswt   $ii $q_prjCode2Title ; done ; } ; alias te1_prjcodeck1=te1_prjcode2
+te1_prjcode3()  { for ii in $prjcode3dir11; do te11_myswt   $ii $q_prjCode3Title ; done ; } ; alias te1_prjcodedjix1=te1_prjcode3
+te1_prjcode4()  { for ii in $prjcode4dir11; do te11_myswt   $ii $q_prjCode4Title ; done ; }
+te1_prjcodewk1() { for ii in $prjcodewk1dir11; do te11_myswt  $ii $q_prjCodeWk1Title ; done ; }
+te1_wks()       { for ii in $wksdirs11;  do te11_myswt $ii wks_t1; done ; }
+te1_cons1()     { for ii in 1 2 3; do te11_myswt  $q_prjTestsDP  cons1  --tabColor "#FFFF00"; done ; }
+#_ te1_cons1()     { for ii in 1 ; do te11_myswt  $q_prjTestsDP  cons1  --tabColor "#FFFF00" bash -c "/usr/bin/sshpass -f/c/tmp/rz1  ssh $cons1_sh1"; done ; }
+#---cu-/tmp-terms:
+te1_pysrc() { cdpydocs ; for ii in  .   ./PyRefsSrc/   ./PyRefsSrc/Doc ./PyRefsSrc/Doc  ./PyRefsSrc/Doc   ;do te11_myswt $ii pySrc ; done }
+te1_sqls() { for ii in ${vaarAuWorksDP}/mysqls-wk1  ${vaarAuWorksDP}/mysqls-wk1  ${vaarAuWorksDP}/mysqls-wk1  ${opptuDP}/mariadb  ${dntsDP}/dbs-sqls_dnts/mysqls_mariadb_dnts  ${q_prjDntsDP}/mysqls_nsv_dnts ; do te11_myswt $ii sqls_t1 ; done }
+###________________________________________  ___________________________
+
+
+q_ple1  "${BASH_SOURCE[0]##*/}"
+##################################################################################################

@@ -15,10 +15,10 @@ set scrolloff=0     " --I-due to mouse-irritations, near to windows-borders, it 
 "________________________________________  ___________________________
 "
 "##### ============= ofc1 231000 : ==============================================
-set  pythonthreehome=C:\Progs2\Py3
-set  pythonthreedll=C:\Progs2\Py3\python311.dll
-set backupdir=$USERPROFILE\\tmp
-set directory=$USERPROFILE\\tmp
+"set  pythonthreehome=C:\Progs2\Py3
+"set  pythonthreedll=C:\Progs2\Py3\python311.dll
+set backupdir=/tmp   " /tmp as /c/tmp interprededi by msw-vim! ok1: backupdir=$USERPROFILE\\tmp
+set directory=/tmp   " /tmp as /c/tmp interprededi by msw-vim! ok1:  directory=$USERPROFILE\\tmp
 "
 "  middle-mouse-click-paste_Lx in mswin:  middle-mouse-signal on mswins mapped to insert-paste as in Lx in both normal+insert-modes :
 nnoremap  <C-S-F22>    i<c-r>+

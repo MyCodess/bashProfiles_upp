@@ -3,13 +3,6 @@ q_pls1  "${BASH_SOURCE[0]##*/}"
 set -a
 #################### oneLiner-funcs mainly ! #################################################################
 
-#=========== PATH-mods : ===========================
-##--add $1 to Path, if not already there.
-pathaddvor(){ [[ $PATH =~ [:|^]$1[:|$] ]]   ||  export PATH=":$1:$PATH" ; }
-pathaddend(){ [[ $PATH =~ [:|^]$1[:|$] ]]   ||  export PATH="$PATH:$1:" ; }
-##- egrep-version:   (echo $PATH | fgrep -q "$prj1BinDP" ) || PATH="$PATH:${prj1BinDP}:"   #--OR-  PATH="$q_Path1:${prj1BinDP}:"  ##-?2Do- setting PATH hier??! or at least with pathmunge or string-grep....?
-##- old-version-of-suse:  USAGE: $0 <path1> [end ;] pathmunge() { if ! echo $PATH | /bin/egrep -s "(^|:)$1($|:)" ; then if [ "$2" = "end" ] ; then PATH=$PATH:$1 else PATH=$1:$PATH fi fi }
-
 ##========== echo-line1s +msg +date/end-tag : ======================================
 ##--USAGE1:  el1/el1d/el1e/el1de  [msg1] , ... :
 el1(){   echo; echo  "${q_fold1Sm} ${1:-==========} ==================================================__________" ; }
@@ -33,7 +26,7 @@ sizeNewer(){ find . -newer $1 -ls | awk ' { sum_B += $7 ; print } END{ OFMT="%.2
 cdll()   { cd  "$*"  && ll  -lF     && pwd ; }
 cdlla()  { cd  "$*"  && ll  -laF    && pwd ; }
 cdllt()  { cd  "$*"  && ll  -laFrt  && pwd ; }
-alias  cdl='cdlla'
+alias  cdl='cdll' ; alias  cdla='cdlla' ; alias  cdlt='cdllt'
 
 ##--- MS-Windows-path cd , replacein / with \ and ... :
 cdwinpath(){

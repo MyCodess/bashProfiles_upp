@@ -47,22 +47,27 @@ alias  cdpyhome1='cdlla  ${q_pyyHome1_DP}/'
 alias  pydoc1='PAGER=less  $q_pyyexe  -m pydoc'  ##-I-only pydoc calls usu. /usr/bin/pydoc of MSYS with its own python-pkg! so to use the msw-installed-py, you have to call it as -m with pyExe !
 alias  pypath='echo "PYTHONPATH  is:  ${PYTHONPATH}" ; echo "---PYTHONPATH-lines (ignore emptylines):" ; echo -e ${PYTHONPATH//:/"\n"}'  ##--search-pathes for modules/packages/...; the beginning-and-ending/redundant ":" can be also deleted with: echo -e "${PYTHONPATH/#:/}"  bzw. echo -e "${PYTHONPATH/%:/}" , but so ok! ignore the emptylines !
 alias  pysyspath='python -c "import sys; [print(ii) for ii in  sys.path ];"'
-alias  rmpycaches='find . -name "__pycache__" -type d -exec rm -rf {} \;'
-alias  rmpytestcaches='find . -name "pytest_cache" -type d -exec rm -rf {} \;'
+alias  rmpycaches='rm -rf -v  $(find . -name "__pycache__" -o -name ".pytest_cache" -type d)'  #-I-other following variants with find-exec NOT working on msw/MSYS2, dut to big-ENV !
+#_not-working-on-msw/MSYS2:  alias  rmpycaches='find . -name "__pycache__" -type d -exec rm -rf {} \;' ; alias  rmpytestcaches='find . -name "pytest_cache" -type d -exec rm -rf {} \;'
 
-# _______:  djangos_Allg:
-#---dj-docs/-dnts/...:
+# _______:  djangos_Allg + prj1:
+#---dj-vars-w1:  docs/-dnts/...:
 dj1dntsDP="${q_pyydntsDP}/djangos_dnts_py"
 dj1DocsRTDP="${dcItDP}/dj_dc"
 dj1DocsTxtDP="${dj1DocsRTDP}/django-docs/_sources"
 dj1SrcDP="${q_pyyHome1_DP}/lib/site-packages/django"
 grdj1docs() { grepi -r "$1"  ${dj1DocsTxtDP} ; }
+#--- alias-dj-manage.py:
+alias dj1s='python -m manage  runserver'
+alias dj1m='python -m manage  migrate'
+alias dj1venv_msw='source  ../ve1/Scripts/activate'  ##--in-msw-in-prjRDP
+#--- alias-dj-w1:
 alias  cddj1dnts="cdlla ${dj1dntsDP}"
 alias  cddj1docs="cdlla ${dj1DocsRTDP}"
 alias  cddj1docstxt="cdlla ${dj1DocsTxtDP}"
 alias  cddj1src="cdlla ${dj1SrcDP}"
 alias  pydocdj='python  -c "import django, django.conf, pydoc ; django.conf.settings.configure() ; django.setup() ; pydoc.cli()"'
-#-pydocdj so not-worked-on-nsv-pc:  alias  pydocdj='DJANGO_SETTINGS_MODULE=django.conf.global_settings  python  -c "import django, pydoc ; django.setup() ; pydoc.cli()"'  ##--django-pydoc-call
+#-pydocdj1 so not-worked-on-nsv-pc:  alias  pydocdj='DJANGO_SETTINGS_MODULE=django.conf.global_settings  python  -c "import django, pydoc ; django.setup() ; pydoc.cli()"'  ##--django-pydoc-call
 
 
 #####  ==========  MySqls/MariaDBs:

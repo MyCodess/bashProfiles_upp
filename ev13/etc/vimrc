@@ -14,7 +14,7 @@ set mouse=      "disabling mouse in gvim : BUT then problem in mswin: rightclick
 "
 "#####  ==========  colors/highlights/colorschemes/...: ======================
 hi IncSearch ctermbg=green   ""color for cu-search+replace-field !
-" colorscheme  desert
+" colorscheme  morning    " morning  peachpuff  default  desert
 "________________________________________  ___________________________
 "
 "
