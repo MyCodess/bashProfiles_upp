@@ -3,9 +3,9 @@
 set -a
 q_pls1  "${BASH_SOURCE[0]##*/}"         ##--prev:  export myname11="${BASH_SOURCE[0]##*/}" ; q_pls1  "$myname11" ;
 
-#####  ==========  basics for both CYG + WSLs : ######################################
-shopt  -s  nocaseglob     ##--case-INsensitve path handling on mswins!
-shopt  -s  nocasematch
+#####  ==========  basics for both CYG + WSLs + MSYS2 + .... : ######################################
+shopt  -s  nocaseglob     ##--path completion/handling case-INsensitve on mswins!  filenames in a case-insensitive fashion when performing pathname expansion!
+#--??-  shopt  -s  nocasematch  ##--??- bash  matches  patterns in a case-insensitive fashion when performing matching while executing case or if conditions, or  pattern substitution word expansions, or when filtering ... ! see man bash! dangrours for scripts/cmds/... !!
 export  HISTFILE="/var/tmp/tmpu/.hs1_ev1"   ##--will be overwriteen in hostProf!  here as general-/default-setting for msw-syys !
 q_Cmp="/c"  ##-- C:-mountpoint in msys/cyg/... ; in WLS was /mnt/c but changed in /etc/wsl.conf and set root=/ instead root=/mnt !
 ##________________________________________  ___________________________
@@ -19,8 +19,9 @@ export  HOMEW_cyg="$(cygpath $USERPROFILE )"
 ##--??:  export  HOME="${HOMEW_cyg}"
 alias sethomew='export   HOME=$HOMEW'   ##== ${USERPROFILE}'
 alias sethomewcyg='export   HOME=$HOMEW_cyg'
-alias cdhw='cdlla   ${HOMEW_cyg}'  ##--cd-home-msw / $USERPROFILE
+alias cdhm='cdlla   ${HOMEW_cyg}'  ##--cd-home-msw / $USERPROFILE
 ##__ if-liked-set-also-prjid-here:   export  prjID_active1=ofc1
+alias  sort1='LANG=C.UTF-8 sort'  ##-I-for case-SEnsitive-sorting on msw! works also LANG=C , LANG_ALL=C ...
 ###________________________________________  ___________________________
 
 
@@ -29,7 +30,6 @@ progs2_DP="${q_Cmp}/Progs2"
 opptuDP="${progs2_DP}"   ##--II-basically it is sufficient/better that /up1/optu -> .../Progs2 , but so in this way could work also without the link! for now BOTH: here env and link there!
 ptb0_DP="${progs2_DP}/0ptb"
 ###________________________________________  ___________________________
-
 
 
 #####  ==========  SWs-defaults-msw, pathes,...:
@@ -41,7 +41,7 @@ wt_DP="${ptb0_DP}/wt" ; wt_FP="${wt_DP}/wt.exe"
 vscode_DP="${progs2_DP}/VSCode/"
  
 ##---  SWs-path-addies:
-pathaddvor  "${vimruntimeMSsDP}/"   ##--??-ok??  really not needed, but just to avoid calling MSYS/cygwin-own-vim !
+#__ msw-vim:  pathaddvor  "${vimruntimeMSsDP}/"   ##--??-ok??  really not needed, but just to avoid calling MSYS/cygwin-own-vim !
 pathaddvor  "${q_pyyHome1_DP}/" ;
 pathaddvor  "${q_pyyHome1Scripts_DP}/" ;
 pathaddend  "${wt_DP}/"
@@ -54,6 +54,7 @@ pathaddend  "${mariadb_bin_DP}/"
 
 ##---  SWs-aliases/funcs/...:
 alias  vscode1="${vscode_DP}/Code.exe  .  &"
+alias  pandoc1='${ptb0_DP}/pandoc/pandoc'
 ##__OK1-git-prompt     : q_gitPromptFP=${q_EttcD_DP}/git-prompt_msw1.sh ; set +u ; [[ -r  $q_gitPromptFP        ]]  &&  source  $q_gitPromptFP ; set -u ;  ##--must be executed before setting PS1 or evv-profiles ! it overwrites the evv-PS1 otherwise !
 ##________________________________________  ___________________________
 
@@ -62,10 +63,14 @@ alias  vscode1="${vscode_DP}/Code.exe  .  &"
 syys_dnts_DP="$mssdntsDP"
 ###________________________________________  ___________________________
 
+
 #####  ==========  OSs-addies/adapts/...:
 unalias psg ; alias psg="ps | grepi" ; alias psgw="ps -W | grepi";
+##--- kill process on msw
+#-gut-cmd--but-killnot-working! also not-working msw taskkill / ... : alias  killterms1='ps -alW | grepi windowsterminal | kill $(sed -e "s@ *\([0-9]*\).*@\1@")'  ##--I-or replace kill with echo to only list the PIDs !
+# in PS1 (admin):   wmic process where "name='WindowsTerminal.exe'" delete  #-exactly incl. 'and" !
+#  if not-zombies, could try (admin): TASKKILL  /T /F /IM WindowsTerminal.exe ; #-OR:  taskkill /F /T /PID 14304 #- tasklist ... #-tasklist /FI "IMAGENAME eq WindowsTerminal.exe"
 ###________________________________________  ___________________________
-
 
 
 #####  ==========  WSL or CYG/MSYS is the cu-system ??:
@@ -80,18 +85,24 @@ q_mswCyg=0 ; q_mswWsl=0
 	HOME="$(cygpath $HOME)"
 	##-- vims-msys/cyg: in cyg the vim-envars are NOT interpreted correctly, due to path-formats! so must use -u/-U ... :
 	##__OK1: vi1()  { "$vimMSsExeFP"   -u "$vimrcFP"  -U "$gvimrcFP"  "$@" ; } ; 	gvi1() { "$gvimMSsExeFP"  -u "$vimrcFP"  -U "$gvimrcFP"  "$@" & }
-vimrcFP=${q_EttcDP}/msw_vimrc
-gvimrcFP=${q_EttcDP}/msw_gvimrc
-	alias vim='"$vimMSsExeFP"   -u "$vimrcFP"  -U "$gvimrcFP"'
+	vimrcFP=${q_EttcDP}/msw_vimrc
+	gvimrcFP=${q_EttcDP}/msw_gvimrc
+	vim_cmd1="$vimMSsExeFP   -u $vimrcFP  -U $gvimrcFP"
+	alias vim="$vim_cmd1"
 	gvim(){ "$gvimMSsExeFP"  -u "$vimrcFP"  -U "$gvimrcFP" $@ & }
 	#__OK1: alias gvim='"$gvimMSsExeFP"  -u "$vimrcFP"  -U "$gvimrcFP"'  ##--I-leave them as alias, not-func, to be able to call the orgs with 'gvim' ....
 	##--- aliases:
+	#--1ok:  alias vit1="wt  -w vi_t1 new-tab  -p myst1  --title vit1 -l -d . -c $vim_cmd1"
+	#__1ok: te1_vi(){ wt  -w VI_1 new-tab  --tabColor "#D2B5FF"  -p myst1  --title VI_1 -l -d . -c $vim_cmd1 --servername VI_1 $@ ; }  ##--vim-terminal-multi-files , instead grim -p ;  --title ${1##*/} 
+	#__1ok: te1_vi(){ wt  -w $vi_SN1 new-tab  --tabColor "#D2B5FF"  -p myst1  --title $vi_SN1 -d $q_prjDntsDP ; }  ##--vim-terminal-multi-files , instead grim -p ;  --title ${1##*/} 
+	te1Tab_vi(){ usage11="open a terminal-tab for vim session: ... [path  [vim-session-id]]" ; wt  -w ${2:-$vi_SN1}  new-tab  --tabColor "#D2B5FF"  -p myst1  --title ${2:-$vi_SN1}  -d ${1:-$q_prjDntsDP} ; }  ##--open just a new normal terminal-tab (colored tab) for vim-sessions (colored-tabs) instead grim -p ...
+	te1_vi(){ te1Tab_vi "$@" ; te1Tab_vi "$@" ; te1Tab_vi "$@" ;} ##-open a terminal with tabs for vim-sessions (instead gvim; just normal taerminal with colored tabs ,...)
 	alias  psg='ps -alW | grepi'   ##--I- ps cmd of MSYS2 !
 	##--- funcs...:
-	wp1() { echo "pathes-mswin+unix of Param1 and cu-dir:" ; cygpath --windows $PWD "$@" ; cygpath  --unix  $PWD  "$@" ; }   ##--Windows-unix-Pathes-of-PWD + $1
+	winpath1() { echo "pathes-mswin+unix of Param1 and cu-dir:" ; cygpath --windows $PWD "$@" ; cygpath  --unix  $PWD  "$@" ; }   ##--Windows-unix-Pathes-of-PWD + $1
 }
-
 ##________________________________________  ___________________________
+
 
 #####  ==========  WSL-systems (ubuntu, oracle, ... M_Lx): ####################################
 [[ $q_mswWsl > 0 ]] && {

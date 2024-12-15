@@ -2,7 +2,7 @@
 source  /up1/.cev/etc/profile.sh ;  ##--II-required if with "sudo" !! not-working: source  /etc/bash.bashrc due to non-interactive! see there !
 ##__  set -xe
 ##--II-dnts-see-at-END-here-below !!!
-USAGE1="USAGE: $0 <mespNo>  < opena | open1 | closea | close1 | stat > ;  eg:   $0  1  opena"  ;
+USAGE1="USAGE: $0 <mespNo>  < opena | open-cry | closea | close-cry | umount1 | stat > ;  eg:   $0  1  opena"  ;
 export PS4="  :::==:::  ";
 
 ##-------- setting-current-params:
@@ -17,11 +17,13 @@ _mespLoopFP=/dev/loop${_mespNo} ; (losetup  ${_mespLoopFP}   2>/dev/null  1>&2 )
 export enc_open_params1='--hash=ripemd160  --cipher=aes-cbc-essiv:sha256  --key-size=256  --offset=0  --skip=0'  ##--I-for plain-dm-cryp! do define also the defaults! see nts! /_180110 ;
 
 ##__ set -x ;
+# open-cry == open-crypt-but-NOT-mount , umount1 == only-un-mount , close-cry == close-crypt-(and try umount BUT do NOT care if ok bzw. if already umounted!)
 case $_action in
-	"open1"     )  losetup -v ${_mespLoopFP}  ${_mespFP}     && cryptsetup  --type  plain  $enc_open_params1  open  ${_mespLoopFP}  ${_mespFN}  &&  echo "=== opened: ${_mespFN}" ;;
+	"open-cry"  )  losetup -v ${_mespLoopFP}  ${_mespFP}     && cryptsetup  --type  plain  $enc_open_params1  open  ${_mespLoopFP}  ${_mespFN}  &&  echo "=== opened: ${_mespFN}" ;;
 	"opena"     )  losetup -v ${_mespLoopFP}  ${_mespFP}     && cryptsetup  --type  plain  $enc_open_params1  open  ${_mespLoopFP}  ${_mespFN}  &&  echo "=== opened: ${_mespFN}"  && mount ${_mespMountDP} && echo "=== mount-done" ;;  ##--open-All: open-loop-crypt-mount---do-ALL-to-access
-	"closea"    )  sync;sync;sync ; umount ${_mespMountDP}  && cryptsetup  close  ${_mespFN}  && losetup -v -d $(losetup  -O NAME -n  -j  ${_mespFP} )  && echo "=== closed-and-Umounted: ${_mespFN}" ;;  ##--close-All: close-and-umount-and-loopDetach---ALL-close
-	"close1"    )  sync;sync;sync ; umount ${_mespMountDP}  ;;
+	"closea"    )  sync;sync;sync ; umount ${_mespMountDP}   && cryptsetup  close  ${_mespFN}  && losetup -v -d $(losetup  -O NAME -n  -j  ${_mespFP} )  && echo "=== closed-and-Umounted: ${_mespFN}" ;;  ##--close-All: close-and-umount-and-loopDetach---ALL-close
+	"close-cry" )  sync;sync;sync ; umount ${_mespMountDP}   ;  cryptsetup  close  ${_mespFN}  && losetup -v -d $(losetup  -O NAME -n  -j  ${_mespFP} )  && echo "=== closed-and-Umounted: ${_mespFN}" ;;  ##--close-All: close-and-umount-and-loopDetach---ALL-close
+	"umount1"   )  sync;sync;sync ; umount ${_mespMountDP}  ;;
 	"stat"      )  ;;    ##--II- always will be done on the last line of the script. here just to accept status as case-param and to avoid the next error-msg!
 	*           )  echo "==##==ERROR: $USAGE1" ; exit 3 ;;
 esac

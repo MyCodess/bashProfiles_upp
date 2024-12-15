@@ -3,6 +3,12 @@ exit 3
 --####################### uue-syysStat/L1NW-uue-syys-doings : ###########################
 
 
+
+#####  ==========  
+    - PKI/smartcard-daemon:  alias sc1='sudo systemctl status   pcscd.service   pcscd.socket'   #-smartcard/pki-start
+##________________________________________  ___________________________
+
+
 #####  ==========  sudos:
 
 	_______:  profiles running with sudo cmds:
@@ -89,52 +95,4 @@ mv $($cuds)_${LOGNAME}_kde.tbz  $vaarAubups2DP
 
 
 --####################### Lx-Sys-Admins: ################################################
-#####  ==========  tweaks:
-- gsettings / gnome-tweaks  :   GUI:  /usr/bin/dconf-editor   , cmdline: gsettings ...
-##________________________________________  ___________________________
-
-
-#####  ==========  Ubuntu-admins...:
-
-	_______:  update ubuntu:
-	apt-get   update ; apt-get     --with-new-pkgs upgrade ; apt autoremove ;
-##________________________________________  ___________________________
-
-
-#####  ==========  NASx-kramm-kk:
-
-	_______:  on x13
-	mount.nfs  nas2:/volume1/Daten1/   /up1/media/nas2-d1
-	mount.nfs  nas2:/volume1/          /up1/media/nas2-d1
-
-	_______:  on NAS2 (login by ssh admin@nas2 ):
-	source  /volume1/Daten1/00-wk1/uue1.sh
-##________________________________________  ___________________________
-
-
-#####  ==========  date/times...:
-	-! set time +/-hour (for summer/winter-time):   date --set='-1 hour'
-##________________________________________  ___________________________
-
-
-#####  ==========  rpms: handling/listing/....:
-	#-- description-listing of all rpms on DVD for info/search/...:  cd packs ; 
-	find ./suse103_cd/suse/ -iname "*.rpm" -exec  echo -e "\n\n==================== {} : ============" \; -exec  rpm -qip {}  \; | tee suse103_cd_rpmsInfoListing_all.lo
-	--####################### suse-2013pre--olds/prev/arc: ################################################
-##________________________________________  ___________________________
-
-
-#####  ==========  SuSe-Systems : =========================================================
-##________________________________________  ___________________________
-
-
-#####  ==========  suse.system.kramm:
-	- suse-curr-instaled-version?? :  suseCurrVersion=$(awk '/^VERSION/{print $3}' /etc/SuSE-release)
-##________________________________________  ___________________________
-
-
-#####  ==========  Zypper-Quickies-SuSe (more see nts in devNts):
-	- alternative repos-DIR as u1:  zypper --no-refresh  --reposd-dir /etc/zypp/repos.d.suse113/ se eclipse
-	- zypper up --auto-agree-with-licenses   --download in-advance
-##________________________________________  ___________________________
 

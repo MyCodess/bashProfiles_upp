@@ -56,7 +56,7 @@ w1_dest_full_log_FP="${w1_dest_full_FP}.log"
 #-:  date;  tar --one-file-system  -cpzvf  ${w1_dest_full_FP}   ${w1DPPhys} > ${w1_dest_full_log_FP} ; date;  ##--bzw:
 #-:  cdlla  /up1/mnt/T1fs/t1_RF/ ; date; tar --one-file-system  -cpzvf "{w1_dest}/w1_RF-full1--$($cuds).tgz" "./w1_RF/" > "/up1/media/BUPS1MD1/bups1w/w1_RF-full1--$($cuds).tgz.log"; date;
 ##---increms:
-echo "####### DO/2chk-manually:  tar --one-file-system  -cpzvf ${w1_dest}/w1-inc--$($cuds).tgz $(find  ${w1DPPhys} -newer ${w1_dest_full_prefix}*.tgz  -type f ) > ${w1_dest}/w1-inc--$($cuds).tgz.log ########"
+tar --one-file-system  -cpzvf ${w1_dest}/w1-inc--$($cudts).tgz $(find  ${w1DPPhys} -newer ${w1_dest_full_prefix}*.tgz  -type f ) > ${w1_dest}/w1-inc--$($cudts).tgz.log
 
 
 echo "===== bupsFlags and syncFlags for the whole/root of bups1med1 ${q_Bups1Med1DP}: =====" ;

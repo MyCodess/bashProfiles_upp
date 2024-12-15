@@ -4,11 +4,20 @@ set  -aC  +o history   ##--II- if needed backup old set-options: oldSets="$-" ; 
 shopt  -s  expand_aliases
 export HISTCONTROL=ignoreboth:erasedups
 
-##--- tiny internal printline-func for profiles-debugging:
+
+#####  ==========  tiny internal primary funcs/...: ====================
+#--- printline-func for profiles-debugging:
 :  ${q_profsDebug11:=0} ;  pl_indent="";
 q_pls1 () { (( $q_profsDebug11 >9 )) &&  { echo  "${pl_indent}=====  :  $1" ; pl_indent="${pl_indent}-    "; } } ;  ##--start-print-liner
 q_ple1 () { (( $q_profsDebug11 >9 )) &&  { pl_indent="${pl_indent%-*}"; echo  "${pl_indent}-----  :  $1";    } } ;  ##--end-print-liner
 declare -fx q_pls1  q_ple1 ;
+#--- path-funcs: add $1 to Path, if not already there:
+pathaddvor(){ [[ $PATH =~ [:|^]$1[:|$] ]]   ||  export PATH=":$1:$PATH" ; }
+pathaddend(){ [[ $PATH =~ [:|^]$1[:|$] ]]   ||  export PATH="$PATH:$1:" ; }
+##- egrep-version:   (echo $PATH | fgrep -q "$prj1BinDP" ) || PATH="$PATH:${prj1BinDP}:"   #--OR-  PATH="$q_Path1:${prj1BinDP}:"  ##-?2Do- setting PATH hier??! or at least with pathmunge or string-grep....?
+##- old-version-of-suse:  USAGE: $0 <path1> [end ;] pathmunge() { if ! echo $PATH | /bin/egrep -s "(^|:)$1($|:)" ; then if [ "$2" = "end" ] ; then PATH=$PATH:$1 else PATH=$1:$PATH fi fi }
+###________________________________________  ___________________________
+
 q_pls1  "${BASH_SOURCE[0]##*/}"
 
 ##------------- Init1/1orgs/prev-vars (orgs from OS/System) : ---------------------
@@ -72,8 +81,8 @@ q_uname1infs=$(uname -a) ; q_uname1infs=${q_uname1infs^^} ; q_mswinos1=0  ##--pl
 [[ -r  $q_HostGlobProfPosFP  ]]  &&  source  $q_HostGlobProfPosFP ; ##--syys-host-preset-prof
 [[ -r  $q_AliasesFP          ]]  &&  source  $q_AliasesFP         ;
 [[ -r  $q_Funcs1FP           ]]  &&  source  $q_Funcs1FP          ;
-[[ -r  $q_Funcs2FP           ]]  &&  source  $q_Funcs2FP          ;
 [[  $q_mswinos1 == 1 && -r  $q_mswinProfFP  ]]  &&  source  $q_mswinProfFP  ;
+[[ -r  $q_Funcs2FP           ]]  &&  source  $q_Funcs2FP          ;
 [[ -r  $q_ProfCu1FP          ]]  &&  source  $q_ProfCu1FP         ;
 [[ -r  $q_prj0ProfFP         ]]  &&  source  $q_prj0ProfFP        ;
 [[ -r  $q_pyProfFP           ]]  &&  source  $q_pyProfFP          ;
@@ -97,14 +106,14 @@ set -a  ##-- in case that was reset.
 pathaddend  "${q_BinDP}"
 pathaddend  "${opptuDP}/bin"
 pathaddend  "${HOME}/.local/bin"
-PATH="${PATH//::/:}"  ##--removing redundant ::
+PATH="${PATH//::/:}" ; PATH="${PATH#:}" ; PATH="${PATH%:}" ; ##--removing redundant ":" ,end-cleaning-of-PATH , so remove doubled ::, or beginning ^: ,or end :$ #specially MSYS2 has problems with start-/end-: in PATH !
 q_Path1="$PATH"    ##--II- the final-evv-path after first full evvEnv-run. can be used in sub-scripty (prj0,...) as iniitial-evv-path!!
 ##---------------
 
 ##--- shell-options + ENVs : the last settings for the shell!:
 export GLOBIGNORE='.:..:'  ##-II- it also enables dotglob , see man bash !!
 #--I- hss-cu-shell-NOT-save:  unset HISTFILE ; shopt -uq histappend  ##--hss-cu-shell-NOT-at-ALL:  set +o history !
-HISTFILE=${ettcUser}/hs1 ; HISTSIZE=10000 ; HISTTIMEFORMAT="     ${dateTimeForm1}   " ;
+HISTFILE=${ettcUser}/hs1 ; HISTSIZE=100 ; HISTTIMEFORMAT="     ${dateTimeForm1}   " ;
 ##-- very END, shopts has relevance for all ux-cmds as ls/find/....!! :
 shopt -s  dotglob cmdhist  expand_aliases  extglob  histreedit  histverify interactive_comments  lithist  mailwarn  no_empty_cmd_completion  promptvars  shift_verbose
 [[ -r  ${q_Profile2PosFP}   ]]  &&  source  ${q_Profile2PosFP}  ##--currUser-Profs: overwrites everything if needed; if presets are required, set them BEFORE invoking this profile.sh !!!
