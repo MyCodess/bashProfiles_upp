@@ -1,8 +1,10 @@
 ________________  evEnv-nts: ___________________________________________
 /_221001 :  !! BIG_BIG-switch/consilid from "uue" --> evv !! based on following nts: first reboot in evv !!
--! for sed replacings, move from uue to evv, see further below!
 
---- upp-Tree-Generating-LOCALLY and  NO-SymLINKs (so with ./ prefixed to generate relative to the cu-dir):
+==========2chk/2do:
+	- vim/python/msys: in a fresh-winsystem without python/vim in win : check : first ONLY install py+vim+jedi in msys2 , check if vim-jedi works in eg t1.py !
+
+==========  upp-Tree-Generating-LOCALLY and  NO-SymLINKs (so with ./ prefixed to generate relative to the cu-dir):
 	- usage (eg in office in user-dir! /OR just use the following parts of the tree-listing to generate the tree ... !
 	- you could omit the "=" in  grep  DP= below ,to have also xxxDPPhys= vars if needed (not really in LOCAL-ver !), but then have to exclude OLDPWD var !
 	export | grep DP= | sed  -e 's@^.*=" *@".@'  -e 's@  *"  *@"@g'  | sort  >  up1tree2.log ;

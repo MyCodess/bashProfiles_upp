@@ -1,20 +1,30 @@
-
+#!/bin/bash
+set -a
 
 #####  ==========  pre-evv1-profs:  ##############################################################
 set +o history
 export  HISTCONTROL="ignoreboth:erasedups"
 unset   HISTFILE
+##--- myssqls_cons1 overwritings: -----
+export  q_mysUsr1=netservices
+export  q_mysAdm1='root'
+export  q_mysUsr1PW1=" "
+export  q_mysAdm1PW1=" "
+export  q_mysHost1=bsul3151
+export  q_mysDB1=netservices
 ##________________________________________  ___________________________
 
 
 
 #####  ==========  my-name/-path/-call (setevv.sh) : #############################################
-export  setevv1_FP="${BASH_SOURCE[0]}" ;
-export  setevv1_FN="${BASH_SOURCE[0]##*/}" ;
-export  setevv1_DP="${BASH_SOURCE[0]%/*}" ;
-alias   setevv1='source  ${setevv1_FP}'
-alias   setevv1unset='unset ${!q_@}  ${!syys@} ; source  ${setevv1_FP}'
-alias   visetevv1="vi1  ${setevv1_FP}"
+export  setevv_FP_orgcall="${BASH_SOURCE[0]}" ;   ##--I-keep it; in msw or other systems is different than setevv_FP !
+export  setevv_FP="${setevv_FP_orgcall}" ;
+export  setevv_FN="${setevv_FP##*/}" ;
+export  setevv_DP="${setevv_FP%/*}" ;
+alias   setevv='source  ${setevv_FP}'
+alias   setevvunset='unset ${!q_@}  ${!syys@} ; source  ${setevv_FP}'
+alias   visetevv='vi1  ${setevv_FP}'
+alias   cdsetevv='cd  ${setevv_DP}'
 
 ##--- call-evv-profs:
 alias   sus1="source  /var/tmp/tmpu/up1/.ev13/etc/profile.sh"
@@ -30,8 +40,7 @@ unset   HISTFILE
 
 ##===== apps/SWs/...-pos: =========================
 export  q_ettcLoc1_DP="${HOME}/.config/etcu"  ##--due to RZ-kramm of ofc1, not using etcu/etcau, ...!
-##--- myssqls_cons1: -----
-export  q_mysConf1_FP="${ettcUser}/${q_mysConf1_FN}"
+
 
 set +au
 ##________________________________________  ___________________________

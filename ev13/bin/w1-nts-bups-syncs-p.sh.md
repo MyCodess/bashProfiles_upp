@@ -5,6 +5,7 @@ exit 3
 #####  ==========  cu1-...:
 
     _______:  samba/cifs rsync (Lv13 (t1_RF-usb) <--> HP13 (t1_CP , evtl. some updates) ...):
+    - !-nts: somehow "cp -a ..." does not work !?!? (or take long/ever!?) ! use instead "rsync -a ..."  !!
     1- mount -t cifs  //192.168.43.15/t1_RF_Lv13   /mnt/t1  -o  username=u1,iocharset=utf8,uid=u1,gid=gu1
     2- first from-MEs-PC:  sync fully w1_RF/dc1K (dc1k RF is on MEs-PC! so full-sync! not only updates!):
         rsync  -n  -v  -rtlHO  --modify-window=5  --delete  /up1/t1/w1_RF/dc1K/  /mnt/t1/w1_RF/dc1K/
