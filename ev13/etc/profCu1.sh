@@ -20,8 +20,9 @@ alias os1nwrestart="sudo  systemctl   restart   dhcpcd.service  wpa_supplicant.s
 ##----- NWs_Wlans_wpaSup_OS-reconfigs--BiBs+KKs : --------------------------------------
 nwsConn1() { p1=${1:?"... <wpa-wlan-filename-to-be-activated->"} ; cat   ${wpaSup_confDP}/${q_Label1qq}0head_wpa1.conf  "$p1"  >|  ${wpaSup_EvvConfFP} &&  systemctl   restart   dhcpcd.service  wpa_supplicant.service && echo "_____NW-restarted_with:  $p1" ; }  ##--NW-Switch-wlan-func1
 alias  nwkka3s="nwsConn1  ${wpaSup_confDP}/${q_Label1qq}1kk_SHy_A3S_wpa1.conf"    ##--NW-1kk-Handy-A3S
-alias  nwbibas="nwsConn1  ${wpaSup_confDP}/${q_Label1qq}bib_antons_wpa1.conf"     ##--NW-Bib-Anton-Saevkow--bib-gast+PW
-alias  nwbibhb="nwsConn1  ${wpaSup_confDP}/${q_Label1qq}bib_HBoell_wpa1.conf"     ##--NW-Bib-Anton-Saevkow--bib-gast+PW
+alias  nwbibas="nwsConn1  ${wpaSup_confDP}/${q_Label1qq}bib_antons_wpa1.conf"     ##--NW-Bib-Anton-Saevkow
+alias  nwbibhb="nwsConn1  ${wpaSup_confDP}/${q_Label1qq}bib_HBoell_wpa1.conf"     ##--NW-Bib-HeinrichBoell   :requires-confirms!
+alias  nwbibws="nwsConn1  ${wpaSup_confDP}/${q_Label1qq}bib_WSchnurr_wpa1.conf"   ##--NW-Bib-WolfgangSchnurr :requires-confirms!
 ##__ alias  nwbibas="cd /etc/wpa_supplicant/  && cat   ${q_Label1qq}0head_wpa1.conf  ${q_Label1qq}bib_antons_wpa1.conf  >|  ${q_Label1qq}wpa-wlans1.conf"     ##--NW-Bib-Anton-Saevkow--bib-gast+PW
 
 ##----- keyboards :

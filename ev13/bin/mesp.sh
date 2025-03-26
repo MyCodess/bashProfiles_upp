@@ -1,6 +1,7 @@
 #!/bin/bash
-source  /up1/.cev/etc/profile.sh ;  ##--II-required if with "sudo" !! not-working: source  /etc/bash.bashrc due to non-interactive! see there !
-##__  set -xe
+##__ source  /up1/.cev/etc/profile.sh ;  ##--II-required if with "sudo" !! not-working: source  /etc/bash.bashrc due to non-interactive! see there !
+set  +o  history
+##__ set -xe
 ##--II-dnts-see-at-END-here-below !!!
 USAGE1="USAGE: $0 <mespNo>  < opena | open-cry | closea | close-cry | umount1 | stat > ;  eg:   $0  1  opena"  ;
 export PS4="  :::==:::  ";
@@ -46,7 +47,7 @@ mount -lv | grep mesp ; echo;
 cryptsetup status ${_mespFN} ; echo;
 ##_______________________________________
 
-set +x ;
+##__ set +x ;
 echo "=============__END1__   Status: ====================================================" ; echo;
 
 ##==================== nts-cryptsetup .... : ========================================##
