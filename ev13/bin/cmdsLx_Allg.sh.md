@@ -1,6 +1,6 @@
 __________________ std-Lx-cmds (basics as: echo/tr/paste/pwd/... ____________________________
 -! for finds-greps-sed ... see extra-dnts !
-- for wget/lynx/czrl   ... see extra-dnts !
+- for wget/lynx/curl   ... see extra-dnts in dres/dnts/... !
 
 
 

@@ -19,6 +19,7 @@ find .  -regextype  posix-extended  -iregex ".*-20[[:digit:]-]*"  ##--using-clas
 
 --############## finds-only : ################################################
 #####  ==========  finds-filesMgms/...:
+find-all-NON-txts-types in dnts (img/bins/...):   cddnts;   find . -type f ! -iregex ".*.md\|.*.txt\|.*.sh\|.*.rst\|.*.sql\|.*.bat\|.*.reg\|.*.py\|.*.logy\|.*.htm.*\|.*.ps1\|.*.cfg"
 find .  -type f  \!  -iregex ".*.md\|.*.rst\|.*.txt\|.*.log\|.*.sh\|.*.reg\|.*.py\|.*.sql\|.*.html"
 find .  -type f  -ls  | grepi -v -E '.*\.md|.*\.sh|.*\.txt|.*\.log|.*\.rst'   ##--find-all-non-text-files ! better: do it with: -exec file -b --mime-type {} \; (in a small script with if-abfrage ...!)
 find ./0MPA_G0find   -regextype  posix-extended  -xdev   -iregex  ".*(opus|mp3)"  | wc -l

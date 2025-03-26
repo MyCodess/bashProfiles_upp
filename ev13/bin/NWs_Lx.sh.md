@@ -4,9 +4,11 @@
 ##________________________________________  ___________________________
 
 
-#####  ==========  qcks-bin-NWs/systemD :
+#####  ==========  qcks-systemD-bin-NWs:
 	systemctl  restart systemd-resolved.service   systemd-networkd.service  systemd-networkd.socket  wpa_supplicant.service
 	systemctl   stop   dhcpcd.service
+    ---
+    - google-DNS-devs:   ping  8.8.8.8 / 8.8.4.4   #-IP6:  2001:4860:4860::8888 / 2001:4860:4860::8844
 ##________________________________________  ___________________________
 
 
