@@ -57,6 +57,7 @@ q_prjPkgsDP="${q_prjVarDP}/pkgs"
 ##__  prjTagsDP="${q_prjEtcDP}/tagsdir"
 
 #--------- prj-w1/t1/dnts/...DIRs global for all prjs : ---------------
+q_prjW1DP="${w1DP}/${q_prjID}_w1"
 q_SW1dntsDP=${dntsDP}/${q_SW1Tag}${q_Label1dnts}           ##-I-SW1-dnts
 q_SW1dresDP=${dresCodecsDP}/${q_SW1Tag}${q_Label1dres}           ##-I-SW1-codecs1_dres_1coll
 q_SW1dres1kkDP=${dresCodecsDP}/${q_SW1Tag}${q_Label1dres1kk}    ##-I-SW1-codecs1_dres_1coll
@@ -88,6 +89,7 @@ alias  cdprjwks='cdlla   ${q_prjWksDP}'
 alias  cdprjwp='cdlla   ${q_prjWpadsDP}'
 
 ##----- aliasas-prj-w1/dnts/docs/t1/... --------------------------
+alias  cdprjw1='cdlla  ${q_prjW1DP}/'
 alias  cdsw1dnts='cdlla  ${q_SW1dntsDP}/'
 alias  cdsw1dres1kk='cdlla  ${q_SW1dres1kkDP}'
 alias  cdsw1docs='cdlla  ${q_SW1DocsDP}'

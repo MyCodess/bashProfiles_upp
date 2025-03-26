@@ -12,7 +12,7 @@ q_pyyName=python ; q_pyyTag=py ; q_pyyTagC="${q_pyyTag^}"
 
 #	_______:  VARs-allg_pyy:
 q_pyyVar1_DP="${vaarAuDP}/py1var/"
-PYTHONPYCACHEPREFIX="${q_pyyVar1_DP}/0pycs/"   ##--II- woks?? as target-dir for ALL pyc-files instead local-source-dir! same as -X -X pycache_prefix=PATH: ... BUT NOT-documented in man python !! works??
+PYTHONPYCACHEPREFIX="/tmp/pycache1"   ##--prev--better-but in /tmp/ more practile:   PYTHONPYCACHEPREFIX="${q_pyyVar1_DP}/0pycs/"
 PAGER=less   ##--for pydoc
 # __if_req:  q_prjSTARTUP=${q_prjEtcDP}/pystartup1.py  ##--python-startup-script
 

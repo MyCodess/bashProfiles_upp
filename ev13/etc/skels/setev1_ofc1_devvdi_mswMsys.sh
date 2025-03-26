@@ -22,9 +22,10 @@ alias   setevvunset='unset ${!q_@}  ${!syys@} ; source  ${setevv_FP}'
 alias   visetevv='vi1  ${setevv_FP}'
 alias   cdsetevv='cdl  ${setevv_DP}'
 
-##--- call-evv-profs:
-export  q_profsDebug11=0 ;   (( $q_profsDebug11 >9 )) && { echo "=====  :  ${setevv_FN}" ; }  ##--set to 10 to see debugs !
+##--- call-evv-profs on "2310msw" host:
+export  q_profsDebug11=00 ;   (( $q_profsDebug11 >9 )) && { echo "=====  :  ${setevv_FN}" ; }  ##--set to 10 to see debugs !
 export  Host1full="2310msw"  ##--I-will-not-work-with-sus1unset if only:  export  q_Hostname='2310msw' #-:it will be unset also !
+export  USER=${USERNAME:-"userXX"}   ##--I-for msw , if USER not set !?
 source  "${setevv_DP}"/up1/.ev13/etc/profile.sh    ##--did-not-work:  "C:\Users\DKX8H1N\up1\.ev13\etc\profile.sh"
 ##--old-HOME-dir-up1:  source  "${USERPROFILE}"/up1/.ev13/etc/profile.sh    ##--did-not-work:  "C:\Users\DKX8H1N\up1\.ev13\etc\profile.sh"
 ##________________________________________  ___________________________

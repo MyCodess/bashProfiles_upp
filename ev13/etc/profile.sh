@@ -106,20 +106,21 @@ set -a  ##-- in case that was reset.
 pathaddend  "${q_BinDP}"
 pathaddend  "${opptuDP}/bin"
 pathaddend  "${HOME}/.local/bin"
-PATH="${PATH//::/:}"  ##--removing redundant ::
+PATH="${PATH//::/:}" ; PATH="${PATH#:}" ; PATH="${PATH%:}" ; ##--removing redundant ":" ,end-cleaning-of-PATH , so remove doubled ::, or beginning ^: ,or end :$ #specially MSYS2 has problems with start-/end-: in PATH !
 q_Path1="$PATH"    ##--II- the final-evv-path after first full evvEnv-run. can be used in sub-scripty (prj0,...) as iniitial-evv-path!!
 ##---------------
 
 ##--- shell-options + ENVs : the last settings for the shell!:
 export GLOBIGNORE='.:..:'  ##-II- it also enables dotglob , see man bash !!
-#--I- hss-cu-shell-NOT-save:  unset HISTFILE ; shopt -uq histappend  ##--hss-cu-shell-NOT-at-ALL:  set +o history !
-HISTFILE=${ettcUser}/hs1 ; HISTSIZE=100 ; HISTTIMEFORMAT="     ${dateTimeForm1}   " ;
+HISTFILE=${ettcUser}/hs1 ;   #-?:  HISTTIMEFORMAT="     ${dateTimeForm1}   " ;
 ##-- very END, shopts has relevance for all ux-cmds as ls/find/....!! :
-shopt -s  dotglob cmdhist  expand_aliases  extglob  histreedit  histverify interactive_comments  lithist  mailwarn  no_empty_cmd_completion  promptvars  shift_verbose
-[[ -r  ${q_Profile2PosFP}   ]]  &&  source  ${q_Profile2PosFP}  ##--currUser-Profs: overwrites everything if needed; if presets are required, set them BEFORE invoking this profile.sh !!!
+shopt -s  dotglob cmdhist  expand_aliases  extglob  histappend  histreedit  histverify interactive_comments  lithist  mailwarn  no_empty_cmd_completion  promptvars  shift_verbose
+#--I- hss-cu-shell-NOT-save:  unset HISTFILE ; shopt -uq histappend  ##--hss-cu-shell-NOT-at-ALL:  set +o history !
 
+[[ -r  ${q_Profile2PosFP}   ]]  &&  source  ${q_Profile2PosFP}  ##--currUser-Profs: overwrites everything if needed; if presets are required, set them BEFORE invoking this profile.sh !!!
 ##--OK1-PS1_without_gitPS1--default_evv-onlyCuDir
-PS1="\\W : "   ##__OK1: PS1=${PS1:-"\\W : "}   ##--PWD-in-extra-line:  PS1=${PS1:-"\w\n\\W : "} ##--incl-user@host:  PS1=${PS1:-"[\\u@\\h \\W]\\\$ "}  ##--II- in non-interactive-shells PS1 is NOT set! so just  due to "set -u" above set a default here !! 
+#_ PS1="\\W : "      ##__OK1: PS1=${PS1:-"\\W : "}   ##--PWD-in-extra-line:
+PS1=$"\w\n\\W : "    ##--incl-user@host:  PS1=${PS1:-"[\\u@\\h \\W]\\\$ "}  ##--II- in non-interactive-shells PS1 is NOT set! so just  due to "set -u" above set a default here !! 
 [[ -d ./.git/ ]] &&  setGitPrompt
 
 q_ple1  "${BASH_SOURCE[0]##*/}"

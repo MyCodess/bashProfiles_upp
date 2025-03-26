@@ -38,7 +38,7 @@ cdwinpath(){
 ##--- finds-evv :
 #- mtime-sorted-find ; sort/find files recursively based on their mtime:
 finddatesort(){ find ${1:-.}   -type f -printf "%Ty%Tm%Td-%TH:%TM  %p\n" | sort -n ; }
-finds(){ find ${1:-.}  | sort ; }  ##--was:  findsort1
+finds(){ find ${@:-.}  | sort ; }  ##--was:  findsort1
 #- find files -iname *$1* :
 findin(){
 	local USAGE1="USAGE: ... <start-Dir> <file-name-part> [xxx-more-params]";  local path1="$1" ;  local namePart1="${2:?$USAGE1}"  ; shift; shift;  ##--II-shifts due to more arbitrary params!
@@ -79,6 +79,9 @@ zipsListing(){ find $1  \( -iregex ".*.tgz\|.*.tar.gz\|.*.tar" -printf "\n\n\n==
 ##--- VIMs/views/...:
 # View Latest file in DIR=$dir2check ; default=. ; /OR with ls -lst |  sed -n '$p' :
 vla(){ dir2check=$1 ; latestFile=$( ls -t1 $dir2check  | sed  '1q' )  && echo  "=== latest file is: $dir2check/$latestFile" && view $dir2check/$latestFile ; }
+
+##--- converters (text/html/pdf/...):
+htm2txt(){ curl -s "$1" | pandoc1 -f html -t plain ; }  ##-pandoc-execs must be installed and aliased as pandoc1
 
 
 ######################### DateTimeStamped-mv/-cp : #############################################################

@@ -22,6 +22,12 @@ alias sethomewcyg='export   HOME=$HOMEW_cyg'
 alias cdhm='cdlla   ${HOMEW_cyg}'  ##--cd-home-msw / $USERPROFILE
 ##__ if-liked-set-also-prjid-here:   export  prjID_active1=ofc1
 alias  sort1='LANG=C.UTF-8 sort'  ##-I-for case-SEnsitive-sorting on msw! works also LANG=C , LANG_ALL=C ...
+##-- evv-ps1-profiles/evv-mswin-powershell-profiles-setups:
+export  q_evv_mswps1_ProfileFD="${HOMEW_cyg}/1Hm/etc"
+export  q_evv_mswps1_ProfileFP="${q_evv_mswps1_ProfileFD}/prof1.ps1"
+export  q_evv_mswps1_funcsFP="${q_evv_mswps1_ProfileFD}/funcs1.ps1"
+export  q_mswps1_ProfileFP="${HOMEW_cyg}/Documents/PowerShell/profile.ps1"
+alias viwinsevvprofs="vi -p $q_mswps1_ProfileFP  ${q_evv_mswps1_ProfileFD}/*"
 ###________________________________________  ___________________________
 
 
@@ -54,6 +60,7 @@ pathaddend  "${mariadb_bin_DP}/"
 
 ##---  SWs-aliases/funcs/...:
 alias  vscode1="${vscode_DP}/Code.exe  .  &"
+alias  pandoc1='${ptb0_DP}/pandoc/pandoc'
 ##__OK1-git-prompt     : q_gitPromptFP=${q_EttcD_DP}/git-prompt_msw1.sh ; set +u ; [[ -r  $q_gitPromptFP        ]]  &&  source  $q_gitPromptFP ; set -u ;  ##--must be executed before setting PS1 or evv-profiles ! it overwrites the evv-PS1 otherwise !
 ##________________________________________  ___________________________
 
@@ -65,6 +72,10 @@ syys_dnts_DP="$mssdntsDP"
 
 #####  ==========  OSs-addies/adapts/...:
 unalias psg ; alias psg="ps | grepi" ; alias psgw="ps -W | grepi";
+##--- kill process on msw
+#-gut-cmd--but-killnot-working! also not-working msw taskkill / ... : alias  killterms1='ps -alW | grepi windowsterminal | kill $(sed -e "s@ *\([0-9]*\).*@\1@")'  ##--I-or replace kill with echo to only list the PIDs !
+# in PS1 (admin):   wmic process where "name='WindowsTerminal.exe'" delete  #-exactly incl. 'and" !
+#  if not-zombies, could try (admin): TASKKILL  /T /F /IM WindowsTerminal.exe ; #-OR:  taskkill /F /T /PID 14304 #- tasklist ... #-tasklist /FI "IMAGENAME eq WindowsTerminal.exe"
 ###________________________________________  ___________________________
 
 
@@ -94,7 +105,7 @@ q_mswCyg=0 ; q_mswWsl=0
 	te1_vi(){ te1Tab_vi "$@" ; te1Tab_vi "$@" ; te1Tab_vi "$@" ;} ##-open a terminal with tabs for vim-sessions (instead gvim; just normal taerminal with colored tabs ,...)
 	alias  psg='ps -alW | grepi'   ##--I- ps cmd of MSYS2 !
 	##--- funcs...:
-	wp1() { echo "pathes-mswin+unix of Param1 and cu-dir:" ; cygpath --windows $PWD "$@" ; cygpath  --unix  $PWD  "$@" ; }   ##--Windows-unix-Pathes-of-PWD + $1
+	winpath1() { echo "pathes-mswin+unix of Param1 and cu-dir:" ; cygpath --windows $PWD "$@" ; cygpath  --unix  $PWD  "$@" ; }   ##--Windows-unix-Pathes-of-PWD + $1
 }
 ##________________________________________  ___________________________
 

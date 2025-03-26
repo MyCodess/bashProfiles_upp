@@ -44,8 +44,7 @@ set linebreak		" breaking lines at an appropriate place by wrapping.  check also
 set listchars=eol:$,tab:^_,trail:+,extends:>,precedes:<,nbsp:.       " Strings to use in 'list' mode ##--offc-
 set modeline		" for root must be of!! security! read first/last-line of file as vim-cmds!
 " set pastetoggle=<leader>tp		" now in maps-section below as evv-mapping! kind of key mapping for toggling between autoindent and paste (like :set paste for no indentation)
-set sessionoptions=buffers,curdir,slash,tabpages,unix   " slash+unix for compatible sesseions between Win and Unix! options NOT needed!
-set shortmess-=S    " for search show no/total in cmd-bar!
+set sessionoptions+=unix,slash		" for compatible sesseions between Win and Unix
 set ruler			" show the cursor position all the time
 set shiftwidth=4	" number of spaces to use for (auto)indent step. use the same as tabstop !!
 set showcmd			"  Show (partial) command in status line, eg [count] ... .
@@ -55,7 +54,7 @@ set smartcase		" scs,  no ignore case when pattern has uppercase. Override the '
 set smartindent		" is like 'autoindent' but also recognizes some C syntax to increase/reduce the indent. if disturbing, disable it in text mode
 let &statusline=statuslinestr		" entries for statusline
 set tabstop=4		"by pressing TAB-key, Number of spaces that a <Tab> in the file counts for. should be the same as shiftwidth, which is for indents
-" set textwidth=521		"auto-linebreaks at column nn; 0 deactivates it.
+set textwidth=521		"auto-linebreaks at column nn; 0 deactivates it.
 let &titlestring=statuslinestr  " or to add/concat something: &titlestring="TEST- " . statuslinestr /OR from cmdLine:  vi -g -c "let &titlestring=\"TEST- \" . statuslinestr" *.txt
 set visualbell
 set nowrap			" no wrapped lines
@@ -156,9 +155,9 @@ set nofoldenable   " by openning a doc, foled are all open/unfolded, if nofolden
 set foldminlines=0      " Minimum number of screen lines for a fold to be displayed closed
 "	_______:  sets-foldings-vars:
 " ok1:  let fold1Sm=$q_fold1Sm    " so could be set the evv-ENV-var and is better + works fine! but here just keep the vimrc independent of evvEnv so that globally usable for vim, also outside evvEnv ! 
-let fold1Sm=repeat('#', 5).repeat(' ', 2).repeat('=', 10).repeat(' ', 2)    " evv-fold1-Start-Marker : md-title-5 (<h5>) + evv-start-marker-of-10=  : 17-chars
-let fold1Em=repeat('#', 2).repeat('_', 40).repeat(' ', 2).repeat('_', 27)   " evv-fold1-End-Marker : md-horizontal-line (<hr/>)  + evv-end-makrker-of ____... : 69-chars
-let fold12SmNoTab=repeat('_', 7).':'.repeat(' ', 2)    " evv-fold12-Start-Marker : subsections,  TAB+19char
+let fold1Sm='# '.repeat('=', 15).'  '    " evv-fold1-Start-Marker : md-title-5 (<h5>) + evv-start-marker-of-10=  : 17-chars
+let fold1Em='# '.repeat('_', 40).'  '.repeat('_', 25)   " evv-fold1-End-Marker : md-horizontal-line (<hr/>)  + evv-end-makrker-of ____... : 69-chars
+let fold12SmNoTab='# '.repeat('_', 5).':  '    " evv-fold12-Start-Marker : subsections,  TAB+19char
 let fold12Sm=repeat('	', 1).fold12SmNoTab
 "	_______:  keymaps-insert/handle-markers :
 " insert-foldStartMarker-level1-evv :
@@ -167,7 +166,7 @@ nmap  <leader>=D             I<CR><C-R>=fold1Sm<CR><C-R>=strftime('/:%y%m%d :')<
 " insert-foldENDMarker---level1-evv :
 nmap  <leader>__              I<C-R>=fold1Em<CR><NL><ESC>
 " insert-foldStartMarker-level2-evv :
-nmap  <leader>_:              O<C-R>=fold12SmNoTab<CR>
+nmap  <leader>_:              o<C-R>=fold12SmNoTab<CR>
 " set-foldmethod-as-marker--evv :
 nmap  <leader>fmm             : set foldmethod=marker<CR>
 nmap  <leader>fmi             : set foldmethod=indent<CR>

@@ -16,10 +16,12 @@ alias  gvi1='gvim'     ##--REF-for-gvim-calls!!
 alias  view1='vi1 -R'  ##--REF-for-view-calls!!
 alias  vi=vi1
 #-vims-calls-basics:
-vi_SN1=VI_1            ##--VIM-ServerName_1
-alias vis1='vi1  --servername $vi_SN1 --remote-tab-silent'
-vi_SN2=VI_2            ##--VIM-ServerName_1
-alias vis2='vi1  --servername $vi_SN2 --remote-tab-silent'
+vi_SN1=Vi_1            ##--VIM-ServerName_1
+alias visrv1='vi1  --servername $vi_SN1 --remote-tab-silent'
+alias visrv1s='vi1  --servername $vi_SN1'   #-for first call with eg a session.vimm,...
+vi_SN2=Vi_2            ##--VIM-ServerName_1
+alias visrv2='vi1  --servername $vi_SN2 --remote-tab-silent'
+alias visrv2s='vi1  --servername $vi_SN2'   #-for first call with eg a session.vimm,...
 ##-------------------------------------------------------------------------------------------------------
 
 
