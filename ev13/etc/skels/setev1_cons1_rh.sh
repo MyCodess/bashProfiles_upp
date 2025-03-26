@@ -24,11 +24,10 @@ export  setevv_DP="${setevv_FP%/*}" ;
 alias   setevv='source  ${setevv_FP}'
 alias   setevvunset='unset ${!q_@}  ${!syys@} ; source  ${setevv_FP}'
 alias   visetevv='vi1  ${setevv_FP}'
-alias   cdsetevv='cd  ${setevv_DP}'
+alias   cdsetevv='cdl  ${setevv_DP}'
 
 ##--- call-evv-profs:
-alias   sus1="source  /var/tmp/tmpu/up1/.ev13/etc/profile.sh"
-source  '/var/tmp/tmpu/up1/.ev13/etc/profile.sh'
+source  "${setevv_DP}"/up1/.ev13/etc/profile.sh
 ##________________________________________  ___________________________
 
 

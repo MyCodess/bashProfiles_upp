@@ -22,6 +22,12 @@ alias sethomewcyg='export   HOME=$HOMEW_cyg'
 alias cdhm='cdlla   ${HOMEW_cyg}'  ##--cd-home-msw / $USERPROFILE
 ##__ if-liked-set-also-prjid-here:   export  prjID_active1=ofc1
 alias  sort1='LANG=C.UTF-8 sort'  ##-I-for case-SEnsitive-sorting on msw! works also LANG=C , LANG_ALL=C ...
+##-- evv-ps1-profiles/evv-mswin-powershell-profiles-setups:
+export  q_evv_mswps1_ProfileFD="${HOMEW_cyg}/1Hm/etc"
+export  q_evv_mswps1_ProfileFP="${q_evv_mswps1_ProfileFD}/prof1.ps1"
+export  q_evv_mswps1_funcsFP="${q_evv_mswps1_ProfileFD}/funcs1.ps1"
+export  q_mswps1_ProfileFP="${HOMEW_cyg}/Documents/PowerShell/profile.ps1"
+alias viwinsevvprofs="vi -p $q_mswps1_ProfileFP  ${q_evv_mswps1_ProfileFD}/*"
 ###________________________________________  ___________________________
 
 

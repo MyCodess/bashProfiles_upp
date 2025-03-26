@@ -45,6 +45,7 @@ set listchars=eol:$,tab:^_,trail:+,extends:>,precedes:<,nbsp:.       " Strings t
 set modeline		" for root must be of!! security! read first/last-line of file as vim-cmds!
 " set pastetoggle=<leader>tp		" now in maps-section below as evv-mapping! kind of key mapping for toggling between autoindent and paste (like :set paste for no indentation)
 set sessionoptions=buffers,curdir,slash,tabpages,unix   " slash+unix for compatible sesseions between Win and Unix! options NOT needed!
+set shortmess-=S    " for search show no/total in cmd-bar!
 set ruler			" show the cursor position all the time
 set shiftwidth=4	" number of spaces to use for (auto)indent step. use the same as tabstop !!
 set showcmd			"  Show (partial) command in status line, eg [count] ... .
@@ -54,7 +55,7 @@ set smartcase		" scs,  no ignore case when pattern has uppercase. Override the '
 set smartindent		" is like 'autoindent' but also recognizes some C syntax to increase/reduce the indent. if disturbing, disable it in text mode
 let &statusline=statuslinestr		" entries for statusline
 set tabstop=4		"by pressing TAB-key, Number of spaces that a <Tab> in the file counts for. should be the same as shiftwidth, which is for indents
-set textwidth=521		"auto-linebreaks at column nn; 0 deactivates it.
+" set textwidth=521		"auto-linebreaks at column nn; 0 deactivates it.
 let &titlestring=statuslinestr  " or to add/concat something: &titlestring="TEST- " . statuslinestr /OR from cmdLine:  vi -g -c "let &titlestring=\"TEST- \" . statuslinestr" *.txt
 set visualbell
 set nowrap			" no wrapped lines
@@ -166,7 +167,7 @@ nmap  <leader>=D             I<CR><C-R>=fold1Sm<CR><C-R>=strftime('/:%y%m%d :')<
 " insert-foldENDMarker---level1-evv :
 nmap  <leader>__              I<C-R>=fold1Em<CR><NL><ESC>
 " insert-foldStartMarker-level2-evv :
-nmap  <leader>_:              o<C-R>=fold12SmNoTab<CR>
+nmap  <leader>_:              O<C-R>=fold12SmNoTab<CR>
 " set-foldmethod-as-marker--evv :
 nmap  <leader>fmm             : set foldmethod=marker<CR>
 nmap  <leader>fmi             : set foldmethod=indent<CR>
