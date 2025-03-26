@@ -8,6 +8,8 @@ q_pls1  "${BASH_SOURCE[0]##*/}"
 alias  setdjsettingdev="export DJANGO_SETTINGS_MODULE=netservices.settings.dev"
 alias  setdjsettingtest="export DJANGO_SETTINGS_MODULE=netservices.settings.test"
 alias  setdjsettingsrv="export DJANGO_SETTINGS_MODULE=netservices.settings.server"
+alias  setdjsettingdb="export DJANGO_SETTINGS_MODULE=netservices.settings.db"  ##--devpc-own-1kk-dummy-devl-setting!
+##__  setdjsettingtest  # -!?UNDO!?
 ###________________________________________  ___________________________
 
 
@@ -23,17 +25,17 @@ alias   unsetsmoke='unset SMOKE_TESTS'
 te11_myswt() { usage11="USAGE: ... <start-DIR> [title/winID /OR wt_tit11=my-title]   ##--starts a MSYS2-bash-shell in wt-term and cd to start-DIR" ;
 	local dir11="${1:?$usage11}" ; local tit11="${2:-$wt_tit11}" ; shift 2 ; wt -w "$tit11" nt -p myst1 --title "$tit11" -d $dir11 "$@" ; }
 
-# _______:  te1_prjcode2/ ck1:
-q_prjcode2DN="ck1";
+# _______:  te1_prjcode2/ tuf1:
+q_prjcode2DN="tuf1";
 #---prjcodeNo:
 q_prjcode2DP="${q_prjcode1DP}/${q_prjcode2DN}/netservices"  ; q_prjcode2Title=P_${q_prjcode2DN} ;
-prjcode2dir11="${q_prjcode2DP}/  ${q_prjcode2DP}/  ${q_prjcode2DP}/  ${q_prjcode2DP}/  ${q_prjcode2DP}/"
+prjcode2dir11="${q_prjcode2DP}/  ${q_prjcode2DP}/  ${q_prjcode2DP}/  ${q_prjcode2DP}/tests/unit/lib/tufin/  ${q_prjcode2DP}/tests/integration/lib/tufin/"
 te1_pc2()  { for ii in $prjcode2dir11; do te11_myswt   $ii $q_prjcode2Title ; done ; } ;
 alias  cdpc2='cdlla   ${q_prjcode2DP}' ;
 alias  setpypathcode2='export PYTHONPATH="${q_prjcode2DP}/:${q_prjcode2DP}/lib/:${q_prjcode2DP}/netservices/" ; pypath ;' ##__ echo "PYTHONPATH set to: $PYTHONPATH"'
 #---prjcodeName (assign prjcodeNo-to-prjcodeName):
-q_prjcodeck1DP="${q_prjcode2DP}";
-alias te1_pcck1=te1_pc2 ; alias  cdpcck1='cdlla   ${q_prjcodeck1DP}' ; alias  setpypathcodeck1=setpypathcode2
+q_prjcodetuf1DP="${q_prjcode2DP}";
+alias te1_pctuf1=te1_pc2 ; alias  cdpctuf1='cdlla   ${q_prjcodetuf1DP}' ; alias  setpypathcodetuf1=setpypathcode2
 
 # _______:  te1_prjcode3/ djix1:
 q_prjcode3DN="djix1";
@@ -66,7 +68,7 @@ te1_pcwk1() { for ii in $prjcodewk1dir11; do te11_myswt  $ii $q_prjcodeWk1Title 
 alias  cdpcwk1='cdlla   ${q_prjcodeWk1DP}'
 
 # _______:  te1_evvs /te1-fest (NON-prjcodeX):
-dresdir11="${dresDP}/  ${dntsDP}/  ${mssdntsDP}  ${q_SW1dntsDP}/  ${q_SW1dres1kkDP}/"
+dresdir11="${dresDP}/  ${dntsDP}/  ${mssdntsDP}  ${q_SW1dres1kkDP}/  ${q_SW1dntsDP}/"
 prjntsdir11="${q_prjDP}/  ${q_prjDntsDP}/  ${q_prjDntsDP}/  ${q_prjcode1DP}/  ${q_EttcDP}/  ${q_EttcDP}/"  ##--prj-dnts-wpad-terms + evv
 prjcodewk1dir11="${q_prjcodeWk1DP}/  ${q_prjcodeWk1DP}/  ${q_prjcodeWk1DP}/"
 #---call te1_fixes/evvs (non-prjcodeX):

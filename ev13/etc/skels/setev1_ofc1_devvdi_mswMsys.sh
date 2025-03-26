@@ -12,6 +12,7 @@ set -a
 
 
 #####  ==========  my-name/-path/-call (setevv.sh) : #############################################
+##__  export PATH=/usr/bin:$PATH   ##--for vscode-terminal  somehos the /etc/profile is not executed !? so to find uname/cygpath/id/... cmds ... this workaround!
 export  setevv_FP_orgcall="${BASH_SOURCE[0]}" ;   ##--I-keep it; in msw or other systems is different than setevv_FP !
 #_Lx:   export  setevv_FP="${setevv_FP_orgcall}" ;   for msw take the cyg-version:
 export  setevv_FP="$(cygpath ${setevv_FP_orgcall})"  ##--Lx:  export  setevv_FP="${BASH_SOURCE[0]}" ;
@@ -22,9 +23,10 @@ alias   setevvunset='unset ${!q_@}  ${!syys@} ; source  ${setevv_FP}'
 alias   visetevv='vi1  ${setevv_FP}'
 alias   cdsetevv='cdl  ${setevv_DP}'
 
-##--- call-evv-profs:
-export  q_profsDebug11=0 ;   (( $q_profsDebug11 >9 )) && { echo "=====  :  ${setevv_FN}" ; }  ##--set to 10 to see debugs !
+##--- call-evv-profs on "2310msw" host:
+export  q_profsDebug11=00 ;   (( $q_profsDebug11 >9 )) && { echo "=====  :  ${setevv_FN}" ; }  ##--set to 10 to see debugs !
 export  Host1full="2310msw"  ##--I-will-not-work-with-sus1unset if only:  export  q_Hostname='2310msw' #-:it will be unset also !
+export  USER=${USERNAME:-"userXX"}   ##--I-for msw , if USER not set !?
 source  "${setevv_DP}"/up1/.ev13/etc/profile.sh    ##--did-not-work:  "C:\Users\DKX8H1N\up1\.ev13\etc\profile.sh"
 ##--old-HOME-dir-up1:  source  "${USERPROFILE}"/up1/.ev13/etc/profile.sh    ##--did-not-work:  "C:\Users\DKX8H1N\up1\.ev13\etc\profile.sh"
 ##________________________________________  ___________________________
@@ -33,6 +35,8 @@ source  "${setevv_DP}"/up1/.ev13/etc/profile.sh    ##--did-not-work:  "C:\Users\
 
 #####  ==========  pos-evv1-profs:  ##############################################################
 set -au
+export  HISTSIZE=50 ; export  HISTFILESIZE=1000 ; unset  HISTTIMEFORMAT ;
+unset LANG  #-! grep and sort had got problems here in MSYS2 with utf-8 settings as; export LANG=en_US.utf8  or LANG="en_US.UTF-8" ! they wanted without UTF8 on msw/MSYS2 ! eg grep ignored lines with umlauts if utf8 set!! so 2chk!
 set +au
 ##________________________________________  ___________________________
 
