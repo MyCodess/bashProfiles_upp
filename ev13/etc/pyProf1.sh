@@ -69,6 +69,17 @@ alias  cddj1src="cdlla ${dj1SrcDP}"
 alias  pydocdj='python  -c "import django, django.conf, pydoc ; django.conf.settings.configure() ; django.setup() ; pydoc.cli()"'
 #-pydocdj1 so not-worked-on-nsv-pc:  alias  pydocdj='DJANGO_SETTINGS_MODULE=django.conf.global_settings  python  -c "import django, pydoc ; django.setup() ; pydoc.cli()"'  ##--django-pydoc-call
 
+# _______:  pytests:
+pyt1dntsDP="${q_pyydntsDP}/testingsQAs_teq_py/pytests_dnts"
+pyt1RepoRTDP="${dcItDP}/Py_teq_dc/PyTests_dc/REFs-pytests_p/pytest-main/"
+pyt1DocsRTDP="${pyt1RepoRTDP}/doc/en"
+pyt1DocsTxtDP="$pyt1DocsRTDP"   #-htmls are generated in the same rst-source dir; due to chrom-BMs not yet moved! but should be moved outwards!
+pyt1SrcDP="${pyt1RepoRTDP}/src"
+alias  cdpyt1dnts="cdlla ${pyt1dntsDP}"
+alias  cdpyt1docs="cdlla ${pyt1DocsRTDP}"
+alias  cdpyt1docstxt="cdlla ${pyt1DocsTxtDP}"
+alias  cdpyt1src="cdlla ${pyt1SrcDP}"
+
 
 #####  ==========  MySqls/MariaDBs:
 ##---  VARs-mys: ----------------------------------------

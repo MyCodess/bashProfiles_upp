@@ -99,7 +99,7 @@ lxSHsdntsDP="${dntsDP}/lxSHs_dnts"
 lxOSDocsDP="${dcItDP}/LxOSs_dc"
 
 #-
-gitsdntsFP="${lxCmdsdntsDP}/gits_dnts.txt"
+gitsdntsFP="${dntsDP}/devops-buildConfMgm_dnts/gities/gits_dnts.txt"
 vimsdntsFP="${lxCmdsdntsDP}/vims_dnts.txt"
 
 #- mss
@@ -162,8 +162,9 @@ mpsDP="${mpsMed1DP}/MPs_All_RF"
 mps1DP="${mpsDP}/MPs1"
 mpsADP="${mps1DP}/MPAs"
 mpswpDP="${wpsRTDP}/MPs_wk"
+##--mpsG0 / mpsNPs:
 mpsNps1DP="${nps2DP}/MPs_nps1"  ##--2do?: parentDir as envvar?? due to fat-part no links possible! otherwise:  ${npsDP}/MPs_nps1
-mpsG0RTDP="${npshddDP}/MPAs_G0_All"   ##--II-moved-from here to HP13-HDD, was on:   "${mpsDP}/MPAs_G0_All"
+mpsG0RTDP="${mpsNps1DP}/MPAs_G0_All"  ##--old-/:241216-on-HP13-HDD:  "${npshddDP}/MPAs_G0_All"   ##--II-moved-from here to HP13-HDD, was on:   "${mpsDP}/MPAs_G0_All"
 
 ##======== usbs, medias, extHDs, misc,...:
 

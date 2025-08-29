@@ -75,10 +75,10 @@ q_uname1infs=$(uname -a) ; q_uname1infs=${q_uname1infs^^} ; q_mswinos1=0  ##--pl
 
 ##====== evv-profs: ==========================================================
 ##--II-  q_Profile2PresetsFP  is already executed in above line, so can user PREset everything! now the rest-sequence:
-[[ -r  $q_HostGlobProfFP     ]]  &&  source  $q_HostGlobProfFP    ; ##--syys-host-preset-prof
+[[ -r  $q_HostGlobProfFP     ]]  &&  source  $q_HostGlobProfFP    ; ##--syys-host-PREset-prof
 [[ -r  $q_ConstantsFP        ]]  &&  source  $q_ConstantsFP       ;
 [[ -r  $q_PathesFP           ]]  &&  source  $q_PathesFP          ;
-[[ -r  $q_HostGlobProfPosFP  ]]  &&  source  $q_HostGlobProfPosFP ; ##--syys-host-preset-prof
+[[ -r  $q_HostGlobProfPosFP  ]]  &&  source  $q_HostGlobProfPosFP ; ##--syys-host-POSSet-prof
 [[ -r  $q_AliasesFP          ]]  &&  source  $q_AliasesFP         ;
 [[ -r  $q_Funcs1FP           ]]  &&  source  $q_Funcs1FP          ;
 [[  $q_mswinos1 == 1 && -r  $q_mswinProfFP  ]]  &&  source  $q_mswinProfFP  ;
