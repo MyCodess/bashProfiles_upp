@@ -75,10 +75,10 @@ q_uname1infs=$(uname -a) ; q_uname1infs=${q_uname1infs^^} ; q_mswinos1=0  ##--pl
 
 ##====== evv-profs: ==========================================================
 ##--II-  q_Profile2PresetsFP  is already executed in above line, so can user PREset everything! now the rest-sequence:
-[[ -r  $q_HostGlobProfFP     ]]  &&  source  $q_HostGlobProfFP    ; ##--syys-host-preset-prof
+[[ -r  $q_HostGlobProfFP     ]]  &&  source  $q_HostGlobProfFP    ; ##--syys-host-PREset-prof
 [[ -r  $q_ConstantsFP        ]]  &&  source  $q_ConstantsFP       ;
 [[ -r  $q_PathesFP           ]]  &&  source  $q_PathesFP          ;
-[[ -r  $q_HostGlobProfPosFP  ]]  &&  source  $q_HostGlobProfPosFP ; ##--syys-host-preset-prof
+[[ -r  $q_HostGlobProfPosFP  ]]  &&  source  $q_HostGlobProfPosFP ; ##--syys-host-POSSet-prof
 [[ -r  $q_AliasesFP          ]]  &&  source  $q_AliasesFP         ;
 [[ -r  $q_Funcs1FP           ]]  &&  source  $q_Funcs1FP          ;
 [[  $q_mswinos1 == 1 && -r  $q_mswinProfFP  ]]  &&  source  $q_mswinProfFP  ;
@@ -112,7 +112,10 @@ q_Path1="$PATH"    ##--II- the final-evv-path after first full evvEnv-run. can b
 
 ##--- shell-options + ENVs : the last settings for the shell!:
 export GLOBIGNORE='.:..:'  ##-II- it also enables dotglob , see man bash !!
-HISTFILE=${ettcUser}/hs1 ;   #-?:  HISTTIMEFORMAT="     ${dateTimeForm1}   " ;
+HISTFILE=${ettcUser}/hs1 
+HISTSIZE=50  #-max-cmds-keep-in-histLIST of the cu-shell/terminal (not file!)
+HISTFILESIZE=500   #-truncate histfile up to so many cmds! set to -1/negative-no to NOT truncate histfile;
+unset  HISTTIMEFORMAT ;   #-?:  HISTTIMEFORMAT="     ${dateTimeForm1}   " ;
 ##-- very END, shopts has relevance for all ux-cmds as ls/find/....!! :
 shopt -s  dotglob cmdhist  expand_aliases  extglob  histappend  histreedit  histverify interactive_comments  lithist  mailwarn  no_empty_cmd_completion  promptvars  shift_verbose
 #--I- hss-cu-shell-NOT-save:  unset HISTFILE ; shopt -uq histappend  ##--hss-cu-shell-NOT-at-ALL:  set +o history !
@@ -120,7 +123,7 @@ shopt -s  dotglob cmdhist  expand_aliases  extglob  histappend  histreedit  hist
 [[ -r  ${q_Profile2PosFP}   ]]  &&  source  ${q_Profile2PosFP}  ##--currUser-Profs: overwrites everything if needed; if presets are required, set them BEFORE invoking this profile.sh !!!
 ##--OK1-PS1_without_gitPS1--default_evv-onlyCuDir
 #_ PS1="\\W : "      ##__OK1: PS1=${PS1:-"\\W : "}   ##--PWD-in-extra-line:
-PS1=$"\w\n\\W : "    ##--incl-user@host:  PS1=${PS1:-"[\\u@\\h \\W]\\\$ "}  ##--II- in non-interactive-shells PS1 is NOT set! so just  due to "set -u" above set a default here !! 
+PS1=$"\n\w\n\\W : "    ##--incl-user@host:  PS1=${PS1:-"[\\u@\\h \\W]\\\$ "}  ##--II- in non-interactive-shells PS1 is NOT set! so just  due to "set -u" above set a default here !! 
 [[ -d ./.git/ ]] &&  setGitPrompt
 
 q_ple1  "${BASH_SOURCE[0]##*/}"

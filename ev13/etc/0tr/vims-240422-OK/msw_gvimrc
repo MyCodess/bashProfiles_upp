@@ -1,7 +1,0 @@
-" OK1:  source  C:\Users\DKX8H1N\up1\.ev13\etc\gvimrc
-source  ~\up1\.ev13\etc\gvimrc
-"
-"============================= Gui-Window-Position,Size,... (somme only for MsWin):
-set  guifont=Consolas:h10
-set  lines=50 columns=180 "window-size
-"

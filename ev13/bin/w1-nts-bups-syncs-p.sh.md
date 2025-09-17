@@ -66,9 +66,14 @@ exit 3
 
 
 #####  ==========  w-rsyncs:
-	-! ok-fat-as-rt:  rsync -n -v -rtlHO --modify-window=5 --delete  /up1/w_RF/    /up1/media/MED1_RF/bups3/w/   ##--170506
-	-!! "-a"-problem:  usu. the problem is with "-p" (du to mounting or so ...). then. -a is really just "-rlptgoD"
-	-! Sommertime/Wintertime problem by unix/UTC-stamp <--> fat/localtime-stamp backups !?: due to one hour(3600 sec) unterschied in fat32 and Unix !?:   --modify-window=3601 : Allerdings werden möglicherweise Änderungen nicht gesichert, die weniger als eine Stunde zurückliegen!!
+    --- !  "-a"  problem (-rlptgoD)  on different-partiotion-types (eg ext4 --> vfat , ... ):
+        - usu. the problems are with:  permissions/-p  + DIR-times/-O  (and may be windows-times) ! so OK: 
+        rsync -n -av  --delete  ./dres/   /up1/w1/dc1K/dres/   -O  --no-perms  [--modify-window=5]    #--eg ./dres/ on ext4 and dc1K/dres/ on vfat ...
+        -! ok-fat-as-rt:  rsync -n -v -rtlHO --modify-window=5 --delete  /up1/w_RF/    /up1/media/MED1_RF/bups3/w/   ##--170506
+    --- Allg:
+        - the latest args on cmdline are the winners! so they overwrite the earlier ones!
+        -! Sommertime/Wintertime problem by unix/UTC-stamp <--> fat/localtime-stamp backups !?: due to one hour(3600 sec) unterschied in fat32 and Unix !?:
+            so:  --modify-window=3601 : Allerdings werden möglicherweise Änderungen nicht gesichert, die weniger als eine Stunde zurückliegen!!
 	--->!! all:
 		export syc_from="/up1/w_RF"   &&  ll  ${syc_from}/  &&  export syc_to="/up1/w_CP_rw"  && ll  ${syc_to}/
 		?:  rm ${syc_to}/*flg*

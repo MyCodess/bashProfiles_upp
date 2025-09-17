@@ -29,10 +29,6 @@ alias  nwbibws="nwsConn1  ${wpaSup_confDP}/${q_Label1qq}bib_WSchnurr_wpa1.conf" 
 alias  kbd1="rmmod atkbd ; modprobe  atkbd  reset=1" ##--keyboard-problem-xfce4 repeated-keys of itself !!
 alias  kbd2="rmmod atkbd ; modprobe  atkbd  reset=1 ; loadkeys   de-latin1" ##--keyboard-problem-xfce4 repeated-keys of itself !!
 
-##----- Apps...:
-alias chrom1='chromium   --incognito  > /dev/null  2>&1  &'
-alias viv1='vivaldi-stable   --incognito  > /dev/null  2>&1  &'
-
 ##----- terminals for xfce4-terminal ,  using  "dbus-run-session  xfce4-terminal" and having per-user-configured-terminals (user-setting wer not accessible/readable) !!:
 ##--I-  so now using:  dbus-run-session (see man dbus-run-session) :
 ##  /OR1  su - m1 ; export DISPLAY=":0.0" ;  dbus-run-session -- bash ; #-then:  terms1 ; ... and all further cmds are running connected to the this dbus-daemon and do NOT require any additional call/prefixed of dbus-run-session ! PREFERED but have to keep the caller-terminal open !
