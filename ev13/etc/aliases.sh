@@ -36,6 +36,7 @@ alias lla='ll    -A'
 alias llah='ll   -Ah'
 alias llat='ll   -Ah -rt'
 alias llh='ll    -h'
+alias llhs='ll   -h -S'
 alias llt='ll    -rt'
 ##-- llX-funcIes: ---
 alias lld='ll   -Ah  *$($cuds)*'
@@ -55,6 +56,10 @@ alias cdsyystg='cdlla  ${q_syysTgDP}'
 ##----- dbus/OS1-shorties:
 alias dbus1='dbus-launch --exit-with-session'  ##--starting progs as another user in X, eg: for m1 the thunar ...
 alias vibm1='vi1 -o  $filesBM1_FP  ${ProgsResW1DP}/${USER}*BMs1*'
+##----- Apps...:
+alias chrom1='chromium   --incognito  > /dev/null  2>&1  &'
+alias viv1='vivaldi-stable   --incognito  > /dev/null  2>&1  &'
+
 #
 ##========== Terminals /terms1 :
 alias  terms1='xfce4-terminal  --disable-server  --tab --tab --tab --tab &';

@@ -23,10 +23,11 @@ lls2(){ ls1 -l "$@" | nawk 'BEGIN{OFMT="%.1f"}; NF >6 {OFMT="%.1f"; printf "%15d
 sizeNewer(){ find . -newer $1 -ls | awk ' { sum_B += $7 ; print } END{ OFMT="%.2f" ; print "==== total size:  " sum_B " Bytes  ==   " sum_B / 1024 " KB  == \t " sum_B /1024  / 1024 " MB" }'; }
 
 ##--- cdlla-funcs:
-cdll()   { cd  "$*"  && ll  -lF     && pwd ; }
-cdlla()  { cd  "$*"  && ll  -laF    && pwd ; }
-cdllt()  { cd  "$*"  && ll  -laFrt  && pwd ; }
-alias  cdl='cdll' ; alias  cdla='cdlla' ; alias  cdlt='cdllt'
+cdll()    { cd  "$*"  && ll    && pwd ; }
+cdlla()   { cd  "$*"  && lla   && pwd ; }
+cdllat()  { cd  "$*"  && llat  && pwd ; }
+cdllt()   { cd  "$*"  && llt   && pwd ; }
+alias  cdl='cdll' ; alias  cdla='cdlla' ; alias cdlat='cdllat' ; alias  cdlt='cdllt'
 
 ##--- MS-Windows-path cd , replacein / with \ and ... :
 cdwinpath(){
@@ -49,6 +50,8 @@ findind(){
 	local USAGE1="USAGE: ... <start-Dir> <file-name-part> [xxx-more-params]";  local path1="$1" ;  local namePart1="${2:?$USAGE1}"  ; shift; shift;  ##--II-shifts due to more arbitrary params!
 	set -x;   find  "$path1"  -xdev  -iname "*${namePart1}*" -type d  $* | sort ; set +x ;
 }
+#-find all modified files/dirs by vide, based on evv-date-stamp of -nnnnnn ; regex take the WHOLE path for match, NOT the filename!! so why / in second pattern :
+findmodifs1(){ find  ${1:-./}  -regextype sed  -regex  '.*/[0-9]\{6\}-.*'  -o  -regex '.*-[0-9]\{6\}$'  -o  -regex  '.*-[0-9]\{6\}-.*' | sort ; }
 
 ##---
 bm1gr(){ grep  -i  "${1}"   "$filesBM1_FP" ; }
@@ -100,12 +103,12 @@ dtFPgen()  {  ##--Date-Timed-FilePath-Generation for all timestamped mv/cp/... :
 	retval11="" ; cleanFP1 "${fn11}" ; fn11="${retval11}" ;
 	retval11="" ; cleanFP1 "${dp11}" ; dp11="${retval11}" ;
 	##__  echo $fn11 ; echo $sourceDP11 ; echo $dp11 ; echo "_______________" ;
-	newfn11_d="${cuds11}-${fn11}${addies11}"    ;  
-	newfn11_de="${fn11}-${cuds11}${addies11}"   ;   
-	newfn11_dt="${cudts11}-${fn11}${addies11}"  ;  
-	newfn11_dte="${fn11}-${cudts11}${addies11}" ;
-	newfn11_mod_de="${fn11}-${cuds11_mod_srcFP}${addies11}" ;
-	newfn11_mod_dte="${fn11}-${cudts11_mod_srcFP}${addies11}" ;
+	newfn11_d="${cuds11}--${fn11}${addies11}"    ;  
+	newfn11_de="${fn11}--${cuds11}${addies11}"   ;   
+	newfn11_dt="${cudts11}--${fn11}${addies11}"  ;  
+	newfn11_dte="${fn11}--${cudts11}${addies11}" ;
+	newfn11_mod_de="${fn11}--${cuds11_mod_srcFP}${addies11}" ;
+	newfn11_mod_dte="${fn11}--${cudts11_mod_srcFP}${addies11}" ;
 	##__  echo $newfn11_d ; echo $newfn11_dt ; echo $newfn11_de ; echo $newfn11_dte ; echo "_______________" ;
 	##-- not-needed-anymore for this new call with 3 params! :  newdp11="${dp11}/${subDN11}" ; 
 	##__ removing redundant "/"  is done now in cleanFP1 ! old:  newdp11=$(echo $newdp11 |  tr -s   "/") ;     ##--sed-variation:   sed -e 's@//*@/@g'

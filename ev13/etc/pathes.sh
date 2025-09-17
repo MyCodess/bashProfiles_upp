@@ -99,7 +99,7 @@ lxSHsdntsDP="${dntsDP}/lxSHs_dnts"
 lxOSDocsDP="${dcItDP}/LxOSs_dc"
 
 #-
-gitsdntsFP="${lxCmdsdntsDP}/gits_dnts.txt"
+gitsdntsFP="${dntsDP}/devops-buildConfMgm_dnts/gities/gits_dnts.txt"
 vimsdntsFP="${lxCmdsdntsDP}/vims_dnts.txt"
 
 #- mss

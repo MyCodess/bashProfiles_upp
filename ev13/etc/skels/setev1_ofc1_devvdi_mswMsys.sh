@@ -35,7 +35,7 @@ source  "${setevv_DP}"/up1/.ev13/etc/profile.sh    ##--did-not-work:  "C:\Users\
 
 #####  ==========  pos-evv1-profs:  ##############################################################
 set -au
-export  HISTSIZE=50 ; export  HISTFILESIZE=1000 ; unset  HISTTIMEFORMAT ;
+export  HISTSIZE=50 ; export  HISTFILESIZE=-1 ; unset  HISTTIMEFORMAT ;
 unset LANG  #-! grep and sort had got problems here in MSYS2 with utf-8 settings as; export LANG=en_US.utf8  or LANG="en_US.UTF-8" ! they wanted without UTF8 on msw/MSYS2 ! eg grep ignored lines with umlauts if utf8 set!! so 2chk!
 set +au
 ##________________________________________  ___________________________
