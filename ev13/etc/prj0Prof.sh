@@ -10,14 +10,15 @@ q_pls1  "${BASH_SOURCE[0]##*/}"         ##--prev:  export myname11="${BASH_SOURC
 ##--USAGE11:  
 	##--Either manually/Only-for-certain-Terminals:   prjID_active1=py1   sus1 ;
 	##--OR hard-coded here for all evv-terminals, eg:  source  ${q_prjsProfDP}/prjProf_py1.sh  
-##-!!-nts_VOCAB:
 	##-!! prjID_active1 may NOT be prefixed with q_ ! because the user must be able to set it in a terminal for switching to another prj and then calling sus1unset !!
+##-!!-nts_VOCAB:
 	##- prj <---> SW1 in VAR-names :  eg: prj... is py1-dirs/... ,and its Software/topic/... is SW1...
 	##- whereas eg: py1 is a specific project , but PYTHON is its global.pkg/software
 
 ##__py-prj:   :  ${prjID_active1:="py1"}    ##--II-set this on-the-terminal-cmdline to your prjID, if wanted in one-terminal to have this prj-env !
 ##__ofc1-prj:   
-:  ${prjID_active1:="ofc1"}    ##--II-set this on-the-terminal-cmdline to your prjID, if wanted in one-terminal to have this prj-env !
+#__ :  ${prjID_active1:="ofc1"}    ##--II-set this on-the-terminal-cmdline to your prjID, if wanted in one-terminal to have this prj-env !
+:  ${prjID_active1:="ofc3"}    ##--II-set this on-the-terminal-cmdline to your prjID, if wanted in one-terminal to have this prj-env !
 
 ##__
 [[ $prjID_active1 ]] && { 
@@ -29,9 +30,15 @@ q_pls1  "${BASH_SOURCE[0]##*/}"         ##--prev:  export myname11="${BASH_SOURC
 ##========== post-pathes-/vars-prjX valid for all prjX after their prjProf_xxx.sh : =====================
 #---------- level.1 : prjX-roots-DPs of PRJ: prj.devel + prjVar + prjPkgs  DIRs/pathes: : --------------
 q_prjDP_upp="${q_prj0DP}/${q_prjID}"   ##-I- prj.devel/wks-root ##-??- prjTag instead prjNo ??  ##--2Do- wks/devel-dir NOT in vaarAuDP, but hier on vo17 just doing so....
-q_prjDP="$( cd ${q_prj0DP}/${q_prjID} && pwd -P )"   ##-I-??-ok? take now the real-path of prj-dir !
+q_prjDP="$( realpath  ${q_prj0DP}/${q_prjID} )"   ##-I-if realpath cmd not therem then: q_prjDP="$( cd ${q_prj0DP}/${q_prjID} && pwd -P )"   ##-I- take now the real-path of prj-dir !
 
 #--------- level.2 : prjX-sub-dirs,  : --------------
+# _______:  prj-main-DIRs-in-prjDP (prj w1, t1, devel1, varx1, ...):
+q_prjdevl1DP="${q_prjDP}/1devl1"
+q_prjT1DP="${q_prjDP}/1t1"
+q_prjvarx1DP="${q_prjDP}/1varx1"   #-- this is NOT as var1! it is on Ext4/Lx-part, as in varau, for executables/unpi-with-perms/... !
+q_prjW1DP="${q_prjDP}/1w1"
+# _______: prj-links--in-prjDP:
 q_prjAppsDP="${q_prjDP}/apps1"  ##- as sqls,.pysqls,... : Bez.ok??
 q_prjBM1DP="${q_prjDP}/bms1"
 q_prjBinDP="${q_prjDP}/bin1"
@@ -50,6 +57,11 @@ q_prjUtilsDP="${q_prjDP}/utils1"
 q_prjVarDP="${q_prjDP}/var1"   ##--II- DO a symlink here to vaarAu-prjvar! But it is/was really :  q_prjVarDP="${vaarAuDP}/${q_prjID}var"
 q_prjWksDP="${q_prjDP}/wks1"
 q_prjWpadsDP="${q_prjDP}/wpd1"
+# _______:  1ms/1RZs-prj:  to be mandanten-faehig (multi-prjs) these ALL have to have the prjID-label, since they would b finally outside the prjDP and so must have their prj-ID (for multi-prjs):
+q_prj1mDP="${q_prjDP}/1m_prj_${q_prjID}"         ##--I-it MUSt goes to w1/mesfs/... outside prjDP ! just-for-now here /praktisch! REF_1RZ-for-lorgins-/devels/..._1RZ-REF ! now praktisch for logins,... here! NICHT zu verwechseln mit real prj-1m-in-mesp (for Rech/madis/....!)! here only prj-working-1m/1RZ as logins/keys/...!
+q_prj1mOLDP="${q_prjDP}/1m_OL_${q_prjID}"        ##--I-ONLINE_1m,  MUST go somewhere in /tmp/.. , are only-CPs (to be used/read by scripts/apps/...:  only CP of some 1m_REFs which are required by working/devels/online and can be deleted (NO-REFs!)
+q_prj1RZOLDP="${q_prj1mOLDP}/1RZ_OL_${q_prjID}"  ##--I-ONLINE_1RZ, MUST go somewhere in /tmp/.. , are only-CPs (to be used/read by scripts/apps/...:  only CP of some 1m_REFs which are required by working/devels/online and can be deleted (NO-REFs!)
+
 
 #--------- level.3+: prjX-var-sub-dirs : --------------------------
 q_prjUnpDP="${q_prjVarDP}/unp"
@@ -57,7 +69,6 @@ q_prjPkgsDP="${q_prjVarDP}/pkgs"
 ##__  prjTagsDP="${q_prjEtcDP}/tagsdir"
 
 #--------- prj-w1/t1/dnts/...DIRs global for all prjs : ---------------
-q_prjW1DP="${w1DP}/${q_prjID}_w1"
 q_SW1dntsDP=${dntsDP}/${q_SW1Tag}${q_Label1dnts}           ##-I-SW1-dnts
 q_SW1dresDP=${dresCodecsDP}/${q_SW1Tag}${q_Label1dres}           ##-I-SW1-codecs1_dres_1coll
 q_SW1dres1kkDP=${dresCodecsDP}/${q_SW1Tag}${q_Label1dres1kk}    ##-I-SW1-codecs1_dres_1coll
@@ -83,12 +94,15 @@ alias  cdprjdocsvar='cdlla   ${q_prjDocsvarDP}'
 alias  cdprjetc='cdlla   ${q_prjEtcDP}'
 alias  cdprjpkg='cdlla   ${q_prjPkgsDP}'
 alias  cdprjsprof='cdlla   ${q_prjsProfDP}'
-alias  cdprjvar='cdlla   ${q_prjVarDP}'
+alias  cdprjvar1='cdlla   ${q_prjVarDP}'
 alias  cdprjtests='cdlla ${q_prjTestsDP}'
 alias  cdprjwks='cdlla   ${q_prjWksDP}'
 alias  cdprjwp='cdlla   ${q_prjWpadsDP}'
 
 ##----- aliasas-prj-w1/dnts/docs/t1/... --------------------------
+alias  cdprjcod1='cdlla  ${q_prjcode1DP}/'
+alias  cdprjdevl1='cdlla  ${q_prjdevl1DP}/'
+alias  cdprjt1='cdlla  ${q_prjT1DP}/'
 alias  cdprjw1='cdlla  ${q_prjW1DP}/'
 alias  cdsw1dnts='cdlla  ${q_SW1dntsDP}/'
 alias  cdsw1dres1kk='cdlla  ${q_SW1dres1kkDP}'
@@ -99,9 +113,10 @@ alias  viprjprofs='vi1 -p $q_prjProfPosFP $q_prjProfPos2FP  $q_prjProfFP'
 ##-- alias viprjcases='cd  ${prjCasesDP}     &&  gvim -c "set titlestring=cases-dnts" *'
 ##-- alias viprjdnts='cd  ${prjdntsDP}         &&  gvim -c "set titlestring=${prjID}-dnts" *.txt'
 
-##----- aliasas-prj-terms1/apps....: -----------------------------
-##__  alias  prjterms1="XDG_CONFIG_HOME=~/.config/00xdg2/  xfce4-terminal  --disable-server  --default-working-directory=${prjTestsDP}  --tab --working-directory=${SW1dntsDP}  --tab --working-directory=${prjWksDP}  --tab --working-directory=${prjWksDP}  --tab --working-directory=${prjTestsDP}  --tab --working-directory=${prjTestsDP}  --tab --working-directory=${prjTestsDP}"
-alias  prjterms1="xfce4-terminal  --disable-server --geometry  120x62  --default-working-directory=${q_prjWksDP}  --tab  --active-tab  --tab  --tab  --tab --working-directory=${q_prjDP}  --tab --working-directory=${q_prjWksDP}  --tab --working-directory=${q_SW1DocsDP}  --tab --working-directory=${q_SW1dres1kkDP}  --tab --working-directory=${q_SW1dntsDP}  &"
+##----- aliasas-prj-term/apps....: -----------------------------
+##__  alias  te1prj="XDG_CONFIG_HOME=~/.config/00xdg2/  xfce4-terminal  --disable-server  --default-working-directory=${prjTestsDP}  --tab --working-directory=${SW1dntsDP}  --tab --working-directory=${prjWksDP}  --tab --working-directory=${prjWksDP}  --tab --working-directory=${prjTestsDP}  --tab --working-directory=${prjTestsDP}  --tab --working-directory=${prjTestsDP}"
+alias  te1prj="xfce4-terminal  --disable-server --geometry  120x62  --default-working-directory=${q_prjDP}  --tab  --working-directory=${q_prjDntsDP}  --active-tab  --tab --working-directory=${q_prjBinDP}  --tab --working-directory=${q_prjWpadsDP}  --tab  --tab  --working-directory=${q_prjTestsDP}  --tab --working-directory=${q_prjWksDP}  --tab --working-directory=${q_prjWksDP} &"
+alias  te2prj2="xfce4-terminal  --disable-server --geometry  120x62  --default-working-directory=${q_prjWksDP}  --tab  --active-tab  --tab  --tab  --tab --working-directory=${q_prjDP}  --tab --working-directory=${q_prjWksDP}  --tab --working-directory=${q_SW1DocsDP}  --tab --working-directory=${q_SW1dres1kkDP}  --tab --working-directory=${q_SW1dntsDP}  &"
 
 ##========== prjProfPos (after all prj-global-settings in  in prj0prof):
 : 	${q_prjProfPos2FP:="${q_prjEtcDP}/prjProf2_${prjID_active1}_pos.sh"} ;

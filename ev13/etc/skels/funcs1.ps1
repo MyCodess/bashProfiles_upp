@@ -48,9 +48,9 @@ function  ln-s  ([parameter(mandatory, HelpMessage="link-target-path for SymLink
 function  rm-rf ([parameter(mandatory, HelpMessage="DirPAthToRemoveRecursively")]  [string]$p1) { Remove-Item  -Recurse  -Force  -Confirm  "$p1" }  
 function  mkdircd  ([parameter(mandatory, HelpMessage="DirPAthToCreate")]  [string]$p1) { mkdir  "$p1"; cd  "$p1"; }  
 
-##------- prj1 , terms1prj, ...:
+##------- prj1 , te1prj, ...:
 function  cdprj () { cd  "${env:q_prjDP}" ; lla ; (pwd).path }
-function  terms1cod1 () { wt nt -p "winps" `; nt -p "gitb" -d "${env:q_prjDP}" `; nt -p "gitb" -d "${env:q_prjDP}\cod1\nsv1" }
+function  te1cod1 () { wt nt -p "winps" `; nt -p "gitb" -d "${env:q_prjDP}" `; nt -p "gitb" -d "${env:q_prjDP}\cod1\nsv1" }
 
 ##------- OS-cmds (ps, ...) :
 function ps-cpu { get-process |Sort-Object -Property CPU | Format-Table }  ##--: ps sorted by CPU-usage

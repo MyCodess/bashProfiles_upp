@@ -57,8 +57,8 @@ alias tb1='thunderbird  --no-remote  --safe-mode  --new-instance  > /dev/null  2
 ##-- alias vilabs='vi1  -o  $wpmDP/1labs*.txt  $wpDP/1labs*.txt'
 alias vitagh='vi1  -o  $wpDP/tagh*.txt  $wpmDP/tagh*.txt'
 ##-- alias viewab='view $abFP'
-##--- terms1-m1:
-alias  wpmterms1="xfce4-terminal   --working-directory=${wpmDP}  --tab --working-directory=${wpmDP}  --tab --working-directory=${wpmDP}  --tab --working-directory=${tosoDP}  --tab --working-directory=${tosoDP} &"
+##--- te1-m1:
+alias  te1wpm="xfce4-terminal   --working-directory=${wpmDP}  --tab --working-directory=${wpmDP}  --tab --working-directory=${wpmDP}  --tab --working-directory=${tosoDP}  --tab --working-directory=${tosoDP} &"
 
 ##--- DU_aliases:
 alias cdabs_du='cdlla  $absDP_du'
@@ -88,10 +88,11 @@ bups1syysModFiles() {
 	#-- do sometimes dynamically with (maybe -print0 ?: syysMod_files="$( find /etc /usr  -iname "*_org"  | sed s/_[0-9]*_org// | sort )"
 	local  cudts11="$($cudts)";
 	echo; echo "---------- tar of system-mod-files in : -------------------------" ;
-	export  syysMod_files_arx1="$(pacman -Qii | grep  "^MODIFIED"  |  sed  -e 's:MODIFIED\s*::' |  tr '\n' ' ')" ;
+	## --older-output-format:  export  syysMod_files_arx1="$(pacman -Qii | grep  "^MODIFIED"  |  sed  -e 's:MODIFIED\s*::' |  tr '\n' ' ')" ;
+	export  syysMod_files_arx1="$(pacman -Qii | grep -F "[modified]" | sed -e 's@.*: *@@;s@ \[modified\]@@;s@  *@ @' | tr '\n' ' ')" ;
 	export  syysMod_files="${syysMod_files_arx1}"
 	export  syysAdded_files="$( find  /etc  -iname  *${q_Label1qq}* )"
-	export  syysAdded_files="${syysAdded_files}  /etc/wpa_supplicant/  /etc/vconsole.conf  /etc/locale.conf"
+	export  syysAdded_files="${syysAdded_files}  /etc/vconsole.conf  /etc/locale.conf"    ##--  /etc/wpa_supplicant/  are all already 1q_xxx ! otherwise add it also !
 	export  syysMod_files_more="";    ##__if-needed add something here ...!
 	export  syysMod_tar_FP="${syysTgStatsConfigsDP}/${cudts11}_systemModifieds_${q_syysTg}.tgz" ;
 	tar -cpzf  ${syysMod_tar_FP}   ${syysMod_files}  ${syysAdded_files}   ${syysMod_files_more}  ;
@@ -108,7 +109,7 @@ bups5home() {
 	##--II-The-Sequence of the  tar-PATHES-params VERY relevant!! due to q_NoBupFlagFN !! /home  MUST be the LAST !! because in the parent-dirs of bookmarks-dir there are q_NoBupFlagFN tag-files!! so when FIRST /home, then later pathes-params will NOT be taken into tar-file!!
 	echo "===== bups5--/home : ====="; date;
 	export tarFP="${vaarAuBups1DP}/home_${q_syysTg}--$($cudts).tgz" ;      ##--prev-form--if-multi-syys-on-same-HD/host:    export tarFP="${vaarAuBups1DP}/home--$($cudts)-${q_syysTgL2}.tgz" ;
-	tar --one-file-system   --exclude-caches  --exclude-tag="${q_NoBupFlagFN}"  --show-omitted-dirs   -cpzvf  "${tarFP}"   ~u1/.config/vivaldi/Default/Bookmarks    ~m1/.config/vivaldi/Default/Bookmarks  ~u1/.config/chromium/Default/Bookmarks	 ~m1/.config/chromium/Default/Bookmarks   /home  2>&1 1>  "${tarFP}"-tared-out.log  |tee "${tarFP}"-tared-err.log ;  date;
+	tar --one-file-system   --exclude-caches  --exclude-tag="${q_NoBupFlagFN}"  -cpzvf  "${tarFP}"   ~u1/.config/vivaldi/Default/Bookmarks    ~m1/.config/vivaldi/Default/Bookmarks  ~u1/.config/chromium/Default/Bookmarks	 ~m1/.config/chromium/Default/Bookmarks   /home  2>&1 1>  "${tarFP}"-tared-out.log  |tee "${tarFP}"-tared-err.log ;  date;   ##--??:  --show-omitted-dirs
 	[[ ! -d  "${vaarAuBups1DP}/../bupsvar_tr/"  ]] &&  mkdir  "${vaarAuBups1DP}/../bupsvar_tr/"
 	mv -i "${tarFP}"-*.log  "${vaarAuBups1DP}/../bupsvar_tr/"
 }

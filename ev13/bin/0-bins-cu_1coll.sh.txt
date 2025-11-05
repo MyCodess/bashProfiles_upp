@@ -12,6 +12,8 @@ exit 3
     m :  cdwpadm  ; export DISPLAY=":0.0" ;  dbus-run-session -- xfce4-terminal --disable-server --tab --tab --tab --tab &  ##--alias terms1 NOT working!
     rt:  cdvarau  ; export DISPLAY=":0.0" ;  terms1col3  &  ##--  terms1
     m :  cdwpadm  ; export DISPLAY=":0.0" ;  terms1col5  &  ##--  wpmterms1
+	---
+	- ! re-login into a Linux terminal without restarting xWindows (eg user added to new group, or profiles changed,...):  exec sudo --login --user $USER
 ##________________________________________  ___________________________
 
 

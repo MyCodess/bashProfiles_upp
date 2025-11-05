@@ -42,7 +42,7 @@ ptb0_DP="${progs2_DP}/0ptb"
 #####  ==========  SWs-defaults-msw, pathes,...:
 ##---  SWs-main-pathes:
 #-msw-vim:  vimruntimeMSsDP="${progs2_DP}/Vim/vim90" ; vimMSsExeFP="${vimruntimeMSsDP}/vim.exe" ; gvimMSsExeFP="${vimruntimeMSsDP}/gvim.exe"
-git1_DP="${progs2_DP}/Git" ; git1cmd_DP="${git1_DP}/cmd" ; q_gitPromptFP=${git1_DP}/etc/profile.d/git-prompt.sh ; WINELOADERNOEXEC="" ; pathaddend "${git1cmd_DP}/" ##__ setGitPrompt1
+git1_DP="${progs2_DP}/Git" ; git1cmd_DP="${git1_DP}/cmd" ; q_gitPromptFP=${git1_DP}/etc/profile.d/git-prompt.sh ; WINELOADERNOEXEC="" ; pathaddend "${git1cmd_DP}/" ##__ setgitprompt11
 q_pyyHome1_DP="${progs2_DP}/Py3" ; q_pyyHome1Lib_DP="${q_pyyHome1_DP}/Lib" ; q_pyyHome1Scripts_DP="${q_pyyHome1_DP}/Scripts" ; q_pyyexe="${q_pyyHome1_DP}/python.exe"   ##--py--mswin-installed-in-lxpath-format
 wt_DP="${ptb0_DP}/wt" ; wt_FP="${wt_DP}/wt.exe"
 vscode_DP="${progs2_DP}/VSCode/"
@@ -85,7 +85,7 @@ bind -f ${INPUTRC_mswin1}   ##--eg case-insensitive-path-completion,...; BUT eg 
 te1Tab_vi(){ usage11="open a terminal-tab for vim session: ... [path  [vim-session-id]]" ; wt  -w ${2:-$vi_SN1}  new-tab  --tabColor "#D2B5FF"  -p myst1  --title ${2:-$vi_SN1}  -d ${1:-$q_prjDntsDP} ; }  ##--open just a new normal terminal-tab (colored tab) for vim-sessions (colored-tabs) instead grim -p ...
 te1_vi(){ te1Tab_vi "$@" ; te1Tab_vi "$@" ; te1Tab_vi "$@" ;} ##-open a terminal with tabs for vim-sessions (instead gvim; just normal taerminal with colored tabs ,...)
 ##--- kill process on msw
-#-gut-cmd--but-killnot-working! also not-working msw taskkill / ... : alias  killterms1='ps -alW | grepi windowsterminal | kill $(sed -e "s@ *\([0-9]*\).*@\1@")'  ##--I-or replace kill with echo to only list the PIDs !
+#-gut-cmd--but-killnot-working! also not-working msw taskkill / ... : alias  killte1='ps -alW | grepi windowsterminal | kill $(sed -e "s@ *\([0-9]*\).*@\1@")'  ##--I-or replace kill with echo to only list the PIDs !
 # in PS1 (admin):   wmic process where "name='WindowsTerminal.exe'" delete  #-exactly incl. 'and" !
 #  if not-zombies, could try (admin): TASKKILL  /T /F /IM WindowsTerminal.exe ; #-OR:  taskkill /F /T /PID 14304 #- tasklist ... #-tasklist /FI "IMAGENAME eq WindowsTerminal.exe"
 ###________________________________________  ___________________________

@@ -3,7 +3,7 @@ set guifont=Source\ Code\ Pro\ 9     " HP13 + Lv13-ok-by-xfce4_appearance_no_cus
 set lines=50 columns=160 "window-size
 
 "====== behaves/menus/... of gui: ===============================
-behave xterm  " /OR: mswin	" mouse behaving like unix xterms OR mswin ; !!changes other guioptions too, so the sequence IS relevant !!
+behave xterm  " /OR: mswin	" mouse behaving like unix xterm OR mswin ; !!changes other guioptions too, so the sequence IS relevant !!
 set guioptions-=T	" no toolbar/icons. otherwise see 'toolbar' or gui-toolbar
 set guioptions+=b	" Bottom horizontal scrollbar is present
 set guioptions+=a   " !!!vim becomes the owner of copy/paste buffer with mouse : so in WIN like in xterm, if behave xterm

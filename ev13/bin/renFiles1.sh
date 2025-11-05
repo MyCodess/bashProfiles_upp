@@ -9,7 +9,6 @@
 
 fn1="${1:?USAGE: $0 <filename> [serchWord] [replacement]}" ;
 ##__  echo  
-mv  -inv  "$fn1"  "${fn1//.md/.txt}"
 
 exit 0
 
@@ -20,11 +19,12 @@ exit 0
 ##__ evv-std-renaming:   find .  -depth  -regextype posix-extended   -regex  ".*[^[:alnum:]/_.-].*"  -exec renFiles1.sh {} \;  ##--then-uncomment-this-renaming:   mv -inv "$fn1" "$( echo "$fn1" | sed  -e 's@[^[:alnum:]/_.-]@-@g' )"
 #
 ##__  ========== 1cu.misc : 
-##__  echo  mv  -inv  "$fn1"  "${fn1//.txt/.md}"
-##__  echo  mv  -inv  "$fn1"  "${fn1//rates/StdSatz}"
-##__  echo  mv -inv "$fn1"     "${fn1//_1coll_dres/_dres}"
-##__  echo  mv -inv "$fn1"     "${fn1//Python-Tutorial-/}"
-##__  echo  mv -inv "$fn1"     "${fn1//_kk/_1kk}"
+##__ echo mv  -inv  "$fn1"  "${fn1//50Hz/5Hz}"
+##__ echo  mv  -inv  "$fn1"  "${fn1//.txt/.md}"
+##__ echo  mv  -inv  "$fn1"  "${fn1//rates/StdSatz}"
+##__ echo  mv -inv "$fn1"     "${fn1//_1coll_dres/_dres}"
+##__ echo  mv -inv "$fn1"     "${fn1//Python-Tutorial-/}"
+##__ echo  mv -inv "$fn1"     "${fn1//_kk/_1kk}"
 ##__ echo  mv -inv "$fn1"     "${fn1//-dc/_dc}"
 ##__ echo  mv -inv  "$fn1"     "${fn1//[[:digit:]]*-/}"   ##--remoe  digits*- from filenames
 ##__ echo  mv -inv  "$fn1"     "${fn1//JPG/jpg}" 

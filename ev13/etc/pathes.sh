@@ -60,7 +60,7 @@ vaarAuWorksDP="${vaarAuDP}/wks"
 ##================ __1END__ varau/... ==================
 
 
-##============== apps-/syys-/xwin/xdg/HOME-configs-...:
+##============== utils/apps-/syys-/xwin/xdg/HOME-configs-...:
 #----- VIMs:
 vimsrcRTDP="${q_EttcDP}"          ##--II- exception form VIMs + inputrc !! all other apps-etc-stuff in /up1/etcu/etcau , 1apps-etc , ...
 vimrcFP="${vimsrcRTDP}/vimrc"
@@ -77,6 +77,15 @@ IntBM1_FP="${HOME}/.config/vivaldi/Default/${IntBM1_FN}"  ##--Int-Bookmarks1-Fil
 #-IntBrowser-cu:  Vivaldi/_190600 :
 IntBM2_FN="Bookmarks"
 IntBM2_FP="${HOME}/.config/chromium/Default/${IntBM2_FN}"  ##--Int-Bookmarks2-FilePath-evv, for now of chromium
+
+#-----  gits-/githubs-wks-all:
+##--abbbrev-/label_1evv:   gt == GIT  ,  gb == github
+##--- loc/L1NW/evv..._1GITs :
+gtW1LocReposDN=gits_w1
+gtW1LocReposRTDP="${vaarAuWorksDP}/${gtW1LocReposDN}"
+#- aliases:
+alias  cdgtw1repos="cdlla ${gtW1LocReposRTDP}"
+
 
 ##============= w1-tree/DIRs =============================================================
 #----- w1-root-dirs1 : -----
@@ -99,6 +108,7 @@ lxSHsdntsDP="${dntsDP}/lxSHs_dnts"
 lxOSDocsDP="${dcItDP}/LxOSs_dc"
 
 #-
+bashdntsDP="${lxSHsdntsDP}/bashs"
 gitsdntsFP="${dntsDP}/devops-buildConfMgm_dnts/gities/gits_dnts.txt"
 vimsdntsFP="${lxCmdsdntsDP}/vims_dnts.txt"
 

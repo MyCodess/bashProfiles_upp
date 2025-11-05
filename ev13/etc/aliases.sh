@@ -61,14 +61,15 @@ alias chrom1='chromium   --incognito  > /dev/null  2>&1  &'
 alias viv1='vivaldi-stable   --incognito  > /dev/null  2>&1  &'
 
 #
-##========== Terminals /terms1 :
-alias  terms1='xfce4-terminal  --disable-server  --tab --tab --tab --tab &';
-alias  teterms1='xfce4-terminal  --disable-server  --working-directory=${vaarAuTestsDP}  --tab  --working-directory=${syys_dnts_DP}  --tab --working-directory=${lxOSsdntsDP}  --tab  --working-directory=${syys_wk_DP}  --tab --working-directory=${syysVarDP}  --tab --working-directory=${q_syysTgDP}  --tab  --working-directory=${vaarAuTestsDP}  --tab  --working-directory=${vaarAuTestsDP} &'  ##--prev:-colored-xfce4-terms:  XDG_CONFIG_HOME=~/.config/00xdg2/  
-alias  wksterms1='xfce4-terminal  --disable-server --geometry  120x62  --default-working-directory=${vaarAuWorksDP}  --tab  --active-tab  --tab  --tab  --tab  --tab  --tab --working-directory=${q_SW1DocsDP}  --tab --working-directory=${SW1dres1kkDP}  --tab --working-directory=${SW1dntsDP}  &'
-alias  mpsterms1='xfce4-terminal  --disable-server  --working-directory=${mpswpDP}  --tab  --working-directory=${mpswpDP}/Listings_Logs_MPs_Curr --tab         --working-directory=${mpsNps1DP}  --tab  --working-directory=${mpsNps1DP}  --tab --working-directory=${mpsG0RTDP}  --tab  --working-directory=${mpsG0RTDP}/dw_MPs  --tab  --working-directory=${mpsG0RTDP}/dw_MPs  --tab  --working-directory=${mpsG0RTDP}/0MPAs_G0s  &'
-alias  wpterms1='xfce4-terminal   --working-directory=${q_BinDP}  --tab --working-directory=${wpDP}  --tab --working-directory=${wpDP}/0cu1-wp  --tab --working-directory=${wpDP}/kg1-wp  --tab --working-directory=${absDP}  --tab --working-directory=${tosoDP}  --tab --working-directory=${tosoDP} &'
-alias  fmsterms1='cd ${infs1kkDP}/FMs_1kk_Y2022   &&   xfce4-terminal  --disable-server  --working-directory=${tosoDP}  --tab --tab --working-directory=./2207_FMs_1kk/TestingQA_1p_Bewb_1kk-2207  --tab --working-directory=./2207_FMs_1kk  --tab --working-directory=./2207_Kara_Profs &'
-alias  cu1terms1='xfce4-terminal  --disable-server  --working-directory=${tosoDP}  --tab  --working-directory=${dntsDP}  --tab --working-directory=${dntsDP}/mswins_dnts/win10s_dnts  &'  ##--win10s-dnts-wk
+##========== Terminals:
+#-I-without --disable-server : it opens new tabs in the calling-tab-window!
+alias  te1='xfce4-terminal     --disable-server  --tab --tab --tab --tab &';
+alias  te1te='xfce4-terminal   --disable-server  --working-directory=${vaarAuTestsDP}  --tab  --working-directory=${syys_dnts_DP}  --tab --working-directory=${lxOSsdntsDP}  --tab  --working-directory=${syys_wk_DP}  --tab --working-directory=${syysVarDP}  --tab --working-directory=${q_syysTgDP}  --tab  --working-directory=${vaarAuTestsDP}  --tab  --working-directory=${vaarAuTestsDP} &'  ##--prev:-colored-xfce4-term:  XDG_CONFIG_HOME=~/.config/00xdg2/  
+alias  te1wks='xfce4-terminal  --disable-server --geometry  120x62  --default-working-directory=${vaarAuWorksDP}  --tab  --active-tab  --tab  --tab  --tab  --tab  --tab --working-directory=${q_SW1DocsDP}  --tab --working-directory=${SW1dres1kkDP}  --tab --working-directory=${SW1dntsDP}  &'
+alias  te1mps='xfce4-terminal  --disable-server  --working-directory=${mpswpDP}  --tab  --working-directory=${mpswpDP}/Listings_Logs_MPs_Curr --tab         --working-directory=${mpsNps1DP}  --tab  --working-directory=${mpsNps1DP}  --tab --working-directory=${mpsG0RTDP}  --tab  --working-directory=${mpsG0RTDP}/dw_MPs  --tab  --working-directory=${mpsG0RTDP}/dw_MPs  --tab  --working-directory=${mpsG0RTDP}/0MPAs_G0s  &'
+alias  te1wpd='xfce4-terminal  --working-directory=${tosoDP}  --tab --working-directory=${wpDP}  --tab --working-directory=${absDP}  --tab --working-directory=${wpDP}/kg1-wp  --tab --working-directory=${wpDP}/0cu1-wp  --tab --working-directory=${tosoDP} &'
+alias  te1dbus="export DISPLAY=":0.0" ;  dbus-run-session -- xfce4-terminal --disable-server --tab --tab --tab --tab &"
+alias  te1gb="xfce4-terminal  --disable-server  --working-directory=${gtW1LocReposRTDP}/dres_gt  --tab  --working-directory=${gtW1LocReposRTDP}/evv_gt  --tab --working-directory=${gtW1LocReposRTDP}/repo1  --tab --working-directory=${gtW1LocReposRTDP}/syncFolders1  &"  ##--gh-github-loc-repos-gits_w1
 
 ##---------- vimss/gvims:
 alias vifstab='vi1 /etc/fstab'
@@ -140,10 +141,13 @@ alias cdtr='cdlla  $trDP'
 ##========== devels/ITs/SWs/... : =========================
 #--
 alias cdlxossdnts='cdlla  ${lxOSsdntsDP}'
-#--dres/dnts:
+#--dres/dnts_0:
 alias cddnts='cdlla  ${dntsDP}'
 alias cddres='cdlla  ${dresDP}'
 alias cddrescodecs='cdlla  ${dresCodecsDP}'
+#--dres/dnts_2:
+alias cdlxcmdsdnts='cdlla  ${lxCmdsdntsDP}'
+alias cdbashdnts='cdlla  ${bashdntsDP}'
 #--mssdnts:
 alias  cdmsdnts='cdlla ${mssdntsDP}/'
 alias  cdmsdntsshells='cdlla ${mssshellsdntsDP}/'
