@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 set  -o  nounset  ##== set -u
+##--??:
 set  -o  errexit  ##== set -e
 
 ##--REQ-pre , do manually:  bupsvar1 MUST be mounted!:  mount /up1/media/HDD11

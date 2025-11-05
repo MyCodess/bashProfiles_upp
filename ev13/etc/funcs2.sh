@@ -36,10 +36,10 @@ cdwinpath(){
 	cd ${winPath1//\\/\/}  && ls -l && pwd ;
 }
 
-##--- finds-evv :
+##--- find_funcs-evv :
 #- mtime-sorted-find ; sort/find files recursively based on their mtime:
 finddatesort(){ find ${1:-.}   -type f -printf "%Ty%Tm%Td-%TH:%TM  %p\n" | sort -n ; }
-finds(){ find ${@:-.}  | sort ; }  ##--was:  findsort1
+finds(){ find ${@:-.}  | sort ; }  ##--/OR rename?:  findsort1
 #- find files -iname *$1* :
 findin(){
 	local USAGE1="USAGE: ... <start-Dir> <file-name-part> [xxx-more-params]";  local path1="$1" ;  local namePart1="${2:?$USAGE1}"  ; shift; shift;  ##--II-shifts due to more arbitrary params!
@@ -161,7 +161,7 @@ vidte-org() { cpdte "$@" ""  ${q_Label1org} ; read -p "___ editing ok??  Enter o
 ############ __1END__ ### DateTimeStamped-mv/-cp : #############################################################
 
 ##== gitPrompt: =========================================
-setGitPrompt(){ 
+setgitprompt1(){ 
 	export q_gitPromptFP="${q_gitPromptFP:-${q_EttcD_DP}/git-prompt_arx1.sh}" ; export GIT_PS1_SHOWCONFLICTSTATE="yes" ;
 	source  $q_gitPromptFP ;      ##--OK1-undefined-vars:  set +u ; source  $q_gitPromptFP ; set -u ;
 	source  $q_gitPromptFP ;  PS1='\[\033[33m\]\w\[\033[36m\] :`__git_ps1`:\[\033[0m\]\n$ ' ;

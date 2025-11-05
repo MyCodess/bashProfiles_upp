@@ -20,7 +20,7 @@ alias   unsetsmoke='unset SMOKE_TESTS'
 ###________________________________________  ___________________________
 
 
-#####  ==========  terms1s with wt /prj: ==========================================
+#####  ==========  te1s with wt /prj: ==========================================
 #_______:  te1_basics:
 #--II- MSYS2-abbrev-evv == "mys"  , wt-profile: "myst1" , wt-start-cmd:  C:\msys64\msys2_shell.cmd  -defterm  -here  -no-start  -ucrt64
 te11_myswt() { usage11="USAGE: ... <start-DIR> [title/winID /OR wt_tit11=my-title]   ##--starts a MSYS2-bash-shell in wt-term and cd to start-DIR" ;
@@ -46,7 +46,7 @@ alias  setpypathcode5='export PYTHONPATH="${q_prjcode5DP}/:${q_prjcode5DP}/lib/:
 # _______:  te1-fixies-dirs: te1_wks / te1_evvs /te1-fest (NON-prjcodeX):
 wksdirs11="${vaarAuTestsDP}/  ${vaarAuWorksDP}/  ${q_prjWksDP}/  ${q_prjcodeWks1DP}/  ${q_prjcodeWks1DP}/"
 dresdir11="${dresDP}/  ${dntsDP}/  ${mssdntsDP}  ${q_SW1dres1kkDP}/  ${q_SW1dntsDP}/"
-prjntsdir11="${q_prjDP}/  ${q_prjDntsDP}/  ${q_prjDntsDP}/  ${q_prjcode1DP}/  ${q_EttcDP}/  ${q_EttcDP}/"  ##--prj-dnts-wpad-terms + evv
+prjntsdir11="${q_prjDP}/  ${q_prjDntsDP}/  ${q_prjDntsDP}/  ${q_prjcode1DP}/  ${q_EttcDP}/  ${q_EttcDP}/"  ##--prj-dnts-wpad-term + evv
 
 #_______:  call te1_fixes/evvs (non-prjcodeX):
 te1_wks()       { for ii in $wksdirs11;  do te11_myswt $ii wks_t1; done ; }
@@ -54,7 +54,7 @@ te1_dres()      { for ii in $dresdir11; do te11_myswt $ii dres_t1; done ; }
 te1_prjnts()    { for ii in $prjntsdir11; do te11_myswt $ii P_Nts; done ; }
 te1_cons1()     { for ii in 1 2 3; do te11_myswt  $q_prjTestsDP  cons1  --tabColor "#FFFF00"; done ; }
 
-#_______:  cu-/tmp-terms:
+#_______:  cu-/tmp-term:
 te1_pysrc() { cdpydocs ; for ii in  .   ./PyRefsSrc/   ./PyRefsSrc/Doc ./PyRefsSrc/Doc  ./PyRefsSrc/Doc   ;do te11_myswt $ii pySrc ; done }
 te1_sqls() { for ii in ${vaarAuWorksDP}/mysqls-wk1  ${vaarAuWorksDP}/mysqls-wk1  ${vaarAuWorksDP}/mysqls-wk1  ${opptuDP}/mariadb  ${dntsDP}/dbs-sqls_dnts/mysqls_mariadb_dnts  ${q_prjDntsDP}/mysqls_nsv_dnts ; do te11_myswt $ii sqls_t1 ; done }
 

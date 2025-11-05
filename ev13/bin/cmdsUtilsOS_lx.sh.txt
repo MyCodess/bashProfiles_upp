@@ -1,4 +1,4 @@
-_________________ cmdline-utils mainly standard-cmds-of-distors which basicalyy always are there or see (for more aaps/utils see extra-nts here!): ___________
+_________________ cmdline-utils mainly standard-SystemUtils-of-distors which basicalyy always are there or see (for more apps/utils see extra-nts here!): ___________
 exit 3
 ##________________________________________  ___________________________
 

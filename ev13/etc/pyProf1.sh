@@ -83,7 +83,7 @@ alias  cdpyt1src="cdlla ${pyt1SrcDP}"
 
 #####  ==========  MySqls/MariaDBs:
 ##---  VARs-mys: ----------------------------------------
-export MYSQL_HISTFILE=${ettcUser}/hs1_mysq
+##__  export MYSQL_HISTFILE=${ettcUser}/hs1_mysq
 
 ##---  evv-VARs-mys: ------------------------------------
 :  ${q_mysUsr1:='netservices'}

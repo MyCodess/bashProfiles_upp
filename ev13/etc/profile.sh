@@ -38,6 +38,7 @@ q_OrgCallParamDP="${q_OrgCallParam%/*}"       ##-I-  org-call-DIR  of this scrip
 q_OrgCallAbsolutePhysDP="$(cd  -P  $q_OrgCallParamDP && pwd -P)"   ##-I-  org-call-DIR-full-absolte-RealPhysical-path  of this script by caller/user without links, only ohysical! but really NOT used! just for info! should NOT be used !!
 q_OrgCallAbsoluteDP="$(cd   $q_OrgCallParamDP    && pwd -L)"   ##-I-MAIN-path-used !!  org-call-DIR-full-absolte-path  of this script by caller/user, as /tmp/tempu/up1/etc : ONLY-this/absolutepath will be uses for the rest of evEnv-vars!
 q_OrgCallAbsoluteFP="${q_OrgCallAbsoluteDP}/${myname11}"         ##-I-NOT really used, but just for infos,..., abolute-FilePath of callein this profile
+: ${USER:="$(whoami)"} ;   ##--in case the USER is not set ! whoami == id -un  ##--2do? : whoami and id belong to coreutils ! is the cmd  whoami always there !?
 
 ##--- user-presets-profile, if any,  before anything in const.sh:  #--> this user-preset is now basically the setevv.sh of each system ! but leave it here, ok!
 : ${q_Profile2PresetsFP:="${HOME}/.profile2.sh"} ;   ##--can be overwritten and located anywhere! even outside evv-tree,...
@@ -113,8 +114,8 @@ q_Path1="$PATH"    ##--II- the final-evv-path after first full evvEnv-run. can b
 ##--- shell-options + ENVs : the last settings for the shell!:
 export GLOBIGNORE='.:..:'  ##-II- it also enables dotglob , see man bash !!
 HISTFILE=${ettcUser}/hs1 
-HISTSIZE=50  #-max-cmds-keep-in-histLIST of the cu-shell/terminal (not file!)
-HISTFILESIZE=500   #-truncate histfile up to so many cmds! set to -1/negative-no to NOT truncate histfile;
+##-??-::  HISTSIZE=50  #-max-cmds-keep-in-histLIST of the cu-shell/terminal (not file!)
+HISTFILESIZE=1000   #-truncate histfile up to so many cmds! set to -1/negative-no to NOT truncate histfile;
 unset  HISTTIMEFORMAT ;   #-?:  HISTTIMEFORMAT="     ${dateTimeForm1}   " ;
 ##-- very END, shopts has relevance for all ux-cmds as ls/find/....!! :
 shopt -s  dotglob cmdhist  expand_aliases  extglob  histappend  histreedit  histverify interactive_comments  lithist  mailwarn  no_empty_cmd_completion  promptvars  shift_verbose
@@ -124,7 +125,7 @@ shopt -s  dotglob cmdhist  expand_aliases  extglob  histappend  histreedit  hist
 ##--OK1-PS1_without_gitPS1--default_evv-onlyCuDir
 #_ PS1="\\W : "      ##__OK1: PS1=${PS1:-"\\W : "}   ##--PWD-in-extra-line:
 PS1=$"\n\w\n\\W : "    ##--incl-user@host:  PS1=${PS1:-"[\\u@\\h \\W]\\\$ "}  ##--II- in non-interactive-shells PS1 is NOT set! so just  due to "set -u" above set a default here !! 
-[[ -d ./.git/ ]] &&  setGitPrompt
+[[ -d ./.git/ ]] &&  setgitprompt1
 
 q_ple1  "${BASH_SOURCE[0]##*/}"
 set +u -hBC -o errtrace  -o emacs  -o functrace  -o histexpand  ;  ##--!!- ONLY at the very end: set -o history  +a +e

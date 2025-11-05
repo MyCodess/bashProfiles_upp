@@ -45,6 +45,8 @@ exit 3
 	- see ImageMagick + exactimage in devnts !
 	-!! see http://mirror.checkdomain.de/imagemagick/www/command-line-tools.html
 	-! see rpm -ql ImageMagick  bzw. alle his family: rpmssg ImageMagick , ... ;   http://www.imagemagick.org/
+    - for ii in *.jpg; do magick  "$ii"  -resize 25%   "25p--${ii}" ; done   ##- or:   magick convert
+    --- olds/prev-cmds:
 	- resize fotos/images to 20% : mkdir ./resized20p  ;  for ii in *.JPG; do convert "$ii"  -resize 20%   "./resized20p/$ii" ; done
 	- resize fotos/images to 20%  and rotate to left (-90 Grad): mkdir ./resized20p_lroate  ;  for ii in *.JPG; do convert "$ii"  -resize 20%  -rotate -90  "./resized20p_lroate/$ii" ; done
 ##________________________________________  ___________________________
@@ -66,21 +68,5 @@ exit 3
 
 	_______:  
 	elinks  http://www.wetter.com/wetter_aktuell/wettervorhersage/3_tagesvorhersage/deutschland/berlin/kga_sonnenschein/DE0001020173.html   ##--KGA-Sonn-3Tage
-##________________________________________  ___________________________
-
-
-#####  ==========  xxx:
-##________________________________________  ___________________________
-
-
-#####  ==========  xxx:
-##________________________________________  ___________________________
-
-
-#####  ==========  xxx:
-##________________________________________  ___________________________
-
-
-#####  ==========  xxx:
 ##________________________________________  ___________________________
 
