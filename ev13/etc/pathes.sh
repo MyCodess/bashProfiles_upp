@@ -37,7 +37,7 @@ docsvarDP="${t1varDP}/docsvar"
 dwsvarDP="${t1varDP}/DWsvar"
 ##--obsl, replace by t1var :  lagDP="${TP1DP}/lag"
 npsDP="${TP1DP}/nps"
-packsDP="${TP1DP}/packs"
+#__ packsDP="${TP1DP}/packs"
 syysDP="${TP1DP}/sy1"     #--i- syys-DP , contains q_syysTg-stat/bups/...
 trDP="${TP1DP}/tr"
 
@@ -95,7 +95,8 @@ dcItDP="${w1DP}/dcIT"    ##--prev:  w1/docs
 #----- w1-dc1k: --------------
 infs1kkDP="${dc1kDP}/Infs1_1kk"
 devcDocsDP="${dc1kDP}/Devc-Docs"
-ProgsResW1DP="${dc1kDP}/ProgsRes_CP"
+ProgsResW1DP="${dc1kDP}/ProgsResBups"
+homiesBupsRestDP="${ProgsResW1DP}/HomiesBups_BMs_1kk"
 #----- w1-Devels/ITs : -----------------
 dresDP="${dc1kDP}/dres"
 dresCodecsDP="${dresDP}/codecs1${q_Label1dres}"
@@ -131,12 +132,12 @@ l1nwBupsLogsFlagsDP="${l1nwStatsDP}/BupsLogsStats_l1nw"
 ##========== q_syysTg/syys-dirs valid for ALL-syys based on q_syysTg,... ,otherwise in its own syys-hostglob-profs! (hostglob-profile-pos basically) ,subDirs 2/3-levels: =======
 ##----- syys_nps/packs/cd/...:
 syysNPsDP="${npsDP}/${q_osTg}_nps"
-syysPacksDP="${packsDP}/${q_osTg}_pk"
-syysCDDP="${packsDP}/${q_osTg}_cd"
+#__ syysPacksDP="${packsDP}/${q_osTg}_pk"
+#__ syysCDDP="${packsDP}/${q_osTg}_cd"
 ##----- q_syysTg_vars:
 syysVarDP="${vaarAuDP}/${q_osTg}var"       ##-I- could be set to ${q_syysTg}var if needed paralle same syys-vars !
 syysVarUnpDP="${syysVarDP}/unp"
-syysLocReposDP="${syysVarDP}/repos1"  ##--could be also in syysPacksDP in t1 but on arx could not be on exfat, but on ext4! so here!
+syysLocReposDP="${syysVarDP}/repos1"
 #------ q_syysTg-docs/dnts/... in w1/t1 ...:
 syys_dnts_DP="${lxOSsdntsDP}/${q_osTg}${q_Label1dnts}"
 syys_nps_DN="${q_osTg}_nps"
@@ -171,7 +172,7 @@ mpsMed1DP="${q_MediasDP}/${mpsMed1DN}"
 mpsDP="${mpsMed1DP}/MPs_All_RF"
 mps1DP="${mpsDP}/MPs1"
 mpsADP="${mps1DP}/MPAs"
-mpswpDP="${wpsRTDP}/MPs_wk"
+mpswpDP="${wpsRTDP}/MPs_wpd"
 ##--mpsG0 / mpsNPs:
 mpsNps1DP="${nps2DP}/MPs_nps1"  ##--2do?: parentDir as envvar?? due to fat-part no links possible! otherwise:  ${npsDP}/MPs_nps1
 mpsG0RTDP="${mpsNps1DP}/MPAs_G0_All"  ##--old-/:241216-on-HP13-HDD:  "${npshddDP}/MPAs_G0_All"   ##--II-moved-from here to HP13-HDD, was on:   "${mpsDP}/MPAs_G0_All"

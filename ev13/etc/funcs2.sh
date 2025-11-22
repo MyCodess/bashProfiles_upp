@@ -94,6 +94,7 @@ htm2txt(){ curl -s "$1" | pandoc1 -f html -t plain ; }  ##-pandoc-execs must be 
 dtFPgen()  {  ##--Date-Timed-FilePath-Generation for all timestamped mv/cp/... :
 	sourceFP11="${1:?'USAGE: ... <source-file-name/path> [new-DIR-path-if-not-same-as-sourceDP [comments-addies-to-FP-end] ]'}" ;
 	[[ "$sourceFP11" != */* ]] && sourceFP11="./${sourceFP11}" ;
+	[[ "$sourceFP11" = */ ]] && sourceFP11="${sourceFP11::-1}" ;  ##--cut/truncate the last / if it is the last char (for renaming it is required!)
 	fn11="${sourceFP11##*/}";     sourceDP11="${sourceFP11%/*}/";
 	dp11="${2:-$sourceDP11}/" ; ##-Target-DP if fully other than cu-DP !
 	cuds11="$($cuds)" ; cudts11="$($cudts)" ;  ##--today-date/time-tag
@@ -128,7 +129,7 @@ cleanFP1() {
 	retval11="$(echo $retval11 | sed  -e 's@//*@/@g'   -e 's@[^[:alnum:]/_.-]@_@g'  -e 's@^[-_]*@@'  -e 's@_\.@.@'  -e 's@__*@_@g' )";  ##--I-could use \+ instead * for 0ne-or-more, but is GNU-extension! so leave it so maybe!? 
 }
 ##---
-cpt1="cp  -ixv  -d --preserve=timestamp";  mvi1="mv  -iv   --strip-trailing-slashes";  ##--I-as aliases does NOT work properly cpt/mvi, so here defined as VARs !
+cpt1="cp  -ixv  -d --preserve=timestamp -r";  mvi1="mv  -iv   --strip-trailing-slashes";  ##--I-as aliases does NOT work properly cpt/mvi, so here defined as VARs !
 dtRename1() {
 	local cmd111="$1"  ; local oldFP111="$2" ;
 	local newfp111="${3:?'USAGE: dtRename1 <cmd> <old-FP> <new-FP>  : move/copy a file with a Date-/time-stamped newName '}" ;

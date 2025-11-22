@@ -5,6 +5,8 @@ set -a
 
 ##========== 2chk/wk-cu:
 ##__  TIME_STYLE=posix-long-iso
+##---- cpdx funcs are NOT for DIRs! so check/try to replace cpt with cp -a to see ...: --> but for now check if the added -r to cpt1 cmd there works !?
+#- cpd11='cp -a -v'; cpde2()    { dtFPgen "$@" ;  dtRename1  "$cpd11"  "${sourceFP11}"  "${newfp11_de}"   ; }
 
 
 #####  ==========  NWs_Wlans_wpaSup_OS ::

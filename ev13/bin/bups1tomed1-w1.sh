@@ -53,7 +53,7 @@ w1_dest_full_prefix="${w1_dest}/w1_RF-full1-"
 w1_dest_full_FP="${w1_dest_full_prefix}-$($cuds).tgz"
 w1_dest_full_log_FP="${w1_dest_full_FP}.log"
 ##--DO: once-the-first-full-tar (5-min auf HP13-USB3):
-#-:  date;  tar --one-file-system  -cpzvf  ${w1_dest_full_FP}   ${w1DPPhys} > ${w1_dest_full_log_FP} ; date;  ##--bzw-noEnvvars:
+#-:  date;  tar --one-file-system  -cpzvf  ${w1_dest_full_FP}   ${w1DPPhys} > ${w1_dest_full_log_FP} ; date;     ##--ca 5 min,  bzw-noEnvvars: 
 #-:  cdla  /up1/mnt/T1fs/t1_RF/ ; date; tar --one-file-system  -cpzvf "/up1/media/BUPS1MD1/bups1w/w1_RF-full1--$($cuds).tgz"  "./w1_RF/" > "/up1/media/BUPS1MD1/bups1w/w1_RF-full1--$($cuds).tgz.log"; date ;
 ##---increms:
 tar --one-file-system  -cpzvf ${w1_dest}/w1-inc--$($cudts).tgz $(find  ${w1DPPhys} -newer ${w1_dest_full_prefix}*.tgz  -type f ) > ${w1_dest}/w1-inc--$($cudts).tgz.log

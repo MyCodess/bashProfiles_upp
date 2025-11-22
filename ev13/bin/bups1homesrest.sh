@@ -3,7 +3,7 @@ set -u
 set -C  #noclobber
 
 date11=$($cuds)
-targetDP="${ProgsResW1DP}/HomiesBups_BMs_1kk/${date11}-${USER}-homesy"  ;
+targetDP="$homiesBupsRestDP"      ##-- "${ProgsResW1DP}/HomiesBups_BMs_1kk/${date11}-${USER}-homesy"  ;
 [[ ! -d ${targetDP} ]] && ( mkdir -v  ${targetDP} || exit 3 )  ; ##--I- extra keine -p ! its root must already exist, otherwise exit!!
 cd ${targetDP} || exit 3
 

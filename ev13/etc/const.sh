@@ -67,8 +67,10 @@ TP3DP=${q_UppDP}/t3              #- T3-Partition
 TP4DP=${q_UppDP}/t4              #- T4-Partition
 
 #-- xxxAuDPs :
-ettcAuDP=${ettcuDP}/etcau  #- etc-shared-for-all-users
-vaarAuDP=${vaaruDP}/varau  #- var-shared-for-all-users
+ettcAuDP=${ettcuDP}/etcau      #- etc-shared-for-all-users
+vaarAuDP=${vaaruDP}/varau      #- var-shared-for-all-users
+ostmpdir1DP='/tmp/1dir11/'     #- /tmp/ tr/wks/... stuff in /tmp/ just in case prj/... requires temporary accessible to OS/..., also tempo 1RZ, 1m, ...
+ostmpvar1DP='/tmp/1var11/'     #- /tmp/ all auto-files as caches/vars/... as pycache, pytestcache, ...
 
 ##-- mounts/medias/devs/.... upp :
 q_MntDN=mnt      ##--Evv-mnt-dirN,   so mountPoints.root.DirN for Evv-fixed-mounted-parts

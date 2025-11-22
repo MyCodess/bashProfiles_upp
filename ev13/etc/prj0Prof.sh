@@ -34,7 +34,7 @@ q_prjDP="$( realpath  ${q_prj0DP}/${q_prjID} )"   ##-I-if realpath cmd not there
 
 #--------- level.2 : prjX-sub-dirs,  : --------------
 # _______:  prj-main-DIRs-in-prjDP (prj w1, t1, devel1, varx1, ...):
-q_prjdevl1DP="${q_prjDP}/1devl1"
+q_prjdvl1DP="${q_prjDP}/1dvl1"
 q_prjT1DP="${q_prjDP}/1t1"
 q_prjvarx1DP="${q_prjDP}/1varx1"   #-- this is NOT as var1! it is on Ext4/Lx-part, as in varau, for executables/unpi-with-perms/... !
 q_prjW1DP="${q_prjDP}/1w1"
@@ -49,7 +49,6 @@ q_prjDocsvarDP="${q_prjDP}/docsvar1"
 q_prjDntsDP="${q_prjDP}/dnts1"
 q_prjDresDP="${q_prjDP}/dres1"
 q_prjEtcDP="${q_prjDP}/etc1"
-q_prjFuncsDP="${q_prjBinDP}/funcs1"
 q_prjLibsDP="${q_prjDP}/libs1"
 q_prjTestsDP="${q_prjDP}/tsts1"
 q_prjTmpDP="${q_prjDP}/tmp1"
@@ -64,9 +63,12 @@ q_prj1RZOLDP="${q_prj1mOLDP}/1RZ_OL_${q_prjID}"  ##--I-ONLINE_1RZ, MUST go somew
 
 
 #--------- level.3+: prjX-var-sub-dirs : --------------------------
+q_prjFuncsDP="${q_prjBinDP}/funcs1"
 q_prjUnpDP="${q_prjVarDP}/unp"
 q_prjPkgsDP="${q_prjVarDP}/pkgs"
 ##__  prjTagsDP="${q_prjEtcDP}/tagsdir"
+#--- FPs/fNs:
+q_prjabsFP="${q_prjWpadsDP}/abs1_${q_prjLab1}.txt"
 
 #--------- prj-w1/t1/dnts/...DIRs global for all prjs : ---------------
 q_SW1dntsDP=${dntsDP}/${q_SW1Tag}${q_Label1dnts}           ##-I-SW1-dnts
@@ -97,11 +99,11 @@ alias  cdprjsprof='cdlla   ${q_prjsProfDP}'
 alias  cdprjvar1='cdlla   ${q_prjVarDP}'
 alias  cdprjtests='cdlla ${q_prjTestsDP}'
 alias  cdprjwks='cdlla   ${q_prjWksDP}'
-alias  cdprjwp='cdlla   ${q_prjWpadsDP}'
+alias  cdprjwpad='cdlla   ${q_prjWpadsDP}'
 
 ##----- aliasas-prj-w1/dnts/docs/t1/... --------------------------
 alias  cdprjcod1='cdlla  ${q_prjcode1DP}/'
-alias  cdprjdevl1='cdlla  ${q_prjdevl1DP}/'
+alias  cdprjdvl1='cdlla  ${q_prjdvl1DP}/'
 alias  cdprjt1='cdlla  ${q_prjT1DP}/'
 alias  cdprjw1='cdlla  ${q_prjW1DP}/'
 alias  cdsw1dnts='cdlla  ${q_SW1dntsDP}/'
@@ -109,13 +111,14 @@ alias  cdsw1dres1kk='cdlla  ${q_SW1dres1kkDP}'
 alias  cdsw1docs='cdlla  ${q_SW1DocsDP}'
 alias  cdsw1docsvar='cdlla  ${q_SW1DocsvarDP}'
 alias  visw1dnts='cd  ${q_SW1dntsDP}/  && gvim -c "set titlestring=${prjTag}" *.md *.txt'
+alias  viprjabs='vi1 ${q_prjabsFP}'
 alias  viprjprofs='vi1 -p $q_prjProfPosFP $q_prjProfPos2FP  $q_prjProfFP'
 ##-- alias viprjcases='cd  ${prjCasesDP}     &&  gvim -c "set titlestring=cases-dnts" *'
 ##-- alias viprjdnts='cd  ${prjdntsDP}         &&  gvim -c "set titlestring=${prjID}-dnts" *.txt'
 
 ##----- aliasas-prj-term/apps....: -----------------------------
 ##__  alias  te1prj="XDG_CONFIG_HOME=~/.config/00xdg2/  xfce4-terminal  --disable-server  --default-working-directory=${prjTestsDP}  --tab --working-directory=${SW1dntsDP}  --tab --working-directory=${prjWksDP}  --tab --working-directory=${prjWksDP}  --tab --working-directory=${prjTestsDP}  --tab --working-directory=${prjTestsDP}  --tab --working-directory=${prjTestsDP}"
-alias  te1prj="xfce4-terminal  --disable-server --geometry  120x62  --default-working-directory=${q_prjDP}  --tab  --working-directory=${q_prjDntsDP}  --active-tab  --tab --working-directory=${q_prjBinDP}  --tab --working-directory=${q_prjWpadsDP}  --tab  --tab  --working-directory=${q_prjTestsDP}  --tab --working-directory=${q_prjWksDP}  --tab --working-directory=${q_prjWksDP} &"
+alias  te1prj="xfce4-terminal  --disable-server --geometry  150x60  --default-working-directory=${q_prjDP}  --tab  --working-directory=${q_prjDntsDP}  --active-tab  --tab --working-directory=${q_prjBinDP}  --tab --working-directory=${q_prjWpadsDP}  --tab  --tab  --working-directory=${q_prjTestsDP}  --tab --working-directory=${q_prjWksDP}  --tab --working-directory=${q_prjWksDP} &"
 alias  te2prj2="xfce4-terminal  --disable-server --geometry  120x62  --default-working-directory=${q_prjWksDP}  --tab  --active-tab  --tab  --tab  --tab --working-directory=${q_prjDP}  --tab --working-directory=${q_prjWksDP}  --tab --working-directory=${q_SW1DocsDP}  --tab --working-directory=${q_SW1dres1kkDP}  --tab --working-directory=${q_SW1dntsDP}  &"
 
 ##========== prjProfPos (after all prj-global-settings in  in prj0prof):

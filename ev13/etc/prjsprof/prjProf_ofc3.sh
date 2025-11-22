@@ -4,9 +4,10 @@ set  -a
 q_pls1  "${BASH_SOURCE[0]##*/}"
 
 #-------- prj-global-IDs/tags of PRJ : -----------------
-q_prjTag=ofc  ##--II- name-abbreviated, short-tag
-q_prjNo=3    ##--II- curren No assigned; no meaning/relation to ver/...; nur fuer eindeutigkeit...
-q_prjID=${q_prjTag}${q_prjNo}  ##--II- MAIN-Prj-ID/Name/Ref.ID/... used in ...
+q_prjTag=ofc      ##--prj-tag--abbreviated, short-tag, initial-of-q_prjID
+q_prjNo=3         ##--curren No assigned; no meaning/relation to ver/...; nur fuer eindeutigkeit...
+q_prjLab1='5Hz'   ##--prj-Label-1 == compan-abbrev-shortLabel-1
+q_prjID=${q_prjTag}${q_prjNo}    ##--II- MAIN-Prj-ID/Name/Ref.ID/... used in ...
 q_SW1Name=python      ##--II- very General-Topic-/technical-Name. eher descriptive, not really used !
 q_SW1Tag=py           ##--I-small-letters (for py_dnts, py_dres,...)
 q_SW1TagC=${q_SW1Tag^}          ##--I-convert first char to uppercase! see man bash /"Case modification"  /OR  /\^\^   !
