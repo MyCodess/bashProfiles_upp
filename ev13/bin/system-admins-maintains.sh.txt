@@ -1,9 +1,8 @@
 __________________  system-admins-maintains.sh.txt : _________________________
 exit 3
---####################### uue-syysStat/L1NW-uue-syys-doings : ###########################
 
 
-
+--####################### evv-syysStat/L1NW-uue-syys-doings : ###########################
 #####  ==========  
     - PKI/smartcard-daemon:  alias sc1='sudo systemctl status   pcscd.service   pcscd.socket'   #-smartcard/pki-start
 ##________________________________________  ___________________________
@@ -44,7 +43,7 @@ systemctl  list-units  --type=target   ##--listing of all possible init-levels/t
 ##________________________________________  ___________________________
 
 
-#####  ==========  uue-syysStat-updates:
+#####  ==========  evv-syysStat-updates:
 - putting putNoBupFlag.sh in all cache/trash/...-Dirs:  find /home/  -type d  \( -iname "*trash*" -o -iname "tmp" -o -iname "*thumbnails*" -o -iname "*cach*" -o -iname .chmsee -o -iname .beagle -o -iname .adobe -o -iname .macromedia \) -exec putNoBupFlag.sh {}  \; 
 - syysStat-update: syysStat.sh >> ${syysTgStatsNtsFP} 2>&1
 - syys-bup from t1->t2 (preferably do it with rsync !!):
@@ -95,4 +94,5 @@ mv $($cuds)_${LOGNAME}_kde.tbz  $vaarAubups2DP
 
 
 --####################### Lx-Sys-Admins: ################################################
+- fstab-changes-reload:   systemctl daemon-reload
 

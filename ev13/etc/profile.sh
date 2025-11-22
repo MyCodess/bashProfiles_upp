@@ -115,7 +115,7 @@ q_Path1="$PATH"    ##--II- the final-evv-path after first full evvEnv-run. can b
 export GLOBIGNORE='.:..:'  ##-II- it also enables dotglob , see man bash !!
 HISTFILE=${ettcUser}/hs1 
 ##-??-::  HISTSIZE=50  #-max-cmds-keep-in-histLIST of the cu-shell/terminal (not file!)
-HISTFILESIZE=1000   #-truncate histfile up to so many cmds! set to -1/negative-no to NOT truncate histfile;
+HISTFILESIZE=10000   #-truncate histfile up to so many cmds! set to -1/negative-no to NOT truncate histfile;
 unset  HISTTIMEFORMAT ;   #-?:  HISTTIMEFORMAT="     ${dateTimeForm1}   " ;
 ##-- very END, shopts has relevance for all ux-cmds as ls/find/....!! :
 shopt -s  dotglob cmdhist  expand_aliases  extglob  histappend  histreedit  histverify interactive_comments  lithist  mailwarn  no_empty_cmd_completion  promptvars  shift_verbose

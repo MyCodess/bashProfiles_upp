@@ -201,7 +201,7 @@ hi statuslineNC    ctermbg=darkgray    ctermfg=blue  " Not_Active/Not_Current-wi
 " set highlight+=sr	  " reverse video for statusLine.   info: +=si is obsolete and now means italic!!
 " ##############################################################################################
 
-set viminfofile=/tmp/hs1_viminf1     "enabling with: set viminfofile=/tmp/hs1_viminf1  (on msw /temp/ or ....)  " to disable hist-file: set viminfofile=  ; msw-ok: c:\temp\hs1_viminf1 /OR mkdir /c/tmp/ and =/tmp/hs1_viminf1   
+set viminfofile=${ettcUser}/hs1_viminf1     "enabling with: set viminfofile=/tmp/hs1_viminf1  (on msw /temp/ or ....)  " to disable hist-file: set viminfofile=  ; msw-ok: c:\temp\hs1_viminf1 /OR mkdir /c/tmp/ and =/tmp/hs1_viminf1   
 set viminfo='0,<0,@0,f0,"0,/10,:10  " diable-all-inf-storings by setting to None: viminfo=  ! see :h 'viminfo'
 " ---
 " set  pythonthreehome=/c/Progs2/py3
